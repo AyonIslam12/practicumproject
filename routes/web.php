@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\Backend\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+//Backend Routes
+Route::prefix('admin')->name('admin.')->group(function (){
+    Route::get('/login',[AdminController::class,'login'])->name('login');
+    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+
+    Route::prefix('customer')->name('customer.')->group(function (){
+        Route::get('/manage',[CustomerController::class,'index'])->name('manage');
+
+    });
+
 });
