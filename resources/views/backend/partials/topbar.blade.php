@@ -3,7 +3,7 @@
         <i class="fa fa-bars"></i>
     </div>
   <!--logo start-->
-  <a href="index.html" class="logo">Car<span>Rental</span></a>
+  <a href="{{ route('admin.dashboard') }}" class="logo">Car<span>Rental</span></a>
   <!--logo end-->
 
   <div class="top-nav ">

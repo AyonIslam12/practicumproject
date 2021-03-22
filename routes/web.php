@@ -20,12 +20,18 @@ Route::get('/', function () {
 });
 //Backend Routes
 Route::prefix('admin')->name('admin.')->group(function (){
+
+    Route::get('/',[AdminController::class,'dashboard'])->name('dashboard');
     Route::get('/login',[AdminController::class,'login'])->name('login');
-    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
 
     Route::prefix('customer')->name('customer.')->group(function (){
-        Route::get('/manage',[CustomerController::class,'index'])->name('manage');
-
+        Route::get('/lists',[CustomerController::class,'index'])->name('manage');
+        Route::get('/create',[CustomerController::class,'create'])->name('create');
+        Route::post('/store',[CustomerController::class,'store'])->name('store');
+        Route::get('/{id}',[CustomerController::class,'show'])->name('show');
+        Route::get('/{id}/edit',[CustomerController::class,'edit'])->name('edit');
+        Route::put('/{id}',[CustomerController::class,'update'])->name('update');
+        Route::delete('/{id}',[CustomerController::class,'destroy'])->name('delete');
     });
 
 });

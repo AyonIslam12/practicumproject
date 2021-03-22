@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('photo');
             $table->string('password');
             $table->integer('age');
-            $table->integer('nid_num');
+            $table->bigInteger('nid_num');
             $table->string('gender');
             $table->string('contact',11);
             $table->longText('address',255);

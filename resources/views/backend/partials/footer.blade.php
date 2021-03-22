@@ -1,4 +1,4 @@
-<section style="margin-top: 390px" class="fixed">
+<section  class="fixed">
 <!--footer start-->
 <footer  class="site-footer">
     <div class="text-center">

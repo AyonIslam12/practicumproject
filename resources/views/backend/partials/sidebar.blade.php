@@ -3,7 +3,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             <li>
-                <a class="{{ request()->is('admin/dashboard') ? 'active' : ''}}" href="{{ route('admin.dashboard') }}">
+                <a class="{{ request()->is('admin') ? 'active' : ''}}" href="{{ route('admin.dashboard') }}">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
@@ -28,16 +28,17 @@
                     <li><a  href="boxed_page.html">Add Car</a></li>
                 </ul>
             </li>
-            <li class="sub-menu">
-                <a href="javascript:;" class="{{ request()->is('admin/customer/manage') ? 'active' : ''}}">
+            <li class="sub-menu" >
+                <a href="javascript:;"  class="{{ request()->is('admin/customer/lists','admin/customer/create') ? 'active' : ''}}">
                     <i class="fa fa-user"></i>
                     <span>Customers</span>
                 </a>
                 <ul class="sub">
-                    <li><a class="{{ request()->is('admin/customer/manage') ? 'active' : ''}}"  href="{{ route('admin.customer.manage') }}">Manage Customers</a></li>
-                    <li><a  href="boxed_page.html">Add Customer</a></li>
+                    <li class="{{ request()->is('admin/customer/lists') ? 'active' : ''}}"><a   href="{{ route('admin.customer.manage') }}">All Customers</a></li>
+                    <li  class="{{ request()->is('admin/customer/create') ? 'active' : ''}}" ><a   href="{{ route('admin.customer.create') }}">Add Customers</a></li>
+
                 </ul>
-            </li>
+                    </li>
             <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-user"></i>
