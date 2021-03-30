@@ -27,7 +27,9 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
+
         return view('backend.layouts.customers.create');
     }
 
@@ -42,7 +44,7 @@ class CustomerController extends Controller
       $request->validate([
             'name' => 'required|string|min:6',
             'email' => 'required|email|unique:customers',
-          'photo' => 'required|image',
+            'photo' => 'required|image',
             'password' => 'required|min:8|max:16',
             'age' => 'required',
             'nid_num' => 'required|min:6',
@@ -57,7 +59,7 @@ class CustomerController extends Controller
            Customer::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'photo' => $request->photo,
+                'photo' => $file_name,
                 'password' => $request->password,
                 'age' => $request->age,
                 'nid_num' => $request->nid_num,
@@ -177,8 +179,9 @@ class CustomerController extends Controller
     {
        try{
            $customer = Customer::find($id);
-           $customer->delete();
+           if(file_exists(public_path('uploads/customer/'.$customer->photo))) unlink(public_path('uploads/customer/'.$customer->photo));
 
+           $customer->delete();
            session()->flash('type','success');
            session()->flash('message','Customer info delete success...');
 

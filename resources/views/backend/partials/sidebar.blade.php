@@ -1,5 +1,5 @@
 <aside>
-    <div id="sidebar"  class="nav-collapse ">
+    <div id="sidebar"  class="nav-collapse">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             <li>
@@ -15,17 +15,17 @@
                     <span>Booking</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Manage Booking</a></li>
+                    <li><a  href="#">Manage Booking</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="javascript:;" class="{{ request()->is('admin/car/lists') ? 'active' : '' }}">
                     <i class="fas fa-car"></i>
                     <span>Cars</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Manage Cars</a></li>
-                    <li><a  href="boxed_page.html">Add Car</a></li>
+                    <li  class="{{ request()->is('admin/car/lists') ? 'active' : '' }}"><a  href="{{ route('admin.car.manage') }}">Car List</a></li>
+                    <li><a  href="#">Add Car</a></li>
                 </ul>
             </li>
             <li class="sub-menu" >
@@ -40,13 +40,13 @@
                 </ul>
                     </li>
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="javascript:;" class="{{ request()->is('admin/driver/lists') ? 'active' : ''}}" >
                     <i class="fa fa-user"></i>
                     <span>Drivers</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Manage Drivers</a></li>
-                    <li><a  href="boxed_page.html">Add Driver</a></li>
+                    <li class="{{ request()->is('admin/driver/lists') ? 'active' : ''}}"><a  href="{{ route('admin.driver.manage') }}">Manage Drivers</a></li>
+                    <li><a  href="">Add Driver</a></li>
                 </ul>
             </li>
             <li class="sub-menu">

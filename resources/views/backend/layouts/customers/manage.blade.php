@@ -5,7 +5,7 @@ customer-manage
 @endsection
 
 @section('content')
-<h3 class="text-secondary">Customer Manage Table</h3>
+<h3 class="text-secondary text-center text-info  font-weight-bold text-uppercase">Customer Manage Table</h3>
 
 {{--
   <!-- Button trigger modal -->
@@ -22,11 +22,14 @@ customer-manage
                 <p class="text-center text-bolder">{{ session('message') }}</p>
             </div>
         @endif
-
+    <!-- Button trigger modal -->
+    <a type="button" class="btn btn-success" href="{{ route('admin.customer.create') }}">
+        Add Customer
+    </a>
         <table class="table table-bordered table-scripts mt-2">
             <thead>
               <tr>
-                <th scope="col">SL</th>
+                <th scope="col">SL Number</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Photo</th>
@@ -40,22 +43,22 @@ customer-manage
               </tr>
             </thead>
             <tbody>
-                @foreach ($customers as $customer )
+                @foreach ($customers as $key=>$customer )
 
 
               <tr>
-                <th scope="row">{{ $customer->id }}</th>
+                <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $customer->name }}</td>
                 <td>{{ $customer->email }}</td>
-                <td><img src="{{ asset('uploads/customer/'.$customer->id) }}" width="60px" alt=""></td>
+                <td><img src="{{ asset('uplaods/customer/'.$customer->photo) }}" alt="No"></td>
                 <td>{{ $customer->age.' '.'years old' }}</td>
                 <td>{{ $customer->nid_num }}</td>
                 <td>{{ $customer->gender }}</td>
                 <td>{{ $customer->contact }}</td>
                 <td>{{ $customer->address }}</td>
-                <td>{{ $customer->status }}</td>
+                <td>{{ ucfirst($customer->status) }}</td>
                 <td class="d-flex justify-content-center">
-                    <a href="{{ route('admin.customer.show',$customer->id) }}" class="btn btn-info btn-sm mx-1" {{-- data-bs-toggle="modal" data-bs-target="#customer_view" --}}>View</a>
+                    <a href="{{ route('admin.customer.show',$customer->id) }}" class="btn btn-info btn-sm mx-1" >View</a>
 
                     <a href="{{ route('admin.customer.edit',$customer->id) }}" class="btn btn-primary btn-sm mx-1">Edit</a>
                       <form action="{{ route('admin.customer.delete',$customer->id) }}" method="post">

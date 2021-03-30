@@ -14,6 +14,7 @@
 <!--fontwase-->
     <script src="https://kit.fontawesome.com/c4f7856497.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" >
@@ -45,63 +46,7 @@
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-                <!--state overview start-->
-                <div class="row state-overview">
-                    <div class="col-lg-3 col-sm-6">
-                        <section class="card">
-                            <div class="symbol terques">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="value">
-                                <h1 class="count">
-                                    0
-                                </h1>
-                                <p class="text-success">All Customers</p>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <section class="card">
-                            <div class="symbol red">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="value">
-                                <h1 class=" count2">
-                                    0
-                                </h1>
-                                <p class="text-primary">All Drivers</p>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <section class="card">
-                            <div class="symbol yellow">
-                                <i class="fas fa-car-side"></i>
-                            </div>
-                            <div class="value">
-                                <h1 class=" count3">
-                                    0
-                                </h1>
-                                <p class="text-info">All Active Cars</p>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <section class="card">
-                            <div class="symbol yellow">
-                                <i class="fas fa-car-crash"></i>
-                            </div>
-                            <div class="value">
-                                <h1 class=" count3">
-                                    0
-                                </h1>
-                                <p class="text-info">Insurance</p>
-                            </div>
-                        </section>
-                    </div>
 
-                </div>
-                <!--state overview end-->
 
                 <div class="row pt-3">
                     <div class="col-md-12">
@@ -142,6 +87,8 @@
       <script src="{{ asset('admin_assets/js/sparkline-chart.js') }}"></script>
       <script src="{{ asset('admin_assets/js/easy-pie-chart.js') }}"></script>
       <script src="{{ asset('admin_assets/js/count.js') }}"></script>
+
+      @stack('js')
 
 
     </body>
