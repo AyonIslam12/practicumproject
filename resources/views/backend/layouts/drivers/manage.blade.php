@@ -17,6 +17,13 @@ driver-list
     Add Driver
 
    </button>
+
+   @if(session('success'))
+   <div class="text-center alert alert-success mt-1">
+       <p class="text-center font-weight-bolder pt-2">{{ session('success') }}</p>
+   </div>
+   @endif
+
    <!-- End Button trigger modal -->
         <table class="table  table-bordered table-scripts mt-3">
             <thead class="thead-dark">
@@ -82,17 +89,24 @@ driver-list
             </div>
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+              <input type="email" class="form-control @error('name')is-invalid @enderror" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+              @error('email') <span class="text-danger font-italic">{{ $message }}</span> @enderror
+
+
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+              <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password">
+              @error('password') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+
+
             </div>
 
 
             <div class="form-group">
                 <label for="contact">Contact Number</label>
                 <input type="number"class="form-control" id="contact" name="contact"  placeholder="Enter Contact Number">
+                @error('contact') <span class="text-danger text-italic">{{ $message }}</span>@enderror
             </div>
 
       </div>

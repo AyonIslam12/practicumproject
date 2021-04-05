@@ -39,7 +39,7 @@ class DriverController extends Controller
             'contact' => $request->contact,
 
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success','Driver data inserted successfully');
 
     }
 

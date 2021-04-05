@@ -10,12 +10,12 @@
             </li>
 
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="javascript:;"   class="{{ request()->is('admin/booking/list') ? 'active' : '' }}">
                     <i class="fa fa-book"></i>
                     <span>Booking</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="#">Manage Booking</a></li>
+                    <li  class="{{ request()->is('admin/booking/list') ? 'active' : '' }}"><a  href="{{ route('admin.booking.manage') }}">Manage Booking</a></li>
                 </ul>
             </li>
             <li class="sub-menu">

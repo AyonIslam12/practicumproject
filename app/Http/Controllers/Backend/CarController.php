@@ -37,16 +37,31 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+
+        $filename = "";
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            if($image->isValid()){
+                $filename = \date('Ymdhms').'.'.$image->getClientOriginalExtension();
+                $image->storeAs('cars',$filename);
+            }
+        }
         Car::create([
-            'car_name' => $request->car_name,
-            'car_brand' => $request->car_brand,
-            'car_model' => $request->car_model,
-            'car_color' => $request->car_color,
-            'sit_capacity' => $request->sit_capacity,
-            'n_plate' => $request->n_plate
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'model' => $request->model,
+            'color' => $request->color,
+            'price' => $request->price,
+            'image' => $filename,
+            'mileage' => $request->mileage,
+            'transmission' => $request->transmission,
+            'seats' => $request->seats,
+            'luggage' => $request->luggage,
+            'fuel' => $request->fuel,
+            'decs' => $request->decs,
 
         ]);
-        return redirect()->route('admin.car.manage');
+        return redirect()->route('admin.car.manage')->with('success','New Car Inserted Successfully');
     }
 
     /**
@@ -57,7 +72,8 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        //
+        $car = Car::find($id);
+        return view('backend.layouts.cars.view', \compact('car'));
     }
 
     /**

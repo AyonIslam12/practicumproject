@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\BookingController;
 use App\Http\Controllers\Backend\CarController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DriverController;
-use App\Http\Controllers\Fontend\SiteController;
+use App\Http\Controllers\Frontend\CarController as FrontendCarController;
+use App\Http\Controllers\Frontend\SiteController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +23,24 @@ use Illuminate\Support\Facades\Route;
 
 
 //Fontend  Routes
+Route::prefix('/')->name('website.')->group(function(){
+    Route::get('/',[SiteController::class,'index'])->name('home');
+    Route::get('/about-us',[SiteController::class,'about'])->name('about');
+    Route::get('/services',[SiteController::class,'services'])->name('services');
+    Route::get('/pricing',[SiteController::class,'pricing'])->name('pricing');
+    Route::get('/blogs',[SiteController::class,'blogs'])->name('blogs');
+    Route::get('/contact-us',[SiteController::class,'contact'])->name('contact');
 
-Route::get('/',[SiteController::class,'index']);
+
+    Route::prefix('/car')->name('car.')->group(function(){
+
+        Route::get('/all-cars',[ FrontendCarController::class,'cars'])->name('list');
+        Route::get('/{id}',[ FrontendCarController::class,'singleCar'])->name('singlecar');
+
+
+    });
+
+});
 
 
 
@@ -39,6 +58,17 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('/lists',[CarController::class,'index'])->name('manage');
         Route::get('/create',[CarController::class,'create'])->name('create');
         Route::post('/store',[CarController::class,'store'])->name('store');
+        Route::get('/{id}',[CarController::class,'show'])->name('show');
+
+    });
+
+    Route::prefix('booking')->name('booking.')->group(function (){
+        Route::get('/list',[BookingController::class,'index'])->name('manage');
+        Route::get('/create',[BookingController::class,'create'])->name('create');
+        Route::post('/store',[BookingController::class,'store'])->name('store');
+        Route::get('/{id}',[BookingController::class,'show'])->name('show');
+        Route::delete('/{id}',[BookingController::class,'destroy'])->name('delete');
+
 
     });
 

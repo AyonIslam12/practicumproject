@@ -14,20 +14,20 @@ class CreateCarsTable extends Migration
     public function up()
     {
         Schema::create('cars', function (Blueprint $table) {
-            $table->id('car_id');
-            $table->string('car_name');
-            $table->string('car_brand');
-            $table->string('car_model');
-            $table->string('car_color');
-            $table->string('sit_capacity');
-         /*  $table->string('car_type'); */
-/*          $table->string('image');
-            $table->string('car_dsce');
-            $table->string('car_cc');
-            $table->string('car_toc');
-            $table->string('car_odo'); */
-            $table->string('n_plate');
-            /* $table->string('status'); */
+            $table->id();
+            $table->string('name',100);
+            $table->string('brand',50);
+            $table->string('model',50);
+            $table->double('price','10','2')->default('0.0');
+            $table->text('image')->nullable();
+            $table->string('color',20);
+            $table->string('mileage',255);
+            $table->string('transmission',50);
+            $table->integer('seats');
+            $table->string('luggage',100);
+            $table->string('fuel',20);
+            $table->longText('decs')->nullable();
+
             $table->timestamps();
         });
     }

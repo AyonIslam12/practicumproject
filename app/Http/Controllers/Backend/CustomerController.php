@@ -71,15 +71,15 @@ class CustomerController extends Controller
              if ($photo->isValid()){
                 $photo->storeAs('customer',$file_name);
             }
-             session()->flash('type','success');
+             /* session()->flash('type','success');
             session()->flash('message','Customer save success!');
-
+ */
          }catch(Exception $e){
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());
 
          }
-         return redirect()->back();
+         return redirect()->route('admin.customer.manage')->with('success','Customer data successfully inserted');
     }
 
     /**
@@ -157,15 +157,15 @@ class CustomerController extends Controller
              $customer->status  = $request->status;
              $customer->update();
 
-             session()->flash('type','success');
+             /* session()->flash('type','success');
              session()->flash('message','Customer info update succesfully');
-
+ */
          }catch(Exception $e){
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());
 
          }
-         return redirect()->back();
+         return redirect()->route('admin.customer.manage')->with('success','Customer data successfully updated');
 
     }
 
