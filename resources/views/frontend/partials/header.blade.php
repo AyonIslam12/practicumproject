@@ -14,7 +14,8 @@
           <li class="nav-item {{ request()->is('car/all-cars') ? 'active' : '' }}"><a href="{{ route('website.car.list') }}" class="nav-link">Cars</a></li>
           <li class="nav-item {{ request()->is('blogs') ? 'active' : '' }}"><a href="{{ route('website.blogs') }}" class="nav-link">Blog</a></li>
           <li class="nav-item {{ request()->is('contact-us') ? 'active' : '' }}"><a href="{{ route('website.contact') }}" class="nav-link">Contact</a></li>
-      </div>
+          <li class="nav-item"><a class="nav-link" href="{{ route('website.user.login.form') }}">Login</a></li>
+        </div>
     </div>
   </nav>
 

@@ -50,12 +50,12 @@
                 </ul>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="javascript:;"  class="{{ request()->is('admin/offer/lists') ? 'active' : '' }}">
                     <i class="fab fa-discourse"></i>
                     <span>Offers</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Manage Offers</a></li>
+                    <li class="{{ request()->is('admin/offer/lists')? 'active' : '' }}"><a  href="{{ route('admin.offer.manage') }}">Manage Offers</a></li>
                     <li><a  href="boxed_page.html">Add Offers</a></li>
                 </ul>
             </li>
@@ -75,8 +75,18 @@
                     <span>Payments</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Manage Payments</a></li>
-                    <li><a  href="boxed_page.html">Add Payment</a></li>
+                    <li><a  href="">Manage Payments</a></li>
+                    <li><a  href="">Add Payment</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fas fa-atlas"></i>
+                    <span>Reports</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="">Manage Reports</a></li>
+                    <li><a  href="">Add Report</a></li>
                 </ul>
             </li>
 

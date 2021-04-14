@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function index()
 
     {
-        $customers = Customer::all();
+        $customers = Customer::paginate(5);
        return view('backend.layouts.customers.manage', compact('customers'));
     }
 
@@ -54,8 +54,18 @@ class CustomerController extends Controller
             'status' => 'required|string',
          ]);
          try{
-            $photo = $request->file('photo');
-            $file_name = rand(11111,99999).date('ymdhis.'). $photo->getClientOriginalExtension();
+           $file_name= "";
+
+           if($request->hasFile('photo')){
+               $photo = $request->file('photo');
+               if($photo->isValid()){
+                $file_name = rand(11111,99999).date('ymdhis').'.'. $photo->getClientOriginalExtension();
+                $photo->storeAs('customer',$file_name);
+
+               }
+
+           }
+
            Customer::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -68,9 +78,7 @@ class CustomerController extends Controller
                 'address' => $request->address,
                 'status' => $request->status
              ]);
-             if ($photo->isValid()){
-                $photo->storeAs('customer',$file_name);
-            }
+
              /* session()->flash('type','success');
             session()->flash('message','Customer save success!');
  */

@@ -55,7 +55,7 @@ customer-manage
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $customer->name }}</td>
                 <td>{{ $customer->email }}</td>
-                <td><img src="{{ asset('uplaods/customer/'.$customer->photo) }}" alt="No"></td>
+                <td><img width="70px" height="70px" src="{{ $customer->photo }}" alt=""></td>
                 <td>{{ $customer->age.' '.'years old' }}</td>
                 <td>{{ $customer->nid_num }}</td>
                 <td>{{ $customer->gender }}</td>
@@ -80,10 +80,12 @@ customer-manage
           </table>
 
             </div>
+            <div class="d-felx justify-content-left">
+
+                {{ $customers->links() }}
+
+            </div>
 
         </div>
-          {{-- {{'page:-'.$customers->currentpage() }}
-          {{ $customers->links() }}
- --}}
 
 @endsection

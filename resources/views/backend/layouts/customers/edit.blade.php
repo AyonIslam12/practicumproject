@@ -79,7 +79,7 @@ customer-edit
 
                 <div class="form-group">
                     <label for="contact"><span class="text-light"> Contact Number</span></label>
-                    <input type="number"class="form-control " id="contact" name="contact" value="{{ $customer->contact }}"  placeholder="Enter Contact Number">
+                    <input type="text"class="form-control " id="contact" name="contact" value="{{ $customer->contact }}"  placeholder="Enter Contact Number">
 
                 </div>
                 <div class="form-group">
