@@ -65,7 +65,7 @@ car-list
                     <td>{{ $car->decs }}</td>
                     <td class="text-center d-flex">
                         <a class="btn btn-info btn-sm mx-1" href="{{ route('admin.car.show',$car->id) }}">View</a>
-                        <a class="btn btn-success btn-sm mx-1" href="#">Edit</a>
+                        <a class="btn btn-success btn-sm mx-1" href="{{ route('admin.car.edit',$car->id) }}">Edit</a>
                        <form action="{{ route('admin.car.destroy',$car->id) }}" method="post">
                         @csrf
                         @method('DELETE')

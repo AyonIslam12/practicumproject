@@ -38,6 +38,20 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|min:4',
+            'brand' => 'required|string',
+            'model' => 'required',
+            'color' => 'required',
+            'price' => 'required',
+            'mileage' => 'required',
+            'transmission' => 'required',
+            'seats' => 'required',
+            'luggage' => 'required',
+            'fuel' => 'required',
+
+
+        ]);
 
         $filename = " ";
         if($request->hasFile('image')){
@@ -85,7 +99,11 @@ class CarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $car = Car::find($id);
+        if($car)
+        return view('backend.layouts.cars.edit',\compact('car'));
+        else
+        return \redirect()->back();
     }
 
     /**
@@ -97,7 +115,57 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cars = Car::find($id);
+        if (!$cars) return redirect()->back();
+
+        $request->validate([
+            'name' => 'required|string|min:4',
+            'brand' => 'required|string',
+            'model' => 'required',
+            'color' => 'required',
+            'price' => 'required',
+            'mileage' => 'required',
+            'transmission' => 'required',
+            'seats' => 'required',
+            'luggage' => 'required',
+            'fuel' => 'required',
+
+
+        ]);
+
+          try{
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                if($file->isValid()){
+                    $filename = date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                    $file->storeAs('cars',$filename);
+                }
+                if (file_exists(public_path('uploads/cars/'.$cars->image))) unlink(public_path('uploads/cars/'.$cars->image));
+            }else{
+                $filename = $cars->image;
+            }
+
+            $cars->update([
+                'name' => $request->name,
+                'brand' => $request->brand,
+                'model' => $request->model,
+                'color' => $request->color,
+                'price' => $request->price,
+                'image' => $filename,
+                'mileage' => $request->mileage,
+                'transmission' =>$request->transmission,
+                'seats' => $request->seats,
+                'luggage' => $request->luggage,
+                'fuel' => $request->fuel
+
+            ]);
+          }catch(Exception $e){
+            session()->flash('type','danger');
+            session()->flash('message',$e->getMessage());
+
+          }
+
+        return redirect()->route('admin.car.manage')->with('success',' Car Info Updated Successfully');
     }
 
     /**
