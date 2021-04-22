@@ -12,7 +12,7 @@ car-list
 
             <a href="{{ route('admin.car.create') }}" class="btn btn-secondary mb-2"><span class="text-light">Add New</span></a>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-8 offset-2">
                     <!-- Success Message-->
                     @if(session('success'))
@@ -25,7 +25,16 @@ car-list
 
                 </div>
 
-            </div>
+            </div> --}}
+
+
+            <div class="row">
+                <div class="col-md-12">
+             @if(session('message'))
+                <div class="text-center alert alert-{{ session('type') }}">
+                    <p class="text-center text-bolder">{{ session('message') }}</p>
+                </div>
+            @endif
             <table class="table table-bordered table-scripts">
                 <thead>
                   <tr>

@@ -14,11 +14,14 @@ class UserController extends Controller
 
 
     public function login(Request $request){
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6|max:16',
 
         ]);
+
+
         $loginData=$request->only('email','password');
         if(Auth::attempt($loginData)){
           return redirect()->route('admin.dashboard')->with('success','User Login Success.');

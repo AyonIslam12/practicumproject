@@ -21,5 +21,5 @@ class UserTableSeeder extends Seeder
             'role' => 'admin',
 
         ]);
-    }
+    } 
 }

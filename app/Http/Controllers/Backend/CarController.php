@@ -178,7 +178,8 @@ class CarController extends Controller
     {
         try{
             $car = Car::find($id);
-            if(file_exists(public_path('uploads/cars/'.$car->image))) unlink(public_path('uploads/cars/'.$car->image));
+            if(file_exists(public_path('uploads/cars/'.$car->image)))
+            unlink(public_path('uploads/cars/'.$car->image));
             $car->delete();
 
         }catch(Exception $e){
