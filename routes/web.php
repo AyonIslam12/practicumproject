@@ -30,9 +30,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->name('website.')->group(function(){
     Route::get('/',[SiteController::class,'index'])->name('home');
     Route::get('/about-us',[SiteController::class,'about'])->name('about');
-    Route::get('/services',[SiteController::class,'services'])->name('services');
-    Route::get('/pricing',[SiteController::class,'pricing'])->name('pricing');
-    Route::get('/blogs',[SiteController::class,'blogs'])->name('blogs');
+    Route::get('/our-services',[SiteController::class,'services'])->name('services');
+/*     Route::get('/pricing',[SiteController::class,'pricing'])->name('pricing');
+    Route::get('/blogs',[SiteController::class,'blogs'])->name('blogs'); */
+    Route::get('/faq',[SiteController::class,'faqPage'])->name('faq');
     Route::get('/contact-us',[SiteController::class,'contact'])->name('contact');
 
 

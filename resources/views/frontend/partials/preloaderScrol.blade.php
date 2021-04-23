@@ -6,7 +6,7 @@
     <a href="#" class="scroll"><i class="far fa-arrow-up"></i></a>
 </div>
 
-{{-- !--Preloader-->
+ <!--Preloader-->
 <div class="preloader">
     <div class="animation_preloader"><div class="spinner">
     </div>
@@ -24,4 +24,4 @@
                 </div>
             </div>
         </div>
-    </div>  --}}
+    </div>

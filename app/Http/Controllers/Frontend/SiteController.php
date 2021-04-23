@@ -18,24 +18,22 @@ class SiteController extends Controller
         return view('frontend.pages.about',\compact('title'));
     }
     public function services(){
-        $title = "Services";
-        return view('frontend.pages.services',\compact('title'));
+
+        return view('frontend.pages.services');
     }
-    public function pricing(){
+   /*  public function pricing(){
         $title = "Car-Pricing";
         return view('frontend.pages.pricing',\compact('title'));
-    }
-    public function cars(){
-        $all_cars = Car::all();
-        $title = "All-Cars";
-        return view('frontend.pages.cars',\compact('title','all_cars'));
-    }
+    } */
 
-
-    public function blogs(){
+   /*  public function blogs(){
         $title = "Our-Blogs";
         return view('frontend.pages.blogs',\compact('title'));
+    } */
+    public function faqPage(){
+        return view('frontend.pages.faqPage');
     }
+
     public function contact(){
         return view('frontend.pages.contact');
     }

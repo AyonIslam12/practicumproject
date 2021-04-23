@@ -1,66 +1,223 @@
 @extends('frontend.master')
 
 
+@section('title')
+Our-Services
+@stop
 @section('content')
+<!--Start-->
+<section class="breadcrumb_section text-center clearfix">
+    <div class="page_title_area has_overlay d-flex align-items-center clearfix" data-bg-image="{{ asset('frontend/assets/images/breadcrumb/bg_12.jpg') }}">
+        <div class="overlay">
 
-<section class="ftco-section">
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h1 class="page_title text-white pt-5">Services</h1>
+        </div>
+    </div>
+
+</section>
+
+<section class="service_section sec_ptb_100 clearfix">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-  <div class="col-md-7 text-center heading-section ftco-animate">
-      <span class="subheading">Services</span>
-    <h2 class="mb-3">Our Latest Services</h2>
-  </div>
-</div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="services services-2 w-100 text-center">
-        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-        <div class="text w-100">
-        <h3 class="heading mb-2">Wedding Ceremony</h3>
-        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-      </div>
-    </div>
+        <div class="section_title text-center" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="title_text mb-0">
+                <span>Special offers</span>
+            </h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="service_primary text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="item_icon">
+                        <i class="far fa-shield-alt"></i>
+                    </div>
+                    <h3 class="item_title">Secured Payment Guarantee</h3>
+                    <p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
+                </div>
             </div>
-            <div class="col-md-3">
-                <div class="services services-2 w-100 text-center">
-        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-        <div class="text w-100">
-        <h3 class="heading mb-2">City Transfer</h3>
-        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-      </div>
-    </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="service_primary text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="item_icon">
+                        <i class="fal fa-headset"></i>
+                    </div>
+                    <h3 class="item_title">Help Center &amp; Support 24/7</h3>
+                    <p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
+                </div>
             </div>
-            <div class="col-md-3">
-                <div class="services services-2 w-100 text-center">
-        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-        <div class="text w-100">
-        <h3 class="heading mb-2">Airport Transfer</h3>
-        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-      </div>
-    </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="service_primary text-center" data-aos="fade-up" data-aos-delay="700">
+                    <div class="item_icon"><i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="item_title">Booking Luxury and Sport Cars</h3>
+                    <p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
+                </div>
             </div>
-            <div class="col-md-3">
-                <div class="services services-2 w-100 text-center">
-        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-        <div class="text w-100">
-        <h3 class="heading mb-2">Whole City Tour</h3>
-        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-      </div>
-    </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="service_primary text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="item_icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="item_title">Corporate and Business Services</h3>
+                    <p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="service_primary text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="item_icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3 class="item_title">Car Sharing Options</h3>
+                    <p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="service_primary text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="item_icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="item_title">Limousine and Chauffeur Hire</h3>
+                    <p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="ftco-section ftco-intro" style="background-image: url({{ asset('frontend_assets/images/bg_3.jpg') }});">
-    <div class="overlay"></div>
+
+<section class="booking_section sec_ptb_150 has_overlay d-flex align-items-center clearfix" data-bg-image="assets/images/backgrounds/bg_04.jpg">
+    <div class="overlay" data-bg-gradient="linear-gradient(90deg, #161829, #292D45)">
+
+    </div>
     <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-md-6 heading-section heading-section-white ftco-animate">
-    <h2 class="mb-3">Do You Want To Earn With Us? So Don't Be Late.</h2>
-    <a href="#" class="btn btn-primary btn-lg">Become A Driver</a>
-  </div>
+    <div class="row align-items-center justify-content-lg-between justify-content-md-center justify-content-sm-center">
+        <div class="col-lg-6 col-ms-6 col-sm-6 col-xs-6 offset-3">
+            <div class="booking_content text-white">
+                <h2 class="title_text text-white" data-aos="fade-up" data-aos-delay="100">Our clients always receive the highest class of service</h2>
+                <ul class="booking_info_list ul_li_block clearfix">
+            <li data-aos="fade-up" data-aos-delay="200">
+                <i class="far fa-check"></i>
+                    Etiam posuere nibh non urna scelerisque, vel dignissim lacus blandit
+                </li>
+                <li data-aos="fade-up" data-aos-delay="300"><i class="far fa-check"></i>
+                    Pellentesque erat diam, tincidunt vel volutpat et, euismod ut massa
+                </li>
+                <li data-aos="fade-up" data-aos-delay="400"><i class="far fa-check"></i>
+                    Morbi rutrum mi et felis vehicula dictum. Donec interdum augue nec nibh bibendum sollicitudin</li>
+                </ul>
+            </div>
         </div>
     </div>
+    </div>
+</section>
+
+<!-- Recent Review-->
+<hr class="m-0" data-aos="fade-up" data-aos-delay="100">
+
+<section class="testimonial_section sec_ptb_150 clearfix">
+	<div class="container">
+		<div class="section_title mb_60 text-center" data-aos="fade-up" data-aos-delay="100">
+			<h2 class="title_text mb-0">
+				<span>What Clients Say about Us</span>
+			</h2>
+		</div>
+		<div class="testimonial_carousel_wrap position-relative">
+			<div class="testimonial_carousel" data-slick='{"dots": false}' data-aos="fade-up" data-aos-delay="300">
+				<div class="item">
+					<div class="testimonial_item2 text-center">
+						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
+						</p>
+						<div class="admin_info">
+							<div class="admin_image">
+								<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
+							</div>
+							<h4 class="admin_name">Marianna Frazoni</h4>
+							<ul class="rating_star ul_li_center clearfix">
+								<li class="active">
+									<i class="fas fa-star"></i>
+								</li>
+								<li class="active">
+									<i class="fas fa-star"></i>
+								</li>
+								<li class="active">
+									<i class="fas fa-star"></i>
+								</li>
+								<li class="active">
+									<i class="fas fa-star"></i>
+								</li>
+								<li>
+									<i class="fas fa-star"></i>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="testimonial_item2 text-center">
+						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
+						</p>
+						<div class="admin_info">
+							<div class="admin_image">
+								<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
+							</div>
+							<h4 class="admin_name">Marianna Frazoni</h4>
+							<ul class="rating_star ul_li_center clearfix">
+								<li class="active">
+									<i class="fas fa-star"></i>
+								</li>
+								<li class="active">
+									<i class="fas fa-star"></i>
+								</li>
+								<li class="active"><i class="fas fa-star"></i>
+								</li>
+								<li class="active"><i class="fas fa-star"></i>
+								</li>
+								<li>
+									<i class="fas fa-star"></i>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="testimonial_item2 text-center">
+						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
+						</p>
+
+						<div class="admin_info"><div class="admin_image">
+							<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
+						</div>
+						<h4 class="admin_name">Marianna Frazoni</h4>
+						<ul class="rating_star ul_li_center clearfix">
+							<li class="active"><i class="fas fa-star">
+
+							</i>
+						</li>
+						<li class="active">
+							<i class="fas fa-star"></i>
+						</li>
+						<li class="active">
+							<i class="fas fa-star"></i>
+						</li>
+						<li class="active">
+							<i class="fas fa-star"></i>
+						</li>
+						<li>
+							<i class="fas fa-star"></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel_nav position_ycenter">
+		<button type="button" class="ts_left_arrow">
+			<i class="fal fa-angle-left"></i>
+		</button>
+		<button type="button" class="ts_right_arrow">
+			<i class="fal fa-angle-right"></i>
+		</button>
+	</div>
+</div>
+</div>
 </section>
 @stop

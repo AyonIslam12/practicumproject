@@ -1,7 +1,8 @@
 
             <!-- Header Start--->
             <header class="header_section secondary_header sticky text-white clearfix">
-                <div class="header_top clearfix"><div class="container">
+                <div class="header_top clearfix">
+                    <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-7">
                             <ul class="header_contact_info ul_li clearfix">
@@ -115,14 +116,14 @@
                     <li class="{{ request()->is('car/our-cars') ? 'active' : '' }}">
                         <a href="{{ route('website.car.list') }}">Our Cars</a>
                     </li>
-                    <li>
-                        <a href="service.html">Our Service</a>
+                    <li class="{{ request()->is('our-services') ? 'active' : '' }}">
+                        <a href="{{ route('website.services') }}">Our Service</a>
                     </li>
-                    <li>
-                        <a href="about.html">About</a>
+                    <li class="{{ request()->is('about-us') ? 'active' : '' }}">
+                        <a href="{{ route('website.about') }}">About</a>
                     </li>
-                    <li>
-                        <a href="faq.html">F.A.Q.</a>
+                    <li class="{{ request()->is('faq') ? 'active' : '' }}">
+                        <a href="{{ route('website.faq') }}">F.A.Q.</a>
                     </li>
                     <li class="{{ request()->is('contact-us') ? 'active' : '' }}">
                         <a href="{{ route('website.contact') }}">Contact Us</a>
