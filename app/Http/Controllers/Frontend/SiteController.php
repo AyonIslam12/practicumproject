@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     public function index(){
-        $title = "Ayon's Car Home";
-        return view('frontend.pages.home',\compact('title'));
+
+        return view('frontend.pages.home');
     }
 
     public function about(){
@@ -37,8 +37,7 @@ class SiteController extends Controller
         return view('frontend.pages.blogs',\compact('title'));
     }
     public function contact(){
-        $title = "Contact-Us";
-        return view('frontend.pages.contact',\compact('title'));
+        return view('frontend.pages.contact');
     }
 
 

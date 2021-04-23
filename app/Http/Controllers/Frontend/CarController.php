@@ -9,15 +9,22 @@ use Illuminate\Http\Request;
 class CarController extends Controller
 {
     public function cars(){
-        $all_cars = Car::all();
-        $title = "All-Cars";
-        return view('frontend.pages.cars',\compact('title','all_cars'));
+        $cars = Car::paginate(6);
+
+
+        return view('frontend.pages.cars.cars',\compact('cars'));
     }
 
     public function singleCar($id){
         $car = Car::find($id);
-        $title = "Single-Car";
-        return view('frontend.pages.singlecar',\compact('title','car'));
+
+        return view('frontend.pages.cars.singlecar',\compact('car'));
+
+        }
+    public function booking ($id){
+        $car = Car::find($id);
+
+        return view('frontend.pages.cars.carBooking',\compact('car'));
 
         }
 }

@@ -27,6 +27,7 @@ customer-manage
                 <p class="text-center text-bolder">{{ session('message') }}</p>
             </div>
         @endif
+            </div>
 
     <a type="button" class="btn btn-success" href="{{ route('admin.customer.create') }}">
         Add Customer

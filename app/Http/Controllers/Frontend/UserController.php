@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function registrationForm(){
-        $title = "User-Registration";
-        return view('frontend.auth.registration', \compact('title'));
+
+        return view('frontend.auth.registration');
     }
 
     public function register (Request $request){
@@ -20,6 +20,7 @@ class UserController extends Controller
         'name' => 'required|string|min:4',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:6|max:16',
+        'password' => 'required|min:6|max:16|confirmed',
       ]);
 
       try{
@@ -33,7 +34,7 @@ class UserController extends Controller
         session()->flash('message',$e->getMessage());
 
       }
-      return \redirect()->back()->with('success','Your Registration Successfull,Now You Can Login');
+      return \redirect()->back()->with('success','Your Registration is Successfull,Now You Can Login');
 
 
     }
@@ -50,6 +51,8 @@ class UserController extends Controller
 
           $loginData=$request->only('email','password');
           if(Auth::attempt($loginData)){
+            session()->flash('type','success');
+            session()->flash('message','User Login Success.');
             return redirect()->route('website.home')->with('success','User Login Success.');
           }else{
             session()->flash('type','danger');
@@ -61,6 +64,8 @@ class UserController extends Controller
 
     public function logout(){
         Auth::logout();
+        session()->flash('type','success');
+            session()->flash('message','Logout Successful.');
         return redirect()->route('website.user.login.form')->with('success','Logout Successful.');
 
     }

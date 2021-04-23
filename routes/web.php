@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\UserController as BackendUserController;
 use App\Http\Controllers\Frontend\CarController as FrontendCarController;
 use App\Http\Controllers\Frontend\SiteController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\UserProfile;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -34,23 +35,28 @@ Route::prefix('/')->name('website.')->group(function(){
     Route::get('/blogs',[SiteController::class,'blogs'])->name('blogs');
     Route::get('/contact-us',[SiteController::class,'contact'])->name('contact');
 
-    //user Login
+
     Route::prefix('/user')->name('user.')->group(function (){
         Route::get('/registration/form',[UserController::class,'registrationForm'])->name('registration.form');
         Route::post('/registration/create',[UserController::class,'register'])->name('register');
-
         Route::get('/login',[UserController::class,'loginForm'])->name('login.form');
         Route::post('/dologin',[UserController::class,'doLogin'])->name('login');
         Route::get('/logout',[UserController::class,'logout'])->name('logout');
 
+        //UserProfile
+        Route::prefix('/profile')->name('profile.')->group(function (){
+            Route::get('/',[UserProfile::class,'index'])->name('home');
+
+        });
 
     });
 
 
     Route::prefix('/car')->name('car.')->group(function(){
 
-        Route::get('/all-cars',[ FrontendCarController::class,'cars'])->name('list');
-        Route::get('/{id}',[ FrontendCarController::class,'singleCar'])->name('singlecar');
+        Route::get('/our-cars',[ FrontendCarController::class,'cars'])->name('list');
+        Route::get('/view/{id}',[ FrontendCarController::class,'singleCar'])->name('singlecar');
+        Route::get('/booking/{id}',[ FrontendCarController::class,'booking'])->name('booking');
 
 
     });

@@ -1,62 +1,129 @@
+<footer class="footer_section clearfix">
+	<div class="footer_widget_area sec_ptb_100 clearfix" data-bg-color="#F2F2F2">
+		<div class="container">
+			<div class="row justify-content-lg-between">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-sm-12">
+					<div class="footer_about" data-aos="fade-up" data-aos-delay="100">
+						<div class="brand_logo mb_30">
+							<a href="index.html">
+								<img src="{{ asset('frontend/assets/images/logo/logo_02_1x.png')}}" srcset="assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
+							</a>
+						</div>
+						<p class="mb_15">Cras sit amet mi non orci pretium consectetur. Donec iaculis ante ac sollicitudin luctus. Phasellus ut lacus lacus. Phasellus sagittis ex id tortor tincidunt luctus. Donec consectetur consequat bibendum
+						</p>
+						<div class="footer_useful_links mb_30">
+							<ul class="ul_li_block clearfix">
+								<li>
+									<a href="#!"><i class="fal fa-angle-right"></i> Rental Information</a>
+								</li>
+								<li>
+									<a href="#!"><i class="fal fa-angle-right"></i> F.A.Q.</a>
+								</li>
+							</ul>
+						</div>
+						<div class="form_item mb-0"><form action="#">
+							<input id="footer_search" type="search" name="search" placeholder="Search">
+							<label for="footer_search" class="input_icon">
+								<i class="fal fa-search"></i>
+							</label>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-12 col-sm-12">
+				<div class="footer_contact_info" data-aos="fade-up" data-aos-delay="200">
+					<h3 class="footer_widget_title">Contact Us:</h3>
+					<ul class="ul_li_block clearfix">
+						<li>
+							<strong><i class="fas fa-map-marker-alt"></i> Main Office Address:</strong>
+							<p class="mb-0">Unit 9, Manor Industrial Estate, Lower Wash Lane, Warrington, WA4</p>
+						</li>
+						<li><i class="fas fa-clock"></i> 8:00am-9:30pm</li>
+						<li><i class="far fa-angle-right"></i> Other Office Locations</li>
+						<li><i class="fas fa-envelope"></i>
+							<strong><a href="https://html.merku.love/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d1f0219021f1e0800012d080001430b1f">[email&#160;protected]</a></strong>
+						</li>
+						<li><i class="fas fa-phone"></i>
+							<strong>+880 1680 6361 89</strong>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12 col-sm-12">
+				<div class="footer_useful_links" data-aos="fade-up" data-aos-delay="300">
+					<h3 class="footer_widget_title">Information:</h3>
+					<ul class="ul_li_block clearfix">
+						<li>
+							<a href="#!">
+								<i class="fal fa-angle-right"></i>
+								Find a Car for Rent in the Nearest Location
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<i class="fal fa-angle-right"></i>
+								Cars Catalog
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<i class="fal fa-angle-right"></i>
+								F.A.Q.
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<i class="fal fa-angle-right"></i>
+								About Us
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<i class="fal fa-angle-right"></i>
+								Contact Us
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<i class="fal fa-angle-right"></i>
+								Help Center
+							</a>
+						</li>
+						<li>
+							<a href="#!"><i class="fal fa-angle-right">
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-        <div class="container">
-          <div class="row mb-5">
-            <div class="col-md">
-              <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>book</span></a></h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                  <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                  <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                  <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="ftco-footer-widget mb-4 ml-md-5">
-                <h2 class="ftco-heading-2">Information</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#" class="py-2 d-block">About</a></li>
-                  <li><a href="#" class="py-2 d-block">Services</a></li>
-                  <li><a href="#" class="py-2 d-block">Term and Conditions</a></li>
-                  <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
-                  <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md">
-               <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2">Customer Support</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#" class="py-2 d-block">FAQ</a></li>
-                  <li><a href="#" class="py-2 d-block">Payment Option</a></li>
-                  <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
-                  <li><a href="#" class="py-2 d-block">How it works</a></li>
-                  <li><a href="#" class="py-2 d-block">Contact Us</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="ftco-footer-widget mb-4">
-                  <h2 class="ftco-heading-2">Have a Questions?</h2>
-                  <div class="block-23 mb-3">
-                    <ul>
-                      <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                      <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                      <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-                    </ul>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 text-center">
-
-              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-            </div>
-          </div>
-        </div>
-      </footer>
+							</i>
+						Privacy Police</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="footer_bottom text-white clearfix" data-bg-color="#000C21">
+	<div class="container">
+		<div class="row align-items-center justify-content-lg-between">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<p class="copyright_text mb-0">Copyright © 2021. Sarkar by
+					<a class="author_links text-white" href="#!">Car</a>
+				</p>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<ul class="primary_social_links ul_li_right clearfix">
+					<li>
+						<a href="#!"><i class="fab fa-facebook-f"></i></a>
+					</li><li>
+						<a href="#!"><i class="fab fa-instagram"></i></a>
+					</li><li>
+						<a href="#!"><i class="fab fa-twitter"></i></a>
+					</li>
+					<li>
+						<a href="#!"><i class="fab fa-youtube"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</footer>
