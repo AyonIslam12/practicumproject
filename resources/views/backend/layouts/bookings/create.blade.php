@@ -27,6 +27,7 @@ booking-create
 
 
                 </select>
+            </div>
 
             <div class="form-group">
                 <label for="booking_time"><span class="text-light">Booking Time</span></label>

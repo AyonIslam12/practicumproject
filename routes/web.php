@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BookingController;
+use App\Http\Controllers\Backend\CarBrandController;
 use App\Http\Controllers\Backend\CarController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DriverController;
@@ -81,6 +82,15 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('/logout',[BackendUserController::class,'logout'])->name('logout');
 
         Route::prefix('car')->name('car.')->group(function (){
+            //brand Route Group
+        Route::prefix('brand')->name('brand.')->group(function (){
+            Route::get('/',[CarBrandController::class,'index'])->name('manage');
+            Route::get('/create',[CarBrandController::class,'create'])->name('create');
+            Route::post('/store',[CarBrandController::class,'store'])->name('store');
+            Route::get('/edit/{id}',[CarBrandController::class,'edit'])->name('edit');
+            Route::put('/update/{id}',[CarBrandController::class,'update'])->name('update');
+            Route::delete('/delete/{id}',[CarBrandController::class,'destroy'])->name('delete');
+        });
             Route::get('/lists',[CarController::class,'index'])->name('manage');
             Route::get('/create',[CarController::class,'create'])->name('create');
             Route::post('/store',[CarController::class,'store'])->name('store');
@@ -88,6 +98,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::get('/{id}/edit',[CarController::class,'edit'])->name('edit');
             Route::put('/{id}',[CarController::class,'update'])->name('update');
             Route::delete('/{id}',[CarController::class,'destroy'])->name('destroy');
+
 
         });
 

@@ -7,7 +7,7 @@ car-create
 
 @section('content')
 <div class="row">
-    <div class="col-6 offset-3 bg-secondary">
+    <div class="col-8 offset-2 bg-secondary">
 
 
         <h3 class="text-center text-light py-4">Car Add Form</h3>
@@ -20,16 +20,29 @@ car-create
                 <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}"  placeholder="Enter Car Name">
                 @error('name') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
             </div>
+
             <div class="form-group">
-                <label for="brand"><span class="text-light">Car Brand</span></label>
-                <input type="text" class="form-control  @error('brand') is-invalid @enderror" id="brand" name="brand" value="{{ old('brand') }}"  placeholder="Enter Car Brand Name">
-                 @error('brand') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
+                <label for="brand_id"><span class="text-light">Select Brand</span></label>
+                <select name="brand_id" id="brand_id" class="form-control">
+                    <option value="">Select</option>
+                    @foreach($brands as $key => $brand)
+                    <option value="{{ $brand->id }}">{{ $brand->brand }}</option>
+                    @endforeach
+                </select>
             </div>
+
+
             <div class="form-group">
                 <label for="model"><span class="text-light">Car Model</span></label>
-                <input type="text" class="form-control  @error('fuel') is-invalid @enderror" id="model" name="model" value="{{ old('model') }}"  placeholder="Enter Car Model Name">
+                <input type="text" class="form-control  @error('model') is-invalid @enderror" id="model" name="model" value="{{ old('model') }}"  placeholder="Enter Car Model Name">
                  @error('model') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
             </div>
+            <div class="form-group">
+                <label for="model_year"><span class="text-light"> Model Year</span></label>
+                <input type="date" class="form-control  @error('model_year') is-invalid @enderror" id="model_year" name="model_year" value="{{ old('model_year') }}"  placeholder="Enter Car Model Name">
+                 @error('model_year') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
+            </div>
+
             <div class="form-group">
                 <label for="image"><span class="text-light">Uploads Car Image</span></label>
                 <input type="file" class="form-control" id="image" name="image" value="">
@@ -40,9 +53,49 @@ car-create
                  @error('color') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="price"><span class="text-light">Car Price</span></label>
-                <input type="text" class="form-control  @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price') }}"  placeholder="Enter Car Price">
-                 @error('price') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
+                <label for="price_per_day"><span class="text-light">Car Price/Day</span></label>
+                <input type="number" class="form-control  @error('price_per_day') is-invalid @enderror" id="price_per_day" name="price_per_day" value="{{ old('price_per_day') }}"  placeholder="Enter Car Price">
+                 @error('price_per_day') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
+            </div>
+            <div class="form-group">
+                <label for="air_condition"><span class="text-light">Air Condition</span></label>
+                <input type="number" class="form-control" id="air_condition" name="air_condition" value="{{ old('air_condition') }}"  placeholder="Enter(1) if have Air Condition">
+
+            </div>
+            <div class="form-group">
+                <label for="power_deadlock"><span class="text-light">Power Deadlock</span></label>
+                <input type="number" class="form-control  " id="power_deadlock" name="power_deadlock" value="{{ old('air_condition') }}"  placeholder="Enter(1) if have Power Deadlock">
+
+            </div>
+            <div class="form-group">
+                <label for="anti_lockbraking"><span class="text-light">Anti Lock Braking</span></label>
+                <input type="number" class="form-control" id="anti_lockbraking" name="anti_lockbraking" value="{{ old('anti_lockbraking') }}"  placeholder="Enter(1) if have Anti Lock Braking">
+
+            </div>
+            <div class="form-group">
+                <label for="brake_assist"><span class="text-light">Brake Assist</span></label>
+                <input type="number" class="form-control  " id="brake_assist" name="brake_assist" value="{{ old('brake_assist') }}"  placeholder="Enter(1) if have Brake Assist">
+
+            </div>
+            <div class="form-group">
+                <label for="power_steering"><span class="text-light">Power Steering</span></label>
+                <input type="number" class="form-control  " id="power_steering" name="power_steering" value="{{ old('power_steering') }}"  placeholder="Enter(1) if have Power Steering">
+
+            </div>
+            <div class="form-group">
+                <label for="cd_player"><span class="text-light">CD Player</span></label>
+                <input type="number" class="form-control  @error('cd_player') is-invalid @enderror" id="cd_player" name="cd_player" value="{{ old('cd_player') }}"  placeholder="Enter(1) if have CD Player ">
+
+            </div>
+            <div class="form-group">
+                <label for="central_looking"><span class="text-light">Central Looking</span></label>
+                <input type="number" class="form-control" id="central_looking" name="central_looking" value="{{ old('central_looking') }}"  placeholder="Enter(1)if have Car Central Lookin ">
+
+            </div>
+            <div class="form-group">
+                <label for="crash_sensor"><span class="text-light">Crash Sensor</span></label>
+                <input type="number" class="form-control " id="crash_sensor" name="crash_sensor" value="{{ old('crash_sensor') }}"  placeholder="Enter(1) if have Crash Sensor ">
+
             </div>
             <div class="form-group">
                 <label for="mileage"><span class="text-light">Car Mileage</span></label>
@@ -72,6 +125,19 @@ car-create
             <div class="form-group">
                 <label for="decs"><span class="text-light">Car Dscription </span></label>
                 <textarea name="decs" id="decs" class="form-control" cols="" rows="8">Enter Your Car Information...</textarea>
+            </div>
+            <div class="form-group">
+                <label for="status" ><span class="text-light"> Status</span></label><br>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="active" name="status" value="active" class="custom-control-input" >
+                    <label class="custom-control-label" for="active"><span class="text-light"> Active</span></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="inactive" name="status" value="inactive" class="custom-control-input" >
+                    <label class="custom-control-label" for="inactive"><span class="text-light"> Inactive</span></label>
+                </div>
+
+                @error('status') <span class="text-warning font-weight-bolder font-italic d-block">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <div class="custom-control custom-radio text-center py-4">

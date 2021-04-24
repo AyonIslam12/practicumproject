@@ -6,7 +6,9 @@ customer-manage
 
 @section('content')
 <h3 class="text-secondary text-center text-info  font-weight-bold text-uppercase">Customer Manage Table</h3>
-
+<a type="button" class="btn btn-success" href="{{ route('admin.customer.create') }}">
+    Add Customer
+</a>
   <div class="row">
     <div class="col-md-6 offset-3">
         @if(session('success'))
@@ -29,9 +31,7 @@ customer-manage
         @endif
             </div>
 
-    <a type="button" class="btn btn-success" href="{{ route('admin.customer.create') }}">
-        Add Customer
-    </a>
+
         <table class="table table-bordered table-scripts mt-2">
             <thead class="bg-info">
               <tr>

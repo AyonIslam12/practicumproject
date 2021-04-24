@@ -15,20 +15,32 @@ class CreateCarsTable extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
+            $table->integer('brand_id');
             $table->string('name',100);
-            $table->string('brand',50);
             $table->string('model',50);
-            $table->double('price','10','2')->default('0.0');
+            $table->date('model_year')->nullable();
+            $table->double('price_per_day','10','2')->default('0.0');
             $table->text('image')->nullable();
-            $table->string('color',20);
+            $table->string('color',20)->nullable();
+            $table->integer('air_condition')->nullable();
+            $table->integer('power_deadlock')->nullable();
+            $table->integer('anti_lockbraking')->nullable();
+            $table->integer('brake_assist')->nullable();
+            $table->integer('power_steering')->nullable();
+            $table->integer('cd_player')->nullable();
+            $table->integer('central_looking')->nullable();
+            $table->integer('crash_sensor')->nullable();
             $table->string('mileage',255);
             $table->string('transmission',50);
             $table->integer('seats');
             $table->string('luggage',100);
             $table->string('fuel',20);
-            $table->longText('decs')->nullable();
-
+            $table->longText('decs',255)->nullable();
+            $table->enum('status',['active','inactive']);
             $table->timestamps();
+
+
+
         });
     }
 

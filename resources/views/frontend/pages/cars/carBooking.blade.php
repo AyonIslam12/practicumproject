@@ -31,10 +31,10 @@ Car-Booking
 				<a class="image_wrap" href="#!">
 					<img style="max-height: 220px" src="{{ asset('uploads/cars/'.$car->image)}}" alt="image_not_found">
 				</a>
-				<span class="item_price bg_default_blue">{{ $car->price.' . 00 TK' }}/Day</span>
+				<span class="item_price bg_default_blue">{{ $car->price_per_day.' . 00 TK' }}/Day</span>
 			</div>
 			<ul class="info_list ul_li_center text-light font-weight-bolder bg-secondary clearfix">
-                <li>{{ $car->brand }}</li>
+                <li>{{ $car->carBrand->brand }}</li>
                <li>{{ $car->model }}</li>
                 <li>{{'Seats: '. $car->seats }}</li>
 

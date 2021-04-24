@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class CarController extends Controller
 {
     public function cars(){
-        $cars = Car::paginate(6);
 
+        $cars = Car::with('carBrand')->paginate(6);
 
         return view('frontend.pages.cars.cars',\compact('cars'));
     }

@@ -19,11 +19,12 @@
                 </ul>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" class="{{ request()->is('admin/car/lists') ? 'active' : '' }}">
+                <a href="javascript:;" class="{{ request()->is('admin/car/lists','admin/car/brand') ? 'active' : '' }}">
                     <i class="fas fa-car"></i>
                     <span>Cars</span>
                 </a>
                 <ul class="sub">
+                    <li  class="{{ request()->is('admin/car/brand') ? 'active' : '' }}"><a  href="{{ route('admin.car.brand.manage') }}">Car Brand</a></li>
                     <li  class="{{ request()->is('admin/car/lists') ? 'active' : '' }}"><a  href="{{ route('admin.car.manage') }}">Car List</a></li>
                     <li><a  href="#">Add Car</a></li>
                 </ul>

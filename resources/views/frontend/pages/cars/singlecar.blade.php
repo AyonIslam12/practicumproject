@@ -21,19 +21,20 @@ Car-Single-View
 <div class="details_section sec_ptb_100 pb-0 clearfix">
 <div class="container">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <a class="btn btn-outline-dark" href="{{ route('website.car.list') }}"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
 <div class="car_choose_carousel mb_30 clearfix">
     <div class="thumbnail_carousel" data-aos="fade-up" data-aos-delay="100">
         <div class="item">
             <div class="item_head">
                 <h4 class="item_title mb-0">{{ $car->name }}</h4>
-                <h4 class="item_title mb-0 text-right"><span class="small muted">Brand: </span>{{ $car->brand }}</h4>
+                <h4 class="item_title mb-0 text-right"><span class="small muted">Brand: </span>{{ $car->carBrand->brand }}</h4>
 
             </div>
             <img class="border" src="{{ asset('uploads/cars/'.$car->image)}}" alt="image_not_found">
 
             <ul class="btns_group ul_li_center clearfix">
                 <li>
-                    <span class="custom_btn btn_width bg_default_blue text-k"><del class="text-danger">$3000/Day</del> {{ $car->price }}/Day</span>
+                    <span class="custom_btn btn_width bg_default_blue text-k"> {{ $car->price_per_day.' . 00 Tk.' }}/Day</span>
                 </li>
                 <li>
                     <a href="{{ route('website.car.booking',$car->id) }}" class="custom_btn btn_width bg_default_red text-uppercase">
@@ -171,41 +172,149 @@ Car-Single-View
 
     <div class="car_choose_content">
 
+        <div class="row py-2">
+            <div class="col-md-6">
+                <h1 class="text-secondary text-center">Car Overview</h1>
+                <table class="table table-bordered table-striped text-left class">
 
-        <ul class="info_list ul_li_block mb_15 clearfix" data-aos="fade-up" data-aos-delay="100">
-            <li>
-                <strong>Car Model: </strong>
-                {{ $car->model }}
-            </li>
-                <li>
-                    <strong>Car Color:</strong>
-                    {{ $car->color }}
-                </li>
-                    <li>
-                        <strong>Seats:</strong>
-                        {{ $car->seats }}
-                    </li>
-                    <li>
-                        <strong>Luggage:</strong>
-                        {{ $car->luggage }}
-                    </li>
-                     <li>
-                            <strong>Fuel Type:</strong>
-                            {{ $car->fuel }}
-                    </li>
-                     <li>
-                            <strong>Mileage:</strong>
-                            {{ $car->mileage.' KMH ' }}
-                    </li>
-                     <li>
-                            <strong>Transmission:</strong>
-                            {{ $car->transmission.' KMH ' }}
-                    </li>
-                    <li>
-                                <strong>Options:</strong>
-                            Cruise Control, MP3 player, Automatic air conditioning, Wifi, GPS Navigation
-                    </li>
-            </ul>
+                    <tr>
+                        <tr>
+                            <th>Car Model Name:</th>
+                            <td class="text-center text-muted text-info">{{ $car->model }}</td>
+
+                        </tr>
+                        <tr>
+                            <th>Car Color:</th>
+                            <td class="text-center text-muted text-info">{{ $car->color }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <th>Car Capacity:</th>
+                            <td class="text-center text-muted text-info">{{ $car->seats.' Seats' }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <th>Car Luggage: </th>
+                            <td class="text-center text-muted text-info">{{ $car->luggage.' Luggage' }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <th>Fuel Type:</th>
+                            <td class="text-center text-muted text-info">{{ $car->fuel }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <th>Mileage:</th>
+                            <td class="text-center text-muted text-info">{{ $car->mileage.' KM/H' }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <th>Transmission:</th>
+                            <td class="text-center text-muted text-info">{{ $car->transmission }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <th>Car Descrition</th>
+                            <td class=" text-muted text-info text-justify">{{ $car->decs }}</td>
+
+
+                        </tr>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div class="col-md-6">
+                <h1 class="text-secondary text-center">Accessories</h1>
+                <table class="table table-bordered table-striped text-left class">
+
+                    <tr>
+                        <tr>
+                            <th>Car Air condition</th>
+                            @if($car->air_condition == 1)
+                            <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                            @else
+                            <td class="text-center" ><i class="fas fa-window-close text-danger"></i></td>
+                            @endif
+
+                        </tr>
+                        <tr>
+                            <th>Power Deadlock</th>
+                            @if($car->power_deadlock == 1)
+                            <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                            @else
+                            <td class="text-center" ><i class="fas fa-window-close text-danger"></i></td>
+                            @endif
+
+                        </tr>
+                        <tr>
+                            <th>Anti Lock Braking</th>
+                            @if($car->anti_lockbraking == 1)
+                            <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                            @else
+                            <td class="text-center" ><i class="fas fa-window-close text-danger"></i></i></td>
+                            @endif
+
+                        </tr>
+                        <tr>
+                            <th>Brake Assist</th>
+                            @if($car->brake_assist == 1)
+                            <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                            @else
+                            <td class="text-center" ><i class="fas fa-window-close text-danger"></i></i></td>
+                            @endif
+
+                        </tr>
+                        <tr>
+                            <th>Power Steering</th>
+                            @if($car->power_steering == 1)
+                            <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                            @else
+                            <td class="text-center" ><i class="fas fa-window-close text-danger"></i></i></td>
+                            @endif
+
+                        </tr>
+                        <tr>
+                            <th>CD Player</th>
+                            @if($car->cd_player == 1)
+                            <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                            @else
+                            <td class="text-center" ><i class="fas fa-window-close text-danger"></i></i></td>
+                            @endif
+
+                        </tr>
+                        <tr>
+                            <th>Central Locking</th>
+                            @if($car->central_looking == 1)
+                            <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                            @else
+                            <td class="text-center" ><i class="fas fa-window-close text-danger"></i></i></td>
+                            @endif
+
+                        </tr>
+                        <tr>
+                            <th>Crash Sensor</th>
+                            @if($car->crash_sensor == 1)
+                            <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                            @else
+                            <td class="text-center" ><i class="fas fa-window-close text-danger"></i></td>
+                            @endif
+
+                        </tr>
+                    </tr>
+
+                </table>
+
+            </div>
+
+    </div>
+
     <div data-aos="fade-up" data-aos-delay="200">
         <a class="terms_condition" href="#!">
             <i class="fas fa-info-circle mr-1"></i>

@@ -47,7 +47,8 @@ customer-create
                 <label for="gender" ><span class="text-light"> Gender</span></label><br>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="male" name="gender" value="male" class="custom-control-input" >
-                    <label class="custom-control-label" for="male"><span class="text-light"> Male</span></label>
+                    <label class="custom-control-label" for="male"><span class="text-light"> Male</span>
+                    </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="female" name="gender" value="female" class="custom-control-input" >

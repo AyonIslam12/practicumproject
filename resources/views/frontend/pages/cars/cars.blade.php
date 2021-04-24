@@ -69,8 +69,8 @@ All-Cars
 
 				</div>
 				<ul class="info_list ul_li_center text-light font-weight-bolder bg-secondary clearfix">
-					<li>{{ $car->brand }}</li>
-					<li><span class="text-warning">{{ $car->price.' . 00'}}</span> TK/Day</li>
+					<li>{{ $car->carBrand->brand }}</li>
+					<li><span class="text-warning">{{ $car->price_per_day.' . 00'}}</span> TK/Day</li>
 					{{-- <li>{{ $car->model }}</li> --}}
 					<li>{{'Seats: '. $car->seats }}</li>
 
@@ -81,7 +81,7 @@ All-Cars
 
 	</div>
 </div>
- <div class="row">
+  <div class="row">
      <div class="col-10 offset-1">
         <div class="d-felx justify-content-left">
 

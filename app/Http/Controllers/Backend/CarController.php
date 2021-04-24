@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Brand;
 use App\Models\Backend\Car;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::all();
+        $cars = Car::with('carBrand')->get();
         return view('backend.layouts.cars.lists',compact('cars'));
     }
 
@@ -27,7 +28,8 @@ class CarController extends Controller
      */
     public function create()
     {
-       return view('backend.layouts.cars.create');
+        $brands = Brand::all();
+       return view('backend.layouts.cars.create',\compact('brands'));
     }
 
     /**
@@ -38,22 +40,23 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'name' => 'required|string|min:4',
-            'brand' => 'required|string',
+            'name' => 'required|min:4',
             'model' => 'required',
+            'model_year' => 'required',
             'color' => 'required',
-            'price' => 'required',
+            'price_per_day' => 'required',
             'mileage' => 'required',
             'transmission' => 'required',
             'seats' => 'required',
             'luggage' => 'required',
             'fuel' => 'required',
-
-
+            'status' => 'required',
         ]);
 
-        $filename = " ";
+        try{
+            $filename = " ";
         if($request->hasFile('image')){
             $image = $request->file('image');
             if($image->isValid()){
@@ -61,22 +64,43 @@ class CarController extends Controller
                 $image->storeAs('cars',$filename);
             }
         }
-        Car::create([
+     Car::create([
             'name' => $request->name,
-            'brand' => $request->brand,
+            'brand_id' => $request->brand_id,
             'model' => $request->model,
+            'model_year' => $request->model_year,
             'color' => $request->color,
-            'price' => $request->price,
+            'price_per_day' => $request->price_per_day,
             'image' => $filename,
+            'air_condition' => $request->air_condition,
+            'power_deadlock' => $request->power_deadlock,
+            'anti_lockbraking' => $request->anti_lockbraking,
+            'brake_assist' => $request->brake_assist,
+            'power_steering' => $request->power_steering,
+            'cd_player' => $request->cd_player,
+            'central_looking' => $request->central_looking,
+            'crash_sensor' => $request->crash_sensor,
             'mileage' => $request->mileage,
             'transmission' => $request->transmission,
             'seats' => $request->seats,
             'luggage' => $request->luggage,
             'fuel' => $request->fuel,
             'decs' => $request->decs,
+            'status' => $request->status,
 
         ]);
-        return redirect()->route('admin.car.manage')->with('success','New Car Inserted Successfully');
+        session()->flash('type','success');
+        session()->flash('message','New Car Inserted Successfully');
+
+        }catch(Exception $e){
+
+            session()->flash('type','danger');
+            session()->flash('message',$e->getMessage());
+
+            return redirect()->route('admin.car.manage');
+
+        }
+        return redirect()->route('admin.car.manage');
     }
 
     /**
@@ -100,8 +124,9 @@ class CarController extends Controller
     public function edit($id)
     {
         $car = Car::find($id);
+        $brands = Brand::all();
         if($car)
-        return view('backend.layouts.cars.edit',\compact('car'));
+        return view('backend.layouts.cars.edit',\compact('car','brands'));
         else
         return \redirect()->back();
     }
@@ -120,15 +145,16 @@ class CarController extends Controller
 
         $request->validate([
             'name' => 'required|string|min:4',
-            'brand' => 'required|string',
             'model' => 'required',
+            'model_year' => 'required',
             'color' => 'required',
-            'price' => 'required',
+            'price_per_day' => 'required',
             'mileage' => 'required',
             'transmission' => 'required',
             'seats' => 'required',
             'luggage' => 'required',
             'fuel' => 'required',
+            'status' =>'required'
 
 
         ]);
@@ -146,18 +172,28 @@ class CarController extends Controller
             }
 
             $cars->update([
-                'name' => $request->name,
-                'brand' => $request->brand,
-                'model' => $request->model,
-                'color' => $request->color,
-                'price' => $request->price,
-                'image' => $filename,
-                'mileage' => $request->mileage,
-                'transmission' =>$request->transmission,
-                'seats' => $request->seats,
-                'luggage' => $request->luggage,
-                'fuel' => $request->fuel
-
+            'name' => $request->name,
+            'brand_id' => $request->brand_id,
+            'model' => $request->model,
+            'model_year' => $request->model_year,
+            'color' => $request->color,
+            'price_per_day' => $request->price_per_day,
+            'image' => $filename,
+            'air_condition' => $request->air_condition,
+            'power_deadlock' => $request->power_deadlock,
+            'anti_lockbraking' => $request->anti_lockbraking,
+            'brake_assist' => $request->brake_assist,
+            'power_steering' => $request->power_steering,
+            'cd_player' => $request->cd_player,
+            'central_looking' => $request->central_looking,
+            'crash_sensor' => $request->crash_sensor,
+            'mileage' => $request->mileage,
+            'transmission' => $request->transmission,
+            'seats' => $request->seats,
+            'luggage' => $request->luggage,
+            'fuel' => $request->fuel,
+            'decs' => $request->decs,
+            'status' => $request->status,
             ]);
           }catch(Exception $e){
             session()->flash('type','danger');
