@@ -15,7 +15,7 @@ Car-single-view
               <p class="text-light">Car Single Info.</p>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped text-left class="text-center" ">
+                <table class="table table-bordered table-striped text-left class">
                     <tr>
                         <th>Car Name</th>
                         <td class="text-center" >{{ $car->name }}</td>

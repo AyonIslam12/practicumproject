@@ -6,66 +6,87 @@ car-list
 
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="text-center font-weight-bold text-uppercase py-3">Cars List Table</h3>
+    <!-- page start-->
+ <div class="row">
+    <div class="col-sm-12">
+        <section class="card">
+            <header class="card-header">
 
-            <a href="{{ route('admin.car.create') }}" class="btn btn-secondary mb-2"><span class="text-light">Add New</span></a>
+                <h3 class="text-center font-weight-bold text-uppercase ">Cars Table</h3>
 
+
+                <!--validation message-->
             <div class="row">
                 <div class="col-md-12">
-             @if(session('message'))
+            @if(session('message'))
                 <div class="text-center alert alert-{{ session('type') }}">
-                    <p class="text-center text-bolder">{{ session('message') }}</p>
+                <p class="text-center text-bolder">{{ session('message') }}</p>
                 </div>
             @endif
-                </div>
+            </div>
             </div>
 
-            <table class="table table-bordered table-scripts">
-                <thead>
-                  <tr>
-                    <th scope="col">Sl</th>
-                    <th scope="col">Car Name</th>
-                    <th scope="col">Car Brand</th>
-                    <th scope="col">Car Model</th>
-                    <th scope="col">Car Image</th>
-                    <th scope="col"> Car Price/Day</th>
-                    <th scope="col"> Car Status</th>
-                    <th scope="col" class="text-center">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($cars as $key=>$car )
 
 
-                  <tr>
-                    <th scope="row">{{ $key+1 }}</th>
-                    <td>{{ $car->name }}</td>
-                    <td>{{ $car->carBrand->brand }}</td>
-                    <td>{{ $car->model }}</td>
-                    <td><img width="80px" src="{{ url('/uploads/cars/'.$car->image )}}" alt=""></td>
-                    <td>{{ $car->price_per_day.'.00'}}</td>
-                    <td>{{ Str::ucfirst($car->status) }}</td>
+                <span class="tools pull-right">
+                    <a href="javascript:;" class="fa fa-chevron-down"></a>
+                    <a href="javascript:;" class="fa fa-times"></a>
+                </span>
+            </header>
+
+            <div class="card-body">
+                <div class="adv-table">
+                    <a href="{{ route('admin.car.create') }}" class="btn btn-secondary"><span class="text-light">Add New</span></a>
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                        <thead>
+                            <tr>
+                                <tr>
+                                    <th scope="col">Sl</th>
+                                    <th scope="col">Car Name</th>
+                                    <th scope="col">Car Brand</th>
+                                    <th scope="col">Car Model</th>
+                                    <th scope="col">Car Image</th>
+                                    <th scope="col"> Car Price/Day</th>
+                                    <th scope="col"> Car Status</th>
+                                    <th scope="col" class="text-center">Action</th>
+                                  </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($cars as $key=>$car )
 
 
-                    <td class="text-center d-flex">
-                        <a class="btn btn-info btn-sm mx-1" href="{{ route('admin.car.show',$car->id) }}">View</a>
-                        <a class="btn btn-success btn-sm mx-1" href="{{ route('admin.car.edit',$car->id) }}">Edit</a>
-                       <form action="{{ route('admin.car.destroy',$car->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm mx-1 delete">Delete</button>
+                            <tr>
+                                <th scope="row">{{ $key+1 }}</th>
+                                <td>{{ $car->name }}</td>
+                                <td>{{ $car->carBrand->brand }}</td>
+                                <td>{{ $car->model }}</td>
+                                <td><img width="80px" src="{{ url('/uploads/cars/'.$car->image )}}" alt=""></td>
+                                <td>{{ $car->price_per_day.'.00'}}</td>
+                                <td>{{ Str::ucfirst($car->status) }}</td>
 
-                    </form>
+                              <td class="text-center ">
+                                <a class="btn btn-info btn-sm mx-1" href="{{ route('admin.car.show',$car->id) }}"><i class="fas fa-eye text-dark"></i></a>
+                                <a class="btn btn-success btn-sm " href="{{ route('admin.car.edit',$car->id) }}"><i class="far fa-edit text-dark"></i></a>
+                                <form action="{{ route('admin.car.destroy',$car->id) }}}" method="post" class="d-inline m-0">
+                                    @csrf
+                                    @method('DELETE')
+                                      <button type="submit" class="btn btn-danger btn-sm  mx-1 delete"><i class="fas fa-trash text-dark"></i></button>
 
-                    </td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                                  </form>
+                            </td>
 
-        </div>
+                            </tr>
+                            @endforeach
 
+
+                    </table>
+                </div>
+            </div>
+        </section>
     </div>
+</div>
+
+<!-- page end-->
+
 @endsection

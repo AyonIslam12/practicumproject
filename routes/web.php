@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DriverController;
 use App\Http\Controllers\Backend\OfferController;
 use App\Http\Controllers\Backend\UserController as BackendUserController;
+use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\CarController as FrontendCarController;
 use App\Http\Controllers\Frontend\SiteController;
 use App\Http\Controllers\Frontend\UserController;
@@ -32,8 +33,6 @@ Route::prefix('/')->name('website.')->group(function(){
     Route::get('/',[SiteController::class,'index'])->name('home');
     Route::get('/about-us',[SiteController::class,'about'])->name('about');
     Route::get('/our-services',[SiteController::class,'services'])->name('services');
-/*     Route::get('/pricing',[SiteController::class,'pricing'])->name('pricing');
-    Route::get('/blogs',[SiteController::class,'blogs'])->name('blogs'); */
     Route::get('/faq',[SiteController::class,'faqPage'])->name('faq');
     Route::get('/contact-us',[SiteController::class,'contact'])->name('contact');
 
@@ -53,15 +52,19 @@ Route::prefix('/')->name('website.')->group(function(){
 
     });
 
-
+    //Car Single And Multipule View Routes
     Route::prefix('/car')->name('car.')->group(function(){
 
         Route::get('/our-cars',[ FrontendCarController::class,'cars'])->name('list');
         Route::get('/view/{id}',[ FrontendCarController::class,'singleCar'])->name('singlecar');
-        Route::get('/booking/{id}',[ FrontendCarController::class,'booking'])->name('booking');
+        //Car Booking View Page and Booking Routes
+        Route::get('/booking/{id}',[ FrontendBookingController::class,'showBookinfForm'])->name('booking.form');
+        Route::post('/booking',[ FrontendBookingController::class,'booking'])->name('booking');
 
 
-    });
+
+
+});
 
 });
 

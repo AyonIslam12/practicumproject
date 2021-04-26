@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function index()
 
     {
-        $customers = Customer::paginate(5);
+        $customers = Customer::all();
        return view('backend.layouts.customers.manage', compact('customers'));
     }
 
@@ -79,15 +79,16 @@ class CustomerController extends Controller
                 'status' => $request->status
              ]);
 
-             /* session()->flash('type','success');
+            session()->flash('type','success');
             session()->flash('message','Customer save success!');
- */
+
          }catch(Exception $e){
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());
+            return redirect()->route('admin.customer.manage');
 
          }
-         return redirect()->route('admin.customer.manage')->with('success','Customer data successfully inserted');
+         return redirect()->route('admin.customer.manage');
     }
 
     /**
@@ -165,15 +166,16 @@ class CustomerController extends Controller
              $customer->status  = $request->status;
              $customer->update();
 
-             /* session()->flash('type','success');
+             session()->flash('type','success');
              session()->flash('message','Customer info update succesfully');
- */
+
          }catch(Exception $e){
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());
+            return redirect()->route('admin.customer.manage');
 
          }
-         return redirect()->route('admin.customer.manage')->with('success','Customer data successfully updated');
+         return redirect()->route('admin.customer.manage');
 
     }
 
@@ -196,6 +198,7 @@ class CustomerController extends Controller
        }catch(Exception $e){
         session()->flash('type','danger');
         session()->flash('message',$e->getMessage());
+        return redirect()->back();
        }
        return redirect()->back();
     }

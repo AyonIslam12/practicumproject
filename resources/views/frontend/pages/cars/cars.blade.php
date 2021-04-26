@@ -63,7 +63,7 @@ All-Cars
                     <a class="btn btn-outline-info m-1" href="{{ route('website.car.singlecar',$car->id) }}">
                         <span>View</span>
                     </a>
-                    <a class="btn btn-outline-primary m-1" href="{{ route('website.car.booking',$car->id) }}">
+                    <a class="btn btn-outline-primary m-1" href="{{ route('website.car.booking.form',$car->id) }}">
                         <span class="">Book Car</span>
                     </a>
 

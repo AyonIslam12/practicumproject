@@ -11,12 +11,19 @@ class Booking extends Model
     protected $fillable =[
 
         'car_id',
-        'booking_time',
-        'booking_date',
-        'return_time',
-        'return_date',
-        'booking_advanced',
-        'booking_total',
+        'user_id',
+        'from_date',
+        'from_time',
+        'to_date',
+        'to_time',
+        'price_per_day',
+        'total_price',
+        'fname',
+        'lname',
+        'email',
+        'phone',
+        'details',
+        'status',
     ];
     public function bookingCar(){
         return $this->belongsTo(Car::class,'car_id','id');

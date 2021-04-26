@@ -54,6 +54,21 @@ User-Registration
                     class=" form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
                     @error('email') <span class="text-danger ">{{ $message }}</span> @enderror
                 </div>
+
+                <div class="form_item">
+                    <input type="tel" name="Phone" placeholder="Phone Number*">
+                    @error('Phone') <span class="text-danger ">{{ $message }}</span> @enderror
+                </div>
+                <div class="form_item">
+                    <select name="role" >
+                        <option data-display="Choose Role ">Select Your Option</option>
+
+                        <option value="customer">Customer</option>
+                        <option value="employee">Employee</option>
+
+                    </select>
+                </div>
+
                 <div class="form_item">
                     <input type="password" name="password" placeholder="Password*"
                     class=" form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
@@ -61,34 +76,20 @@ User-Registration
                 </div>
                 <div class="form_item">
                     <input type="password" name="password_confirmation" placeholder="Confirm Password*"
-                    class=" form-control @error('name') is-invalid @enderror" value="{{ old('password_confirmation') }}">
+                    class=" form-control @error('password') is-invalid @enderror" value="{{ old('password_confirmation') }}">
                     @error('password') <span class="text-danger ">{{ $message }}</span> @enderror
                 </div>
-               {{--  <div class="form_item">
-                    <input type="tel" name="Phone" placeholder="Phone Number*">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="700">
                 <div class="form_item">
-                    <h4 class="input_icon">Select Car Type</h4>
-                    <select>
-                        <option data-display="Choose Payment Details">Select Your Option</option>
-                        <option value="1">Some option</option>
-                        <option value="2">Another option</option>
-                        <option value="3" disabled="disabled">A disabled option</option>
-                        <option value="4">Potato</option>
-                    </select>
+                    <input type="file" name="image"   class=" form-control">
+
                 </div>
                 <div class="form_item">
-                    <input type="text" name="country" placeholder="Country*">
+                    <input type="text" name="address" placeholder="Address*" class="form-control">
                 </div>
-                <div class="form_item">
-                    <input type="text" name="address" placeholder="Billing Address*">
-                </div> --}}
                 <p>
                     Your personal data will be used in mapping with the vehicles you added to the website, to manage access to your account, and for other purposes described in our
                 </p><button type="submit" class="custom_btn bg_default_red text-uppercase mb-0">
-                    Login
+                    Register
                     <img src="{{ asset('frontend/assets/images/icons/icon_01.png') }}" alt="icon_not_found">
                 </button>
 

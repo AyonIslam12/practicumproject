@@ -37,7 +37,7 @@ Car-Single-View
                     <span class="custom_btn btn_width bg_default_blue text-k"> {{ $car->price_per_day.' . 00 Tk.' }}/Day</span>
                 </li>
                 <li>
-                    <a href="{{ route('website.car.booking',$car->id) }}" class="custom_btn btn_width bg_default_red text-uppercase">
+                    <a href="{{ route('website.car.booking.form',$car->id) }}" class="custom_btn btn_width bg_default_red text-uppercase">
                         Book A Car
                         <img src="{{ asset('frontend/assets/images/icons/icon_01.png') }}" alt="icon_not_found">
                     </a>

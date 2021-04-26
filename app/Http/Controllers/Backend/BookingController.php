@@ -61,10 +61,10 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        $books = Booking::find($id);
+        $booking = Booking::find($id);
 
 
-       return view('backend.layouts.bookings.view', \compact('books'));
+       return view('backend.layouts.bookings.view', \compact('booking'));
     }
 
     /**

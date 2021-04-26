@@ -16,12 +16,19 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->integer('car_id');
-            $table->time('booking_time');
-            $table->date('booking_date');
-            $table->time('return_time');
-            $table->date('return_date');
-            $table->double('booking_advanced','10','2')->default(0.0);
-            $table->double('booking_total','10','2')->default(0.0);
+            $table->integer('user_id');
+            $table->date('from_date');
+            $table->time('from_time');
+            $table->date('to_date');
+            $table->time('to_time');
+            $table->double('price_per_day','10','2')->default(0.0);
+            $table->double('total_price','10','2')->default(0.0);
+            $table->string('fname',50);
+            $table->string('lname',50);
+            $table->string('email');
+            $table->integer('phone');
+            $table->text('details')->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
     }

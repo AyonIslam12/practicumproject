@@ -17,9 +17,12 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
+            'phone' => '01791205437',
             'password' => bcrypt('123456'),
             'role' => 'admin',
+            'image' => 'ayon.jpg',
+            'address' => 'Pingna,Jamalpur,Sarishabari',
 
         ]);
-    } 
+    }
 }

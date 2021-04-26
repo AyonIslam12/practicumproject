@@ -21,10 +21,5 @@ class CarController extends Controller
         return view('frontend.pages.cars.singlecar',\compact('car'));
 
         }
-    public function booking ($id){
-        $car = Car::find($id);
 
-        return view('frontend.pages.cars.carBooking',\compact('car'));
-
-        }
 }

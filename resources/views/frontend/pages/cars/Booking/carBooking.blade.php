@@ -43,134 +43,85 @@ Car-Booking
 	</div>
 
 <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+    <!--Validation Message-->
+    <div class="row">
+        <div class="col-md-12">
+     @if(session('message'))
+        <div class="text-center alert alert-{{ session('type') }}">
+            <p class="text-center text-bolder">{{ session('message') }}</p>
+        </div>
+    @endif
+        </div>
+    </div>
 	<div class="reservation_form">
-		<form action="#">
+		<form action="{{ route('website.car.booking') }}" method="POST">
+            @csrf
 			<div class="row">
-				<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-					<div class="form_item" data-aos="fade-up" data-aos-delay="100">
-						<h4 class="input_title">Pick Up Location</h4>
-						<div class="position-relative">
-							<input id="location_two" type="text" name="location" placeholder="86 Albert Road, London, N51 4VK">
-							<label for="location_two" class="input_icon">
-								<i class="fas fa-map-marker-alt"></i>
-							</label>
-						</div></div>
-					</div>
-			<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 				<div class="form_item" data-aos="fade-up" data-aos-delay="200">
-					<h4 class="input_title">Pick A Date</h4>
-					<input type="date" name="date">
+					<h4 class="input_title">From Date</h4>
+					<input type="hidden" name="car_id" value="{{ $car->id }}">
+					<input type="date" name="from_date"  value="{{ old('from_date') }}"  class="form-control @error('from_date') is-invalid @enderror">
+                    @error('from_date') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
 				</div>
+
 			</div>
-			<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 				<div class="form_item" data-aos="fade-up" data-aos-delay="300">
-					<h4 class="input_title">Time</h4>
-					<input type="time" name="time">
+					<h4 class="input_title">Form Time</h4>
+					<input type="time" name="from_time" value="{{ old('from_time') }}"  class="form-control @error('from_time') is-invalid @enderror">
+                    @error('from_time') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
 				</div>
 			</div>
-			<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-				<div class="form_item" data-aos="fade-up" data-aos-delay="400">
-					<h4 class="input_title">Pick Up Location</h4>
-					<div class="position-relative">
-						<input id="location_three" type="text" name="location" placeholder="86 Albert Road, London, N51 4VK">
-						 <label for="location_three" class="input_icon">
-						 	<i class="fas fa-map-marker-alt"></i>
-						 </label>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 					<div class="form_item" data-aos="fade-up" data-aos-delay="500">
-						<h4 class="input_title">Pick A Date</h4>
-						<input type="date" name="date"></div>
+						<h4 class="input_title">To Date</h4>
+						<input type="date" name="to_date"  value="{{ old('to_date') }}" class="form-control @error('to_date') is-invalid @enderror">
+                        @error('to_date') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
+                    </div>
 					</div>
-					<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 						<div class="form_item" data-aos="fade-up" data-aos-delay="600">
-							<h4 class="input_title">Time</h4>
-							<input type="time" name="time">
+							<h4 class="input_title"> To Time</h4>
+							<input type="time" name="to_time" value="{{ old('to_time') }}"  class="form-control @error('to_time') is-invalid @enderror">
+                            @error('to_time') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
 						</div>
 					</div>
 				</div>
-
-				<hr class="mt-0" data-aos="fade-up" data-aos-delay="700">
-
-				<div class="reservation_offer_checkbox">
-					<h4 class="input_title" data-aos="fade-up" data-aos-delay="800">Your Offer Includes:</h4>
-					<div class="row">
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="900"><div class="checkbox_input">
-							<label for="offer1">
-								<input type="checkbox" id="offer1" checked="checked"> Registration Free/ Road Tax
-							</label>
-						</div>
-						<div class="checkbox_input">
-							<label for="offer2">
-								<input type="checkbox" id="offer2" checked="checked"> Fully Comprehensive Insurance</label>
-							</div>
-							<div class="checkbox_input">
-								<label for="offer3">
-									<input type="checkbox" id="offer3" checked="checked"> Unlimited Mileage
-								</label>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="900"><div class="checkbox_input">
-							<label for="offer4">
-								<input type="checkbox" id="offer4" checked="checked"> Excess/Security Deposit
-							</label>
-						</div>
-						<div class="checkbox_input">
-							<label for="offer5">
-								<input type="checkbox" id="offer5"> Baby Seat: $23/Day
-							</label>
-						</div>
-				<div class="checkbox_input">
-					<label for="offer6">
-						<input type="checkbox" id="offer6"> Breakdown Assistance
-					</label>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<hr class="mt-0" data-aos="fade-up" data-aos-delay="100">
 
 	<div class="reservation_customer_details">
 		<h4 class="input_title" data-aos="fade-up" data-aos-delay="100">Customer Details:</h4>
-		<ul class="customer_gender ul_li clearfix" data-aos="fade-up" data-aos-delay="300">
-			<li>
-				<div class="checkbox_input">
-					<label for="mr"><input type="radio" id="mr" name="gender"> Mr.</label>
-				</div>
-			</li>
-			<li>
-				<div class="checkbox_input">
-					<label for="ms"><input type="radio" id="ms" name="gender"> Ms.</label>
-				</div>
-			</li>
-		</ul>
 		<div class="row">
 			<div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
 				<div class="form_item" data-aos="fade-up" data-aos-delay="400">
-					<input type="text" name="firstname" placeholder="First Name">
+					<input type="text" name="fname" value="{{ old('fname') }}" placeholder="First Name"  class="form-control @error('fname') is-invalid @enderror">
+                    @error('fname') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
 				<div class="form_item" data-aos="fade-up" data-aos-delay="500">
-					<input type="text" name="lastname" placeholder="Last Name">
+					<input type="text" name="lname" value="{{ old('lname') }}" placeholder="Last Name" class="form-control @error('lname') is-invalid @enderror" >
+                    @error('lname') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
 				<div class="form_item" data-aos="fade-up" data-aos-delay="600">
-					<input type="text" name="email" placeholder="E-mail adress">
+					<input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail adress"  class="form-control @error('email') is-invalid @enderror">
+                    @error('email') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
 				<div class="form_item" data-aos="fade-up" data-aos-delay="700">
-					<input type="text" name="tel" placeholder="Phone Number">
+					<input type="text" name="phone" value="{{ old('phone') }}"  placeholder="Phone Number" pattern="01[1|5|6|7|8|9][0-9]{8}" class="form-control @error('phone') is-invalid @enderror">
+                    @error('phone') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
 				</div>
 			</div>
 		</div>
 		<div class="form_item" data-aos="fade-up" data-aos-delay="800">
-			<textarea name="information" placeholder="Additional information (Optional)"></textarea>
+			<textarea name="details" placeholder="Additional information (Optional)"></textarea>
 		</div>
 		<div data-aos="fade-up" data-aos-delay="100">
 			<a class="terms_condition" href="#!"><i class="fas fa-info-circle mr-1">

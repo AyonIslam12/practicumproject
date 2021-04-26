@@ -28,6 +28,11 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('admin_assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('admin_assets/css/style-responsive.css') }}" rel="stylesheet" />
+
+    <!--dynamic table-->
+    <link href="{{ asset('admin_assets/assets/advanced-datatable/media/css/demo_page.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/assets/advanced-datatable/media/css/demo_table.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('admin_assets/assets/data-tables/DT_bootstrap.css') }}" />
     <style>
 
     </style>
@@ -73,8 +78,10 @@
       <script src="{{ asset('admin_assets/js/jquery.sparkline.js') }}" type="text/javascript"></script>
       <script src="{{ asset('admin_assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js') }}"></script>
       <script src="{{ asset('admin_assets/js/owl.carousel.js') }}" ></script>
+      <script type="text/javascript" language="javascript" src="{{ asset('admin_assets/assets/advanced-datatable/media/js/jquery.dataTables.js') }}"></script>
       <script src="{{ asset('admin_assets/js/jquery.customSelect.min.js') }}" ></script>
       <script src="{{ asset('admin_assets/js/respond.min.js') }}" ></script>
+      <script type="text/javascript" src="{{ asset('admin_assets/assets/data-tables/DT_bootstrap.js') }}"></script>
 
       <!--right slidebar-->
       <script src="{{ asset('admin_assets/js/slidebars.min.js') }}"></script>
@@ -82,6 +89,7 @@
       <!--common script for all pages-->
       <script src="{{ asset('admin_assets/js/common-scripts5e1f.js?v=2') }}"></script>
       <script src="{{ asset('admin_assets/js/deleteAlert.js') }}"></script>
+      <script src="{{ asset('admin_assets/js/dynamic_table_init.js') }}"></script>
 
       <!--script for this page-->
       <script src="{{ asset('admin_assets/js/sparkline-chart.js') }}"></script>
