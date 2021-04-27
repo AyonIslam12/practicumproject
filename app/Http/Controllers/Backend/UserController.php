@@ -24,7 +24,7 @@ class UserController extends Controller
 
         $loginData=$request->only('email','password');
         if(Auth::attempt($loginData)){
-          return redirect()->route('admin.dashboard')->with('success','User Login Success.');
+          return redirect()->route('admin.dashboard');
         }else{
           session()->flash('type','danger');
           session()->flash('message','These credentials do not match our records.');

@@ -7,7 +7,7 @@
 </div>
 
  <!--Preloader-->
-<div class="preloader">
+{{-- <div class="preloader">
     <div class="animation_preloader"><div class="spinner">
     </div>
     <p class="text-center">Loading</p></div><div class="loader">
@@ -24,4 +24,4 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}

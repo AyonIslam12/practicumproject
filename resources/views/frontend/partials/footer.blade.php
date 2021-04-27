@@ -6,7 +6,7 @@
 					<div class="footer_about" data-aos="fade-up" data-aos-delay="100">
 						<div class="brand_logo mb_30">
 							<a href="index.html">
-								<img src="{{ asset('frontend/assets/images/logo/logo_02_1x.png')}}" srcset="assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
+								<img src="{{ asset('frontend/assets/images/logo/logo.png')}}" srcset="assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
 							</a>
 						</div>
 						<p class="mb_15">Cras sit amet mi non orci pretium consectetur. Donec iaculis ante ac sollicitudin luctus. Phasellus ut lacus lacus. Phasellus sagittis ex id tortor tincidunt luctus. Donec consectetur consequat bibendum
@@ -36,15 +36,15 @@
 					<ul class="ul_li_block clearfix">
 						<li>
 							<strong><i class="fas fa-map-marker-alt"></i> Main Office Address:</strong>
-							<p class="mb-0">Unit 9, Manor Industrial Estate, Lower Wash Lane, Warrington, WA4</p>
+							<p class="mb-0">Sector 13, Uttara,Dhaka-1230</p>
 						</li>
-						<li><i class="fas fa-clock"></i> 8:00am-9:30pm</li>
+						<li><i class="fas fa-clock"></i> 9:00am - 9:30pm</li>
 						<li><i class="far fa-angle-right"></i> Other Office Locations</li>
 						<li><i class="fas fa-envelope"></i>
-							<strong><a href="https://html.merku.love/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d1f0219021f1e0800012d080001430b1f">[email&#160;protected]</a></strong>
+							<strong> mh.ayon222@gmail.com</strong>
 						</li>
 						<li><i class="fas fa-phone"></i>
-							<strong>+880 1680 6361 89</strong>
+							<strong>+880-1791205437</strong>
 						</li>
 					</ul>
 				</div>

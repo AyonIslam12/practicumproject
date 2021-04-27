@@ -15,8 +15,8 @@
           <!-- user login dropdown start-->
           <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                  <img alt="" src="{{ asset('admin_assets/img/avatar1_small.jpg') }}" class=" image img-fluid">
-                  <span class="username">{{ auth()->user()->name }}</span>
+                  <img width="40px" alt="" src="{{ asset('uploads/users/'.auth()->user()->image) }}" class=" image img-fluid rounded-circle">
+                  <span class="username text-success font-weight-bolder">{{ Str::ucfirst(auth()->user()->name) }}</span>
                   <b class="caret"></b>
               </a>
               <ul class="dropdown-menu extended logout dropdown-menu-right">

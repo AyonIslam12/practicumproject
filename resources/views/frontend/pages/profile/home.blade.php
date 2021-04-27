@@ -29,6 +29,9 @@ Your-Profile
             <div class="account_tabs_menu clearfix" data-bg-color="#F2F2F2" data-aos="fade-up" data-aos-delay="100"><h3 class="list_title mb_15">Account Details:</h3>
                 <ul class="ul_li_block nav" role="tablist">
                     <li>
+                        <a href="{{ route('website.user.profile.home') }}" class="user_thumbnail pb-5">
+                            <img width="150px" class="rounded-circle m-auto" src="{{ asset('uploads/users/'.auth()->user()->image)}}" alt="thumbnail_not_found">
+                        </a>
                         <a class="active" data-toggle="tab" href="#admin_tab">
                             <i class="fas fa-user"></i>
                            {{ auth()->user()->name }}
@@ -65,9 +68,9 @@ Your-Profile
                 <li><span>Name:</span> {{ auth()->user()->name }}</li>
                 <li><span>E-mail:</span> {{ auth()->user()->email }}</li>
 
-                <li><span>Phone Number:</span> +1-202-555-0104</li>
-                <li><span>Country:</span> United States</li>
-                <li><span>Address:</span> 60 Stonybrook Lane Atlanta, GA 30303</li>
+                <li><span>Phone Number:</span> +880-{{ auth()->user()->phone }}</li>
+                <li><span>Role:</span>  {{ ucfirst(auth()->user()->role) }}</li>
+                <li><span>Address:</span> {{ ucfirst(auth()->user()->address) }}</li>
             </ul>
             <a class="text_btn text-uppercase" href="#!">
                 <span>Change Account Information</span>

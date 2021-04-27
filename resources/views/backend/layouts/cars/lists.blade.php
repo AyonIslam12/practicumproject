@@ -16,7 +16,7 @@ car-list
 
 
                 <!--validation message-->
-            <div class="row">
+            <div class="roaw">
                 <div class="col-md-12">
             @if(session('message'))
                 <div class="text-center alert alert-{{ session('type') }}">
@@ -68,12 +68,7 @@ car-list
                               <td class="text-center ">
                                 <a class="btn btn-info btn-sm mx-1" href="{{ route('admin.car.show',$car->id) }}"><i class="fas fa-eye text-dark"></i></a>
                                 <a class="btn btn-success btn-sm " href="{{ route('admin.car.edit',$car->id) }}"><i class="far fa-edit text-dark"></i></a>
-                                <form action="{{ route('admin.car.destroy',$car->id) }}}" method="post" class="d-inline m-0">
-                                    @csrf
-                                    @method('DELETE')
-                                      <button type="submit" class="btn btn-danger btn-sm  mx-1 delete"><i class="fas fa-trash text-dark"></i></button>
-
-                                  </form>
+                                <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href="{{ route('admin.car.destroy',$car->id) }}"><i class="fas fa-trash text-dark"></i></a>
                             </td>
 
                             </tr>

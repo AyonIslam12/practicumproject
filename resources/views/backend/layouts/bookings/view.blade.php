@@ -26,24 +26,12 @@ booking-single-view
                         </td>
                     </tr>
                     <tr>
-                        <th scope="col">User/Customer</th>
-                        <td>{{ $booking->user_id}}</td>
-                    </tr>
-                    <tr>
                         <th scope="col">From Date</th>
                         <td>{{ date("Y-M-d",strtotime($booking->from_date)) }}</td>
                     </tr>
                     <tr>
-                        <th scope="col">From Time</th>
-                        <td>{{ $booking->from_time }}</td>
-                    </tr>
-                    <tr>
                         <th scope="col">To Date</th>
                         <td>{{  date("Y-M-d",strtotime($booking->to_date))  }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="col">To Time</th>
-                        <td>{{ $booking->to_time }}</td>
                     </tr>
                     <tr>
                         <th scope="col">Price/Day</th>
@@ -54,16 +42,20 @@ booking-single-view
                         <td>{{ $booking->total_price}} BDT</td>
                     </tr>
                     <tr>
-                        <th scope="col">Customer Name</th>
-                        <td>{{ $booking->fname.' '.$booking->lname}} </td>
+                        <th scope="col">Customer/User Name</th>
+                        <td>{{ $booking->bookingUser->name}} </td>
                     </tr>
                     <tr>
                         <th scope="col">Customer Email</th>
-                        <td>{{ $booking->email}} </td>
+                        <td>{{ $booking->bookingUser->email}} </td>
                     </tr>
                     <tr>
                         <th scope="col">Customer Phone</th>
-                        <td>{{ '+880-'.$booking->phone}} </td>
+                        <td>{{ '+880-'.$booking->bookingUser->phone}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Customer Address</th>
+                        <td>{{ $booking->bookingUser->address}} </td>
                     </tr>
                     <tr>
                         <th scope="col">Customer Message</th>

@@ -155,8 +155,6 @@ class CarController extends Controller
             'luggage' => 'required',
             'fuel' => 'required',
             'status' =>'required'
-
-
         ]);
 
           try{
@@ -166,7 +164,8 @@ class CarController extends Controller
                     $filename = date('Ymdhms').'.'.$file->getClientOriginalExtension();
                     $file->storeAs('cars',$filename);
                 }
-                if (file_exists(public_path('uploads/cars/'.$cars->image))) unlink(public_path('uploads/cars/'.$cars->image));
+                if (file_exists(public_path('uploads/cars/'.$cars->image)))
+                unlink(public_path('uploads/cars/'.$cars->image));
             }else{
                 $filename = $cars->image;
             }
@@ -195,13 +194,18 @@ class CarController extends Controller
             'decs' => $request->decs,
             'status' => $request->status,
             ]);
+            session()->flash('type','success');
+            session()->flash('message','Car Info Updated Successfully');
+
           }catch(Exception $e){
+
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());
+            return redirect()->route('admin.car.manage');
 
           }
 
-        return redirect()->route('admin.car.manage')->with('success',' Car Info Updated Successfully');
+        return redirect()->route('admin.car.manage');
     }
 
     /**
@@ -214,14 +218,20 @@ class CarController extends Controller
     {
         try{
             $car = Car::find($id);
-            if(file_exists(public_path('uploads/cars/'.$car->image)))
-            unlink(public_path('uploads/cars/'.$car->image));
-            $car->delete();
+
+            if ($car) {
+                if (file_exists(public_path('uploads/cars/'.$car->image))) {
+                    unlink(public_path('uploads/cars/'.$car->image));
+                }
+                $car->delete();
+            }
+            session()->flash('type', 'success');
+            session()->flash('message', 'Car Data Deleteed successfully');
 
         }catch(Exception $e){
             session()->flash('type', 'danger');
             session()->flash('message', $e->getMessage());
         }
-        return \redirect()->back()->with('success','Car Data Deleteed successfully');
+        return \redirect()->back();
     }
 }

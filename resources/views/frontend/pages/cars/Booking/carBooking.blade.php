@@ -61,18 +61,11 @@ Car-Booking
 				<div class="form_item" data-aos="fade-up" data-aos-delay="200">
 					<h4 class="input_title">From Date</h4>
 					<input type="hidden" name="car_id" value="{{ $car->id }}">
-					<input type="date" name="from_date"  value="{{ old('from_date') }}"  class="form-control @error('from_date') is-invalid @enderror">
+					<input type="date" name="from_date"  value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}"  class="form-control @error('from_date') is-invalid @enderror">
                     @error('from_date') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
 				</div>
+			</div>
 
-			</div>
-			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-				<div class="form_item" data-aos="fade-up" data-aos-delay="300">
-					<h4 class="input_title">Form Time</h4>
-					<input type="time" name="from_time" value="{{ old('from_time') }}"  class="form-control @error('from_time') is-invalid @enderror">
-                    @error('from_time') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-				</div>
-			</div>
 
 				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 					<div class="form_item" data-aos="fade-up" data-aos-delay="500">
@@ -81,45 +74,11 @@ Car-Booking
                         @error('to_date') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
                     </div>
 					</div>
-					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-						<div class="form_item" data-aos="fade-up" data-aos-delay="600">
-							<h4 class="input_title"> To Time</h4>
-							<input type="time" name="to_time" value="{{ old('to_time') }}"  class="form-control @error('to_time') is-invalid @enderror">
-                            @error('to_time') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-						</div>
-					</div>
 				</div>
 
 	<hr class="mt-0" data-aos="fade-up" data-aos-delay="100">
 
 	<div class="reservation_customer_details">
-		<h4 class="input_title" data-aos="fade-up" data-aos-delay="100">Customer Details:</h4>
-		<div class="row">
-			<div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
-				<div class="form_item" data-aos="fade-up" data-aos-delay="400">
-					<input type="text" name="fname" value="{{ old('fname') }}" placeholder="First Name"  class="form-control @error('fname') is-invalid @enderror">
-                    @error('fname') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
-				<div class="form_item" data-aos="fade-up" data-aos-delay="500">
-					<input type="text" name="lname" value="{{ old('lname') }}" placeholder="Last Name" class="form-control @error('lname') is-invalid @enderror" >
-                    @error('lname') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
-				<div class="form_item" data-aos="fade-up" data-aos-delay="600">
-					<input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail adress"  class="form-control @error('email') is-invalid @enderror">
-                    @error('email') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
-				<div class="form_item" data-aos="fade-up" data-aos-delay="700">
-					<input type="text" name="phone" value="{{ old('phone') }}"  placeholder="Phone Number" pattern="01[1|5|6|7|8|9][0-9]{8}" class="form-control @error('phone') is-invalid @enderror">
-                    @error('phone') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-				</div>
-			</div>
-		</div>
 		<div class="form_item" data-aos="fade-up" data-aos-delay="800">
 			<textarea name="details" placeholder="Additional information (Optional)"></textarea>
 		</div>

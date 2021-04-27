@@ -41,8 +41,8 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                         <div class="brand_logo">
                             <a href="{{ route('website.home') }}">
-                                <img src="{{ asset('frontend/assets/images/logo/logo_01_1x.png')}}" srcset="frontend/assets/images/logo/logo_01_2x.png 2x" alt="logo_not_found">
-                                <img src="{{ asset('frontend/assets/images/logo/logo_02_1x.png')}}" srcset="frontend/assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
+                                <img src="{{ asset('frontend/assets/images/logo/logo2.png')}}" srcset="frontend/assets/images/logo/logo_01_2x.png 2x" alt="logo_not_found">
+                                <img src="{{ asset('frontend/assets/images/logo/logo.png')}}" srcset="frontend/assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
                             </a>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <div class="user_dropdown rotors_dropdown dropdown-menu clearfix" aria-labelledby="user_dropdown">
                                 <div class="profile_info clearfix">
                                     <a href="{{ route('website.user.profile.home') }}" class="user_thumbnail">
-                                        <img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="thumbnail_not_found">
+                                        <img src="{{ asset('uploads/users/'.auth()->user()->image)}}" alt="thumbnail_not_found">
                                     </a>
                                     <div class="user_content"><h4 class="user_name">
                                         <a href="{{ route('website.user.profile.home') }}">{{ auth()->user()->name }}</a></h4>

@@ -66,7 +66,7 @@ class CarBrandController extends Controller
             session()->flash('message','Car Brand Updated Successfully.');
 
         }catch(Exception $e){
-            session()->flash('type','danger');
+        session()->flash('type','danger');
         session()->flash('message',$e->getMessage());
         return \redirect()->route('admin.car.brand.manage');
 
@@ -78,10 +78,12 @@ class CarBrandController extends Controller
     public function destroy($id){
        try{
         $brand = Brand::find($id);
-        $brand->delete();
+        if($brand){
+            $brand->delete();
 
         session()->flash('type', 'success');
         session()->flash('message', 'Brand Delete Successfully');
+        }
        }catch(Exception $e){
         session()->flash('type', 'danger');
         session()->flash('message', $e->getMessage());

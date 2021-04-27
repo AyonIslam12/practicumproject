@@ -17,32 +17,37 @@ class BookingController extends Controller
 
         public function booking(Request $request){
             $request->validate([
-                'from_date' => 'required',
-                'from_time' => 'required',
-                'to_date' => 'required',
-                'to_time' => 'required',
-                'fname' => 'required|min:4|max:20',
-                'lname' => 'required|min:4|max:20',
-                'email' => 'required|unique:bookings',
-                'phone' => 'required',
+                'from_date' => 'required|date',
+                'to_date' => 'required|after:from_date|date',
             ]);
 
            try{
             $car = Car::find($request->car_id);
+            //DaysCalulation
             $daysCalculation = strtotime($request->to_date)-strtotime($request->from_date);
             $daysCalculation = round($daysCalculation / (60 * 60 * 24));
 
+            //Booking Unique
+            $user = Booking::where('user_id',auth()->user()->id)->where('car_id', $request->car_id)->exists();
+
+            if($user){
+                session()->flash('type','danger');
+                session()->flash('message','You Already Booked This Car');
+                return \redirect()->back();
+            }
+
+            $cars = Booking::where('car_id', $request->car_id)->exists();
+            //Booking Car Unique
+            if($cars){
+                session()->flash('type','danger');
+                session()->flash('message','This Car Already Booked');
+                return \redirect()->back();
+            }
             Booking::create([
                 'car_id' => $request->car_id,
                 'user_id' => auth()->user()->id,
                 'from_date' => $request->from_date,
-                'from_time' =>  $request->from_time,
                 'to_date' => $request->to_date,
-                'to_time' =>  $request->to_time,
-                'fname' =>  $request->fname,
-                'lname' =>  $request->lname,
-                'email' =>  $request->email,
-                'phone' =>  $request->phone,
                 'details' =>  $request->details,
                 'price_per_day' => $car->price_per_day,
                 'total_price' => $car->price_per_day * $daysCalculation,

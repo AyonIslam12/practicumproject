@@ -13,9 +13,21 @@ booking-create
 
 
         <h3 class="text-center text-light py-4">Booking Add Form</h3>
+
+        <div class="row">
+            <div class="col-md-12">
+        @if(session('message'))
+            <div class="text-center alert alert-{{ session('type') }}">
+            <p class="text-center text-bolder">{{ session('message') }}</p>
+            </div>
+        @endif
+        </div>
+        </div>
         <form action="{{ route('admin.booking.store') }}" method="post" enctype="multipart/form-data">
 
             @csrf
+
+
 
             <div class="form-group">
                 <label for="car_id"><span class="text-light">Select Car</span></label>
@@ -30,29 +42,45 @@ booking-create
             </div>
 
             <div class="form-group">
-                <label for="booking_time"><span class="text-light">Booking Time</span></label>
-                <input type="time" class="form-control" id="booking_time" name="booking_time" value=""  placeholder="Enter Booking Time">
+                <label for="user_id"><span class="text-light">Select User</span></label>
+                <select name="user_id" id="user_id" class="form-control">
+                    <option value="">Select</option>
+                    @foreach($users as $key => $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="from_date"><span class="text-light">Form Date</span></label>
+                <input type="date" class="form-control" id="from_date" name="from_date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}"  placeholder="Enter Booking Form Date">
             </div>
             <div class="form-group">
-                <label for="booking_date"><span class="text-light">Booking Date</span></label>
-                <input type="date" class="form-control" id="booking_date" name="booking_date" value=""  placeholder="Enter Booking Date">
+                <label for="to_date"><span class="text-light">To Date</span></label>
+                <input type="date" class="form-control" id="to_date" name="to_date" value=""  placeholder="Enter Booking To Date">
+                 @error('to_date') <span class="text-warning font-weight-bolder font-italic d-block">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="return_time"><span class="text-light">Return  Time</span></label>
-                <input type="time" class="form-control" id="return_time" name="return_time" value=""  placeholder="Enter Return Time">
+                <label for="details"><span class="text-light">To Date</span></label>
+                <textarea name="details" placeholder="Additional information (Optional)" class="form-control"></textarea>
             </div>
+
             <div class="form-group">
-                <label for="return_date"><span class="text-light">Return  Date</span></label>
-                <input type="date" class="form-control" id="return_date" name="return_date" value=""  placeholder="Enter Return Date">
+                <label for="status" ><span class="text-light"> Status</span></label><br>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="active" name="status" value="active" class="custom-control-input" >
+                    <label class="custom-control-label" for="active"><span class="text-light"> Active</span></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="inactive" name="status" value="inactive" class="custom-control-input" >
+                    <label class="custom-control-label" for="inactive"><span class="text-light"> Inactive</span></label>
+                </div>
+
+                @error('status') <span class="text-warning font-weight-bolder font-italic d-block">{{ $message }}</span> @enderror
             </div>
-            <div class="form-group">
-                <label for="booking_advanced"><span class="text-light">Advanced Balance</span></label>
-                <input type="number" class="form-control" id="booking_advanced" name="booking_advanced" value=""  placeholder="Enter Advanced Balance">
-            </div>
-            <div class="form-group">
-                <label for="booking_total"><span class="text-light">Total Balance</span></label>
-                <input type="number" class="form-control" id="booking_total" name="booking_total" value=""  placeholder="Enter Total Balance">
-            </div>
+
 
             <div class="form-group">
                 <div class="custom-control custom-radio text-center py-4">

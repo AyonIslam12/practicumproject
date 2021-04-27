@@ -15,13 +15,16 @@ booking-list
 
                 <h3 class="text-center font-weight-bold text-uppercase text-dark pt-2">Bookings  Table</h3>
 
-                <!--Validation Table-->
-                  @if(session('success'))
-                  <div class="text-center alert alert-success">
-                      <p class="text-center font-weight-bolder">{{ session('success') }}</p>
-                  </div>
-                  @endif
-
+                <!--validation message-->
+            <div class="row">
+                <div class="col-md-12">
+            @if(session('message'))
+                <div class="text-center alert alert-{{ session('type') }}">
+                <p class="text-center text-bolder">{{ session('message') }}</p>
+                </div>
+            @endif
+            </div>
+            </div>
                 <span class="tools pull-right">
                     <a href="javascript:;" class="fa fa-chevron-down"></a>
                     <a href="javascript:;" class="fa fa-times"></a>
@@ -39,9 +42,7 @@ booking-list
                                 <th scope="col">Car Name</th>
                                 <th scope="col">User</th>
                                 <th scope="col">From Date</th>
-                                <th scope="col">From Time</th>
                                 <th scope="col">To Date</th>
-                                <th scope="col">To Time</th>
                                 <th scope="col">Price/Day</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Status</th>
@@ -55,23 +56,18 @@ booking-list
                             <tr>
                               <th scope="row">{{ $key+1 }}</th>
                               <td>{{ $booking->bookingCar->name}}</td>
-                              <td>{{ $booking->user_id}}</td>
+                              <td>{{ $booking->bookingUser->name}}</td>
                               <td>{{ date("Y-M-d",strtotime($booking->from_date)) }}</td>
-                              <td>{{ $booking->from_time }}</td>
                               <td>{{  date("Y-M-d",strtotime($booking->to_date))  }}</td>
-                              <td>{{ $booking->to_time }}</td>
-                              <td>{{ $booking->price_per_day }}</td>
-                              <td>{{ $booking->total_price}}</td>
+                              <td>{{ $booking->price_per_day }} BDT.</td>
+                              <td>{{ $booking->total_price}} BDT.</td>
                               <td>{{ Str::ucfirst($booking->status) }}</td>
                               <td class="text-center">
                                   <a class="btn btn-info btn-sm mx-1" href="{{ route('admin.booking.show',$booking->id) }}"><i class="fas fa-eye text-dark"></i></a>
                                   <a class="btn btn-success btn-sm " href="#"><i class="far fa-edit text-dark"></i></a>
-                                  <form action="{{ route('admin.booking.delete',$booking->id) }}" method="post" class="d-inline m-0">
-                                      @csrf
-                                      @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm  mx-1 delete"><i class="fas fa-trash text-dark"></i></button>
+                                 <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href="{{ route('admin.booking.delete',$booking->id) }}"><i class="fas fa-trash text-dark"></i></a>
 
-                                    </form>
+
                               </td>
 
                             </tr>

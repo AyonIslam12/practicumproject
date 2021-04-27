@@ -37,34 +37,28 @@ Route::prefix('/')->name('website.')->group(function(){
     Route::get('/contact-us',[SiteController::class,'contact'])->name('contact');
 
 
-    Route::prefix('/user')->name('user.')->group(function (){
-        Route::get('/registration/form',[UserController::class,'registrationForm'])->name('registration.form');
-        Route::post('/registration/create',[UserController::class,'register'])->name('register');
-        Route::get('/login',[UserController::class,'loginForm'])->name('login.form');
-        Route::post('/dologin',[UserController::class,'doLogin'])->name('login');
-        Route::get('/logout',[UserController::class,'logout'])->name('logout');
 
-        //UserProfile
-        Route::prefix('/profile')->name('profile.')->group(function (){
-            Route::get('/',[UserProfile::class,'index'])->name('home');
+    Route::get('user/registration/form',[UserController::class,'registrationForm'])->name('user.registration.form');
+    Route::post('user/registration/create',[UserController::class,'register'])->name('user.register');
+    Route::get('user/login',[UserController::class,'loginForm'])->name('user.login.form');
+    Route::post('user/dologin',[UserController::class,'doLogin'])->name('user.login');
+    Route::get('user/logout',[UserController::class,'logout'])->name('user.logout');
 
-        });
+        //Route Group for Auth Middleware
+Route::group(['middleware' => 'auth'],function () {
+        //Car Booking View Page and Booking Routes
+    Route::get('/car/booking/{id}',[ FrontendBookingController::class,'showBookinfForm'])->name('car.booking.form');
+    Route::post('/car/booking',[ FrontendBookingController::class,'booking'])->name('car.booking');
+
+    //UserProfile
+    Route::get('/user/profile',[UserProfile::class,'index'])->name('user.profile.home');
+    });
+    //Car Single And Multipule View Routes
+Route::prefix('/car')->name('car.')->group(function(){
+    Route::get('/our-cars',[ FrontendCarController::class,'cars'])->name('list');
+    Route::get('/view/{id}',[ FrontendCarController::class,'singleCar'])->name('singlecar');
 
     });
-
-    //Car Single And Multipule View Routes
-    Route::prefix('/car')->name('car.')->group(function(){
-
-        Route::get('/our-cars',[ FrontendCarController::class,'cars'])->name('list');
-        Route::get('/view/{id}',[ FrontendCarController::class,'singleCar'])->name('singlecar');
-        //Car Booking View Page and Booking Routes
-        Route::get('/booking/{id}',[ FrontendBookingController::class,'showBookinfForm'])->name('booking.form');
-        Route::post('/booking',[ FrontendBookingController::class,'booking'])->name('booking');
-
-
-
-
-});
 
 });
 
@@ -92,25 +86,26 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::post('/store',[CarBrandController::class,'store'])->name('store');
             Route::get('/edit/{id}',[CarBrandController::class,'edit'])->name('edit');
             Route::put('/update/{id}',[CarBrandController::class,'update'])->name('update');
-            Route::delete('/delete/{id}',[CarBrandController::class,'destroy'])->name('delete');
+            Route::get('/delete/{id}',[CarBrandController::class,'destroy'])->name('delete');
         });
+            //Car Route Group
             Route::get('/lists',[CarController::class,'index'])->name('manage');
             Route::get('/create',[CarController::class,'create'])->name('create');
             Route::post('/store',[CarController::class,'store'])->name('store');
-            Route::get('/{id}',[CarController::class,'show'])->name('show');
+            Route::get('/show/{id}',[CarController::class,'show'])->name('show');
             Route::get('/{id}/edit',[CarController::class,'edit'])->name('edit');
-            Route::put('/{id}',[CarController::class,'update'])->name('update');
-            Route::delete('/{id}',[CarController::class,'destroy'])->name('destroy');
+            Route::put('/update/{id}',[CarController::class,'update'])->name('update');
+            Route::get('/delete/{id}',[CarController::class,'destroy'])->name('destroy');
 
 
         });
-
+        //Booking Route Group
         Route::prefix('booking')->name('booking.')->group(function (){
             Route::get('/list',[BookingController::class,'index'])->name('manage');
             Route::get('/create',[BookingController::class,'create'])->name('create');
             Route::post('/store',[BookingController::class,'store'])->name('store');
-            Route::get('/{id}',[BookingController::class,'show'])->name('show');
-            Route::delete('/{id}',[BookingController::class,'destroy'])->name('delete');
+            Route::get('/show/{id}',[BookingController::class,'show'])->name('show');
+            Route::get('/delete/{id}',[BookingController::class,'destroy'])->name('delete');
 
 
         });

@@ -56,12 +56,7 @@ car-list
                               <td>{{Str::ucfirst($brand->status) }}</td>
                               <td class="text-center">
                                 <a class="btn btn-success btn-sm " href="{{ route('admin.car.brand.edit',$brand->id) }}"><i class="far fa-edit text-dark"></i></a>
-                                <form action="{{ route('admin.car.brand.delete',$brand->id) }}" method="post" class="d-inline m-0">
-                                    @csrf
-                                    @method('DELETE')
-                                      <button type="submit" class="btn btn-danger btn-sm  mx-1 delete"><i class="fas fa-trash text-dark"></i></button>
-
-                                  </form>
+                                <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href="{{ route('admin.car.brand.delete',$brand->id) }}"><i class="fas fa-trash text-dark"></i></a>
                             </td>
                             </tr>
                             @endforeach
