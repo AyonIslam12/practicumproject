@@ -34,7 +34,7 @@ Car-Single-View
 
             <ul class="btns_group ul_li_center clearfix">
                 <li>
-                    <span class="custom_btn btn_width bg_default_blue text-k"> {{ $car->price_per_day.' . 00 Tk.' }}/Day</span>
+                    <span class="custom_btn btn_width bg_default_blue text-k"> {{ $car->price_per_day.' . 00 BDT.' }}/Day</span>
                 </li>
                 <li>
                     <a href="{{ route('website.car.booking.form',$car->id) }}" class="custom_btn btn_width bg_default_red text-uppercase">

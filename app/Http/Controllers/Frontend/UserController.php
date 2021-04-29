@@ -21,7 +21,6 @@ class UserController extends Controller
         'name' => 'required|string|min:4',
         'email' => 'required|email|unique:users',
         'phone' => 'required|min:11|max:11',
-        'role' => 'required',
         'password' => 'required|min:6|max:16',
         'password' => 'required|min:6|max:16|confirmed',
 
@@ -43,7 +42,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'role' => $request->role,
+            'role' => 'customer',
             'password' =>bcrypt($request->password),
             'image' =>$filename,
             'address' =>$request->address,

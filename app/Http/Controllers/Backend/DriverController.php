@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Driver;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 
 class DriverController extends Controller
@@ -15,8 +17,8 @@ class DriverController extends Controller
      */
     public function index()
     {
-        $driver_list = Driver::all();
-        return view('backend.layouts.drivers.manage',compact('driver_list'));
+         $drivers = User::where('role', '=' ,'driver')->get();
+        return \view('backend.layouts.drivers.list',\compact('drivers'));
     }
 
     /**
@@ -27,19 +29,43 @@ class DriverController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|min:6',
-            'email' => 'required|email|unique:customers',
-            'password' => 'required|min:8|max:16',
-            'contact' => 'required|string',
+            'name' => 'required|string|min:4',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|min:11|max:11',
+            'password' => 'required|min:6|max:16',
+            'password' => 'required|min:6|max:16|confirmed',
+            'address' => 'required',
         ]);
-       Driver::create([
+        try{
+
+            $filename = " ";
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            if($image->isValid()){
+                $filename = date('Ymdhms').'.'.$image->getClientOriginalExtension();
+                $image->storeAs('users',$filename);
+            }
+        }
+
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
-            'contact' => $request->contact,
+            'phone' => $request->phone,
+            'role' => 'driver',
+            'password' =>bcrypt($request->password),
+            'image' =>$filename,
+            'address' =>$request->address,
+            ]);
 
-        ]);
-        return redirect()->back()->with('success','Driver data inserted successfully');
+            session()->flash('type','success');
+            session()->flash('message','Driver Data Inserted Successfully');
+      }catch(Exception $e){
+        session()->flash('type','danger');
+        session()->flash('message',$e->getMessage());
+        return \redirect()->back();
+
+      }
+      return \redirect()->back();
 
     }
 
@@ -73,7 +99,7 @@ class DriverController extends Controller
      */
     public function edit($id)
     {
-        //
+        \dd($id);
     }
 
     /**
@@ -96,6 +122,24 @@ class DriverController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $driver = User::find($id);
+            if($driver){
+
+            if (file_exists(public_path('uploads/users/'.$driver->image))) {
+                unlink(public_path('uploads/users/'.$driver->image));
+            }
+                $driver->delete();
+
+            session()->flash('type', 'success');
+            session()->flash('message', 'Driver Delete Successfully');
+            }
+           }catch(Exception $e){
+            session()->flash('type', 'danger');
+            session()->flash('message', $e->getMessage());
+            return \redirect()->route('admin.driver.list');
+           }
+           return \redirect()->route('admin.driver.list');
+
     }
 }

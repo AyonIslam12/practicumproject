@@ -11,6 +11,15 @@
 
             <li class="sub-menu">
                 <a href="javascript:;"   class="{{ request()->is('admin/booking/list') ? 'active' : '' }}">
+                    <i class="fa fa-user"></i>
+                    <span>Users</span>
+                </a>
+                <ul class="sub">
+                    <li  class="{{ request()->is('admin/user/lists') ? 'active' : '' }}"><a  href="{{ route('admin.user.list') }}">Manage Users</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;"   class="{{ request()->is('admin/user/lists') ? 'active' : '' }}">
                     <i class="fa fa-book"></i>
                     <span>Booking</span>
                 </a>
@@ -46,8 +55,8 @@
                     <span>Drivers</span>
                 </a>
                 <ul class="sub">
-                    <li class="{{ request()->is('admin/driver/lists') ? 'active' : ''}}"><a  href="{{ route('admin.driver.manage') }}">Manage Drivers</a></li>
-                    <li><a  href="">Add Driver</a></li>
+                    <li class="{{ request()->is('admin/driver/lists') ? 'active' : ''}}"><a  href="{{ route('admin.driver.list') }}">Manage Drivers</a></li>
+
                 </ul>
             </li>
             <li class="sub-menu">

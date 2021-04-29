@@ -109,7 +109,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
 
         });
-
+        //Customer Route Group
         Route::prefix('customer')->name('customer.')->group(function (){
             Route::get('/lists',[CustomerController::class,'index'])->name('manage');
             Route::get('/create',[CustomerController::class,'create'])->name('create');
@@ -119,14 +119,24 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::put('/{id}',[CustomerController::class,'update'])->name('update');
             Route::delete('/{id}',[CustomerController::class,'destroy'])->name('delete');
         });
+        //Driver Route Group
         Route::prefix('driver')->name('driver.')->group(function (){
-            Route::get('/lists',[DriverController::class,'index'])->name('manage');
+            Route::get('/lists',[DriverController::class,'index'])->name('list');
             Route::post('/create',[DriverController::class,'create'])->name('create');
+            Route::get('/edit/{id}',[DriverController::class,'edit'])->name('edit');
+            Route::get('/delete/{id}',[DriverController::class,'destroy'])->name('delete');
         });
+        //Offer Route Group
         Route::prefix('offer')->name('offer.')->group(function (){
             Route::get('/lists',[OfferController::class,'index'])->name('manage');
             Route::get('/create',[OfferController::class,'create'])->name('create');
             Route::post('/store',[OfferController::class,'store'])->name('store');
+        });
+        //User Manage Route Group
+        Route::prefix('user')->name('user.')->group(function (){
+            Route::get('/lists',[BackendUserController::class,'index'])->name('list');
+            Route::get('/delete/{id}',[BackendUserController::class,'delete'])->name('delete');
+
         });
 
     });

@@ -9,7 +9,7 @@ Car-Booking
 
 <!--Start-->
 <section class="breadcrumb_section text-center clearfix">
-	<div class="page_title_area has_overlay d-flex align-items-center clearfix" data-bg-image="{{ asset('frontend/assets/images/breadcrumb/bg_03.jpg') }}">
+<div class="page_title_area has_overlay d-flex align-items-center clearfix" data-bg-image="{{ asset('frontend/assets/images/breadcrumb/bg_03.jpg') }}">
 		<div class="overlay">
 
 		</div>
