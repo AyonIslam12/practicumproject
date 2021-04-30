@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Backend\Booking;
-use App\Models\Backend\Car;
 use Exception;
+use App\Models\Backend\Car;
 use Illuminate\Http\Request;
+use App\Models\Backend\Booking;
+use App\Mail\BokkingNotification;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -42,7 +44,7 @@ class BookingController extends Controller
 
 
              if ($checkBook->count() == 0){
-                Booking::create([
+               $booking = Booking::create([
                     'car_id' => $request->car_id,
                     'user_id' => auth()->user()->id,
                     'from_date' => $request->from_date,
@@ -52,6 +54,7 @@ class BookingController extends Controller
                     'total_price' => $car->price_per_day * $daysCalculation,
 
                 ]);
+                Mail::to(auth()->user()->email)->send(new BokkingNotification($booking));
                 session()->flash('type','success');
                 session()->flash('message','Your Booking is Successful.!!!');
                return redirect()->back();

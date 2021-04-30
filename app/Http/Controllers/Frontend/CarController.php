@@ -22,5 +22,15 @@ class CarController extends Controller
         return view('frontend.pages.cars.singlecar',\compact('car'));
 
         }
+    public function carSearch(Request $request){
+
+        $search = $request->search;
+        if($search){
+            $cars = Car::where('name','like','%'.$search.'%')->paginate(6);
+        }else{
+            $cars = Car::with('carBrand')->paginate(6);
+        }
+       return view('frontend.pages.cars.cars',\compact('cars','search'));
+    }
 
 }

@@ -19,34 +19,34 @@ All-Cars
 
 </section>
 
-<section class="feature_section sec_ptb_150 clearfix">
+<section class="feature_section sec_ptb_100 clearfix">
 	<div class="container">
         <div class="row justify-content-center">
 		<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-			<div class="section_title mb_60 text-center" data-aos="fade-up" data-aos-delay="100">
+			<div class="section_title  text-center" data-aos="fade-up" data-aos-delay="100">
 				<h2 class="title_text mb_15">
 					<span>Select Your Car From Here</span>
 				</h2>
-				<p class="mb-0">Mauris cursus quis lorem sed cursus. Aenean aliquam pellentesque magna, ut dictum ex pellentesque
-				</p>
+
 
 			</div>
 		</div>
 	</div>
-	<ul class="button-group filters-button-group ul_li_center mb_30 clearfix" data-aos="fade-up" data-aos-delay="300">
-		<li>
-			<button class="button active" data-filter="*">All</button>
-		</li>
-		<li>
-			<button class="button" data-filter=".sedan">Sedan</button>
-		</li>
-		<li>
-			<button class="button" data-filter=".sports">Sports</button>
-		</li>
-		<li>
-			<button class="button" data-filter=".luxury">Luxury</button>
-		</li>
-	</ul>
+    <!--Search Result Show-->
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+    @if(isset($search))
+    <p class="bg-secondary p-3 text-light">
+        Your searching results for :-
+        <span class="text-warning font-weight-bolder">'{{ ' '.$search }}'</span>
+         , <span class="text-white font-weight-bold"> found ( {{ count($cars) }} results )</span>
+        </p>
+    @endif
+
+    </div>
+
+    </div>
+    <hr  data-aos="fade-up" data-aos-delay="100">
 	<div class="feature_vehicle_filter element-grid clearfix">
         @foreach ($cars as $car )
 

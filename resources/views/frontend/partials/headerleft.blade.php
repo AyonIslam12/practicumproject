@@ -139,7 +139,8 @@
 <div id="collapse_search_body" class="collapse_search_body collapse">
 <div class="search_body">
     <div class="container">
-        <form action="#">
+        <form action=" {{ route('website.car.search') }} " method="post">
+            @csrf
             <div class="form_item">
                 <input type="search" name="search" placeholder="Type here...">
                 <button type="submit">

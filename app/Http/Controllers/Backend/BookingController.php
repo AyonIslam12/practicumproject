@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Backend\Booking;
-use App\Models\Backend\Car;
-use App\Models\User;
 use Exception;
+use App\Models\User;
+use App\Models\Backend\Car;
 use Illuminate\Http\Request;
+use App\Models\Backend\Booking;
+use App\Http\Controllers\Controller;
+
 
 class BookingController extends Controller
 {
@@ -164,6 +165,7 @@ class BookingController extends Controller
         }else{
             $booking->update(['status' => $status]);
         }
+
         return redirect()->back();
     }
 }

@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'],function () {
     Route::get('/car/booking/{id}',[ FrontendBookingController::class,'showBookinfForm'])->name('car.booking.form');
     Route::post('/car/booking',[ FrontendBookingController::class,'booking'])->name('car.booking');
 
+
     //UserProfile
     Route::get('/user/profile',[UserProfile::class,'index'])->name('user.profile.home');
    // Route::get('/user/update/password/{id}',[UserProfile::class,'updatePassword'])->name('user.update.password');
@@ -61,6 +62,7 @@ Route::group(['middleware' => 'auth'],function () {
 Route::prefix('/car')->name('car.')->group(function(){
     Route::get('/our-cars',[ FrontendCarController::class,'cars'])->name('list');
     Route::get('/view/{id}',[ FrontendCarController::class,'singleCar'])->name('singlecar');
+    Route::post('/search',[ FrontendCarController::class,'carSearch'])->name('search');
 
     });
 
