@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
 use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Mail\UserNotification;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -38,7 +40,7 @@ class UserController extends Controller
             }
         }
 
-        User::create([
+       $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -47,6 +49,9 @@ class UserController extends Controller
             'image' =>$filename,
             'address' =>$request->address,
             ]);
+            //mail Notification
+            Mail::to($user->email)->send(new UserNotification($user));
+
 
             session()->flash('type','success');
             session()->flash('message','Your Registration is Successfull,Now You Can Login');

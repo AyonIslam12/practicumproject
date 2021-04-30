@@ -17,7 +17,7 @@
                 <div class="titile bg-success text-light">
                     <h3 class="text-success">Your Booking is Successfull...</h3>
                 </div>
-                <p class="list_title mb_30"><Span class="font-weight_bolder">Car Name : </Span>{{ $bookingData->bookingCar->name}}</p>
+                <p class="list_title mb_30"><span class="font-weight_bolder">Car Name : </span>{{ $bookingData->bookingCar->name}}</p>
                 <div class="booking-image">
 
                     <td> <img width="150px" class="img-thumbnail" src="{{ asset('uploads/cars/'.$bookingData->bookingCar->image) }}" alt="No-Image"></td>

@@ -38,17 +38,7 @@
                     <li><a  href="#">Add Car</a></li>
                 </ul>
             </li>
-            <li class="sub-menu" >
-                <a href="javascript:;"  class="{{ request()->is('admin/customer/lists','admin/customer/create') ? 'active' : ''}}">
-                    <i class="fa fa-user"></i>
-                    <span>Customers</span>
-                </a>
-                <ul class="sub">
-                    <li class="{{ request()->is('admin/customer/lists') ? 'active' : ''}}"><a   href="{{ route('admin.customer.manage') }}">All Customers</a></li>
-                    <li  class="{{ request()->is('admin/customer/create') ? 'active' : ''}}" ><a   href="{{ route('admin.customer.create') }}">Add Customers</a></li>
 
-                </ul>
-                    </li>
             <li class="sub-menu">
                 <a href="javascript:;" class="{{ request()->is('admin/driver/lists') ? 'active' : ''}}" >
                     <i class="fa fa-user"></i>

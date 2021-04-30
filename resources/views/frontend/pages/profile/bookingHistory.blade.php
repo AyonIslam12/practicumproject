@@ -86,7 +86,7 @@ Your-Profile
 
                <div class="col-4">
                    <div class="status-button">
-                      <span class="text-dark font-weight-bold ">Status: </span>
+                      <span class="text-dark font-weight-bold ">Booking: </span>
                     @if($history->status=='confirmed')
                     <a href="#" class="btn btn-outline-success btn-md">{{ Str::ucfirst($history->status) }}</a>
                   @elseif($history->status=='rejected')

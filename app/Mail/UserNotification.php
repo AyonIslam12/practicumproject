@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class BokkingNotification extends Mailable
+class UserNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,10 +16,10 @@ class BokkingNotification extends Mailable
      *
      * @return void
      */
-    protected $book;
-    public function __construct($booking)
+    protected $user;
+    public function __construct($user)
     {
-        $this->book=$booking;
+        $this->user=$user;
     }
 
     /**
@@ -29,6 +29,6 @@ class BokkingNotification extends Mailable
      */
     public function build()
     {
-        return $this->view('frontend.mail.bookingEmail')->with(['bookingData' => $this->book]);
+        return $this->view('frontend.mail.emailUser')->with(['userData' => $this->user]);
     }
 }

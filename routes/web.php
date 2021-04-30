@@ -116,16 +116,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
 
         });
-        //Customer Route Group
-        Route::prefix('customer')->name('customer.')->group(function (){
-            Route::get('/lists',[CustomerController::class,'index'])->name('manage');
-            Route::get('/create',[CustomerController::class,'create'])->name('create');
-            Route::post('/store',[CustomerController::class,'store'])->name('store');
-            Route::get('/{id}',[CustomerController::class,'show'])->name('show');
-            Route::get('/{id}/edit',[CustomerController::class,'edit'])->name('edit');
-            Route::put('/{id}',[CustomerController::class,'update'])->name('update');
-            Route::delete('/{id}',[CustomerController::class,'destroy'])->name('delete');
-        });
+
         //Driver Route Group
         Route::prefix('driver')->name('driver.')->group(function (){
             Route::get('/lists',[DriverController::class,'index'])->name('list');
