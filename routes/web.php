@@ -52,6 +52,10 @@ Route::group(['middleware' => 'auth'],function () {
 
     //UserProfile
     Route::get('/user/profile',[UserProfile::class,'index'])->name('user.profile.home');
+   // Route::get('/user/update/password/{id}',[UserProfile::class,'updatePassword'])->name('user.update.password');
+    Route::get('/user/profile/edit/{id}',[UserProfile::class,'profileEdit'])->name('user.profile.edit');
+    Route::put('/userprofile/update/{id}',[UserProfile::class,'profileUpdate'])->name('user.profile.update');
+    Route::get('/user/booking/history',[UserProfile::class,'bookingHistory'])->name('user.booking.history');
     });
     //Car Single And Multipule View Routes
 Route::prefix('/car')->name('car.')->group(function(){
@@ -106,6 +110,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::post('/store',[BookingController::class,'store'])->name('store');
             Route::get('/show/{id}',[BookingController::class,'show'])->name('show');
             Route::get('/delete/{id}',[BookingController::class,'destroy'])->name('delete');
+            Route::get('/booking/{id}/{status}',[BookingController::class,'updateStatus'])->name('status');
 
 
         });
@@ -124,6 +129,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::get('/lists',[DriverController::class,'index'])->name('list');
             Route::post('/create',[DriverController::class,'create'])->name('create');
             Route::get('/edit/{id}',[DriverController::class,'edit'])->name('edit');
+            Route::put('/update/{id}',[DriverController::class,'update'])->name('update');
             Route::get('/delete/{id}',[DriverController::class,'destroy'])->name('delete');
         });
         //Offer Route Group

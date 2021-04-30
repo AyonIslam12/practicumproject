@@ -14,7 +14,7 @@ Your-Profile
 
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <h1 class="page_title text-white pt-5">My Account</h1>
+            <h1 class="page_title text-white pt-5">Your Booking History</h1>
         </div>
     </div>
     <div class="breadcrumb_nav clearfix" data-bg-color="#F2F2F2">
@@ -56,26 +56,56 @@ Your-Profile
         </div>
     </div>
 <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
-    <div class="account_tab_content tab-content">
-        <div id="admin_tab" class="tab-pane active">
-            <div class="account_info_list" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="list_title mb_30">Account:</h3>
-                <ul class="ul_li_block clearfix">
-                <li><span>Name:</span> {{ auth()->user()->name }}</li>
-                <li><span>E-mail:</span> {{ auth()->user()->email }}</li>
+    <div class="account_tab_content ">
+        <div class="account_info_list" data-aos="fade-up" data-aos-delay="500">
+           <div class="row">
+            <h2 class="list_title mb_30">Booking History:</h2>
+            <hr class="mt-0" data-aos="fade-up" data-aos-delay="100">
 
-                <li><span>Phone Number:</span> +880-{{ auth()->user()->phone }}</li>
-                <li><span>Role:</span>  {{ ucfirst(auth()->user()->role) }}</li>
-                <li><span>Address:</span> {{ ucfirst(auth()->user()->address) }}</li>
-            </ul>
-            <a class="text_btn text-uppercase" href="{{ route('website.user.profile.edit', auth()->user()->id) }}">
-                <span>Change Account Information</span>
-                <img src="{{ asset('frontend/assets/images/icons/icon_02.png') }}" alt="icon_not_found">
-            </a>
+            @foreach($bookingHistory as $key => $history)
+
+
+               <div class="col-8">
+                <h3 class="list_title mb_30">{{ $history->bookingCar->name }}</h3>
+                <div class="booking-image">
+
+                    <img width="150px" class="img-thumbnail" src="{{ asset('uploads/cars/'.$history->bookingCar->image) }}" alt="No-Image">
+
+                </div>
+                <ul class="ul_li_block clearfix"><li>
+                    <span>Booking Date:</span> {{  date("Y-M-d",strtotime($history->from_date)) }}</li>
+                    <li><span>Return Date:</span>{{  date("Y-M-d",strtotime($history->to_date)) }}</li>
+                    <li><span>Your Message:</span> {{ $history->details }}</li>
+                </ul>
+                <a class="text_btn text-uppercase" href="#!">
+                    <span>Book A Car</span>
+                    <img src="{{ asset('frontend/assets/images/icons/icon_02.png') }}" alt="icon_not_found">
+                </a>
+
+               </div>
+
+               <div class="col-4">
+                   <div class="status-button">
+                      <span class="text-dark font-weight-bold ">Status: </span>
+                    @if($history->status=='confirmed')
+                    <a href="#" class="btn btn-outline-success btn-md">{{ Str::ucfirst($history->status) }}</a>
+                  @elseif($history->status=='rejected')
+                  <a href="#" class="btn btn-outline-danger btn-md">{{ Str::ucfirst($history->status) }}</a>
+                  @else
+                  <a href="#" class="btn btn-outline-warning btn-md">{{ Str::ucfirst($history->status) }}</a>
+                  @endif
+
+
+                   </div>
+
+               </div>
+               <hr class="mt-5 " data-aos="fade-up" data-aos-delay="100">
+               @endforeach
+
+           </div>
+
+
         </div>
-
-
-    </div>
 
 
 </div>
@@ -83,8 +113,6 @@ Your-Profile
 </div>
 </div>
 </section>
-
-
 
 
 

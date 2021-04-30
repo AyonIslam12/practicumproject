@@ -99,7 +99,11 @@ class DriverController extends Controller
      */
     public function edit($id)
     {
-        \dd($id);
+        $driver = User::find($id);
+        if($driver)
+       return view('backend.layouts.drivers.edit', \compact('driver'));
+       else
+       return \redirect()->back();
     }
 
     /**
@@ -111,7 +115,44 @@ class DriverController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            $driver = User::find($id);
+            if (!$driver) return redirect()->back();
+        $request->validate([
+            'name' => 'required|string|min:4',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+        try{
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                if($file->isValid()){
+                    $filename = date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                    $file->storeAs('users',$filename);
+                }
+                if (file_exists(public_path('uploads/users/'.$driver->image)))
+                unlink(public_path('uploads/users/'.$driver->image));
+            }else{
+                $filename = $driver->image;
+            }
+
+
+            $driver->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'image' =>$filename,
+            'address' =>$request->address,
+
+            ]);
+            session()->flash('type','success');
+            session()->flash('message','Driver Data Updated Successfully');
+        }catch(Exception $e){
+            session()->flash('type','danger');
+            session()->flash('message',$e->getMessage());
+            return redirect()->route('admin.driver.list');
+        }
+        return redirect()->route('admin.driver.list');
     }
 
     /**

@@ -154,4 +154,16 @@ class BookingController extends Controller
        }
        return \redirect()->back();
     }
+
+
+    public function updateStatus($id,$status)
+    {
+        $booking = Booking::find($id);
+        if($status === 'confirmed'){
+            $booking->update(['status' => $status]);
+        }else{
+            $booking->update(['status' => $status]);
+        }
+        return redirect()->back();
+    }
 }

@@ -77,10 +77,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#!">
-                                        <i class="fal fa-user-cog"></i>
-                                        Settings
-                                    </a>
+
                                 </li>
                                 <li>
                                     <a href="{{ route('website.user.logout') }}"><i class="fal fa-sign-out">
