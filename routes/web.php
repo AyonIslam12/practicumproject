@@ -125,12 +125,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::put('/update/{id}',[DriverController::class,'update'])->name('update');
             Route::get('/delete/{id}',[DriverController::class,'destroy'])->name('delete');
         });
-        //Offer Route Group
-        Route::prefix('offer')->name('offer.')->group(function (){
-            Route::get('/lists',[OfferController::class,'index'])->name('manage');
-            Route::get('/create',[OfferController::class,'create'])->name('create');
-            Route::post('/store',[OfferController::class,'store'])->name('store');
-        });
+
         //User Manage Route Group
         Route::prefix('user')->name('user.')->group(function (){
             Route::get('/lists',[BackendUserController::class,'index'])->name('list');

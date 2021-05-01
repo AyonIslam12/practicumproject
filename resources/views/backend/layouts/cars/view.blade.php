@@ -41,6 +41,10 @@ Car-single-view
                         <td class="text-center" >{{ $car->price_per_day.'.00'.' TK' }}</td>
                     </tr>
                     <tr>
+                        <th>Car Disscount Amount</th>
+                        <td class="text-center" >{{ $car->discount_offer.'.00'.' TK' }}</td>
+                    </tr>
+                    <tr>
                         <th>Car Air condition</th>
                         @if($car->air_condition == 1)
                         <td class="text-center" ><i class="fa fa-check text-success" aria-hidden="true"></i></td>

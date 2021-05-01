@@ -33,9 +33,17 @@ Car-Single-View
             <img class="border" src="{{ asset('uploads/cars/'.$car->image)}}" alt="image_not_found">
 
             <ul class="btns_group ul_li_center clearfix">
+                @if($car->discount_offer <= 0)
                 <li>
                     <span class="custom_btn btn_width bg_default_blue text-k"> {{ $car->price_per_day.' . 00 BDT.' }}/Day</span>
                 </li>
+
+                @else
+                <li>
+                    <span class="custom_btn btn_width bg_default_blue"><del>{{ $car->price_per_day.' . 00 BDT.' }}/Day</del>{{ $car->price_per_day -$car->discount_offer.'. 00 BDT '  }}/Day </span>
+                </li>
+
+                @endif
                 <li>
                     <a href="{{ route('website.car.booking.form',$car->id) }}" class="custom_btn btn_width bg_default_red text-uppercase">
                         Book A Car
@@ -44,130 +52,6 @@ Car-Single-View
                 </li>
             </ul>
         </div>
-       <!--
-
-         <div class="item">
-            <div class="item_head">
-                <h4 class="item_title mb-0">Infiniti Q50 2018</h4>
-                <ul class="review_text ul_li_right clearfix">
-                    <li class="text-right"><strong>Super</strong> <small>24+ Reviews</small>
-                    </li>
-                    <li>
-                        <span class="bg_default_blue">4.8/5</span>
-                    </li>
-                </ul>
-            </div>
-            <img src="assets/images/gallery/img_07.jpg" alt="image_not_found">
-            <ul class="btns_group ul_li_center clearfix">
-                <li>
-                    <span class="custom_btn btn_width bg_default_blue"><del>$800/Day</del> $400/Day</span>
-                </li>
-                <li>
-                    <a href="#!" class="custom_btn btn_width bg_default_red text-uppercase">Book A Car
-                        <img src="assets/images/icons/icon_01.png" alt="icon_not_found">
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="item">
-            <div class="item_head">
-                <h4 class="item_title mb-0">Infiniti Q50 2018</h4>
-                <ul class="review_text ul_li_right clearfix">
-                    <li class="text-right"><strong>Super</strong> <small>24+ Reviews</small>
-                    </li>
-                    <li>
-                        <span class="bg_default_blue">4.8/5</span>
-                    </li>
-                </ul>
-            </div>
-            <img src="assets/images/gallery/img_07.jpg" alt="image_not_found">
-            <ul class="btns_group ul_li_center clearfix">
-                <li>
-                    <span class="custom_btn btn_width bg_default_blue"><del>$800/Day</del> $400/Day</span>
-                </li>
-                <li>
-                    <a href="#!" class="custom_btn btn_width bg_default_red text-uppercase">Book A Car
-                        <img src="assets/images/icons/icon_01.png" alt="icon_not_found">
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-            <div class="item">
-                <div class="item_head">
-                    <h4 class="item_title mb-0">Infiniti Q50 2018</h4>
-                    <ul class="review_text ul_li_right clearfix">
-                        <li class="text-right"><strong>Super</strong> <small>24+ Reviews</small>
-                        </li>
-                        <li>
-                            <span class="bg_default_blue">4.8/5</span>
-                        </li>
-                    </ul>
-                </div>
-                <img src="assets/images/gallery/img_07.jpg" alt="image_not_found">
-                <ul class="btns_group ul_li_center clearfix">
-                    <li>
-                    <span class="custom_btn btn_width bg_default_blue"><del>$800/Day</del> $400/Day</span>
-                </li>
-                <li>
-                    <a href="#!" class="custom_btn btn_width bg_default_red text-uppercase">Book A Car
-                        <img src="assets/images/icons/icon_01.png" alt="icon_not_found">
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="item">
-            <div class="item_head">
-                <h4 class="item_title mb-0">Infiniti Q50 2018</h4>
-                <ul class="review_text ul_li_right clearfix">
-                    <li class="text-right"><strong>Super</strong> <small>24+ Reviews</small>
-                    </li>
-                    <li>
-                        <span class="bg_default_blue">4.8/5</span>
-                    </li>
-                </ul>
-            </div>
-            <img src="assets/images/gallery/img_07.jpg" alt="image_not_found">
-            <ul class="btns_group ul_li_center clearfix">
-                <li>
-                    <span class="custom_btn btn_width bg_default_blue">
-                        <del>$800/Day</del> $400/Day</span>
-                    </li>
-                    <li>
-                        <a href="#!" class="custom_btn btn_width bg_default_red text-uppercase">
-                            Book A Car
-                            <img src="assets/images/icons/icon_01.png" alt="icon_not_found">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="thumbnail_carousel_nav" data-aos="fade-up" data-aos-delay="100">
-            <div class="item">
-                <img src="assets/images/gallery/child_01.jpg" alt="image_not_found">
-            </div>
-            <div class="item">
-                <img src="assets/images/gallery/child_02.jpg" alt="image_not_found">
-            </div>
-
-            <div class="item">
-                <img src="assets/images/gallery/child_03.jpg" alt="image_not_found">
-            </div>
-            <div class="item">
-                <img src="assets/images/gallery/child_04.jpg" alt="image_not_found">
-            </div>
-            <div class="item">
-                <img src="assets/images/gallery/child_01.jpg" alt="image_not_found">
-            </div>
-            <div class="item">
-                <img src="assets/images/gallery/child_02.jpg" alt="image_not_found">
-            </div>
-        </div>
-
-       -->
-
     </div>
 
     <div class="car_choose_content">

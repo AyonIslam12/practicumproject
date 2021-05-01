@@ -23,7 +23,7 @@ class BookingController extends Controller
                 'to_date' => 'required|after:from_date|date',
             ]);
 
-
+            $booking_transction = rand(12345678921,12345678912);
             $car = Car::find($request->car_id);
             //DaysCalulation
             $daysCalculation = strtotime($request->to_date)-strtotime($request->from_date);
@@ -47,11 +47,12 @@ class BookingController extends Controller
                $booking = Booking::create([
                     'car_id' => $request->car_id,
                     'user_id' => auth()->user()->id,
+                    'booking_transaction_id' =>$booking_transction,
                     'from_date' => $request->from_date,
                     'to_date' => $request->to_date,
                     'details' =>  $request->details,
                     'price_per_day' => $car->price_per_day,
-                    'total_price' => $car->price_per_day * $daysCalculation,
+                    'total_price' => ($car->price_per_day * $daysCalculation) - $car->discount_offer ,
 
                 ]);
                 Mail::to(auth()->user()->email)->send(new BokkingNotification($booking));

@@ -58,6 +58,11 @@ car-create
                  @error('price_per_day') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
+                <label for="discount_offer"><span class="text-light">Disscount Amount</span></label>
+                <input type="text" class="form-control" id="discount_offer" name="discount_offer" value="{{ old('discount_offer') }}"  placeholder="Enter Car Discount Amount If Have">
+
+            </div>
+            <div class="form-group">
                 <label for="air_condition"><span class="text-light">Air Condition</span></label>
                 <input type="number" class="form-control" id="air_condition" name="air_condition" value="{{ old('air_condition') }}"  placeholder="Enter(1) if have Air Condition">
 

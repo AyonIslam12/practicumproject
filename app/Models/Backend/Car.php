@@ -14,6 +14,7 @@ class Car extends Model
         'model',
         'model_year',
         'price_per_day',
+        'discount_offer',
         'color',
         'air_condition',
         'power_deadlock',

@@ -49,16 +49,7 @@
 
                 </ul>
             </li>
-            <li class="sub-menu">
-                <a href="javascript:;"  class="{{ request()->is('admin/offer/lists') ? 'active' : '' }}">
-                    <i class="fab fa-discourse"></i>
-                    <span>Offers</span>
-                </a>
-                <ul class="sub">
-                    <li class="{{ request()->is('admin/offer/lists')? 'active' : '' }}"><a  href="{{ route('admin.offer.manage') }}">Manage Offers</a></li>
-                    <li><a  href="boxed_page.html">Add Offers</a></li>
-                </ul>
-            </li>
+
             <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fas fa-car-crash"></i>
