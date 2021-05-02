@@ -5,11 +5,15 @@ use App\Http\Controllers\Backend\BookingController;
 use App\Http\Controllers\Backend\CarBrandController;
 use App\Http\Controllers\Backend\CarController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\CustomerMessageController;
 use App\Http\Controllers\Backend\DriverController;
+use App\Http\Controllers\Backend\InsuranceController;
 use App\Http\Controllers\Backend\OfferController;
+use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\UserController as BackendUserController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\CarController as FrontendCarController;
+use App\Http\Controllers\Frontend\CustomerMessage;
 use App\Http\Controllers\Frontend\SiteController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\UserProfile;
@@ -50,13 +54,18 @@ Route::group(['middleware' => 'auth'],function () {
     Route::get('/car/booking/{id}',[ FrontendBookingController::class,'showBookinfForm'])->name('car.booking.form');
     Route::post('/car/booking',[ FrontendBookingController::class,'booking'])->name('car.booking');
 
-
     //UserProfile
     Route::get('/user/profile',[UserProfile::class,'index'])->name('user.profile.home');
-   // Route::get('/user/update/password/{id}',[UserProfile::class,'updatePassword'])->name('user.update.password');
+    Route::get('/user/password/edit/{id}',[UserProfile::class,'editPassword'])->name('user.edit.password');
+    Route::Post('/user/update/password/{id}',[UserProfile::class,'updatePassword'])->name('user.update.password');
     Route::get('/user/profile/edit/{id}',[UserProfile::class,'profileEdit'])->name('user.profile.edit');
     Route::put('/userprofile/update/{id}',[UserProfile::class,'profileUpdate'])->name('user.profile.update');
     Route::get('/user/booking/history',[UserProfile::class,'bookingHistory'])->name('user.booking.history');
+    Route::get('/user/testimonials',[UserProfile::class,'showTestimonials'])->name('user.testimonials.show');
+    Route::post('/user/testimonials/post',[UserProfile::class,'postTestimonials'])->name('user.testimonials.post');
+
+    //User Message
+    Route::post('/user/message',[CustomerMessage::class,'sendMessage'])->name('user.message');
     });
     //Car Single And Multipule View Routes
 Route::prefix('/car')->name('car.')->group(function(){
@@ -131,6 +140,28 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::get('/lists',[BackendUserController::class,'index'])->name('list');
             Route::get('/delete/{id}',[BackendUserController::class,'delete'])->name('delete');
 
+        });
+        //Insurance Manage Route Group
+        Route::prefix('insurance')->name('insurance.')->group(function (){
+            Route::get('/lists',[InsuranceController::class,'index'])->name('list');
+            Route::get('/create',[InsuranceController::class,'create'])->name('create');
+            Route::post('/store',[InsuranceController::class,'store'])->name('store');
+            Route::get('/show/{id}',[InsuranceController::class,'show'])->name('show');
+            Route::get('/edit/{id}',[InsuranceController::class,'edit'])->name('edit');
+            Route::put('/update/{id}',[InsuranceController::class,'update'])->name('update');
+            Route::get('/delete/{id}',[InsuranceController::class,'delete'])->name('delete');
+
+        });
+        //customerMessage Manage Route Group
+        Route::prefix('customerMessage')->name('customerMessage.')->group(function (){
+            Route::get('/lists',[CustomerMessageController::class,'index'])->name('list');
+            Route::get('/show/{id}',[CustomerMessageController::class,'show'])->name('show');
+            Route::get('/delete/{id}',[CustomerMessageController::class,'delete'])->name('delete');
+        });
+        //Testiminials Manage Route Group
+        Route::prefix('testimonials')->name('testimonials.')->group(function (){
+            Route::get('/lists',[TestimonialController::class,'index'])->name('list');
+            Route::get('/delete/{id}',[TestimonialController::class,'dedele'])->name('delete');
         });
 
     });

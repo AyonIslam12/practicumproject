@@ -14,7 +14,7 @@ booking-single-view
               <p class="text-light">Booking Single Info.</p>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped text-justify">
                     <tr>
                         <th scope="col">Car Name</th>
                         <td>{{ $booking->bookingCar->name}}</td>
@@ -36,6 +36,14 @@ booking-single-view
                     <tr>
                         <th scope="col">Price/Day</th>
                         <td>{{ $booking->price_per_day }} BDT</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Car Disscount Amount</th>
+                        <td>{{ $booking->bookingCar->discount_offer.'.00' }} BDT</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Insurance Fee</th>
+                        <td>{{ $booking->insurance_fee.'.00' }} BDT</td>
                     </tr>
                     <tr>
                         <th scope="col">Total</th>

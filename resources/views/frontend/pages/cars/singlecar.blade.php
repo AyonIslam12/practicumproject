@@ -246,104 +246,10 @@ Car-Single-View
         </div>
     </div>
 
-            <hr data-aos="fade-up" data-aos-delay="100">
-            <div class="testimonial_contants_wrap">
-                <h3 class="item_title mb_30" data-aos="fade-up" data-aos-delay="100">Recent Reviews:</h3>
-                <div class="testimonial_item clearfix">
-                    <div class="admin_info_wrap clearfix" data-aos="fade-up" data-aos-delay="200">
-                        <div class="admin_image">
-                            <img src="{{ asset('frontend/assets/images/meta/img_01.png') }}" alt="image_not_found">
-                        </div>
-                        <div class="admin_content">
-                            <h4 class="admin_name">Donovan Nordtrom</h4>
-                            <ul class="rating_star ul_li clearfix">
-                                <li class="active"><i class="fas fa-star"></i>
-                                </li>
-                                <li class="active">
-                                    <i class="fas fa-star">	</i>
+<hr data-aos="fade-up" data-aos-delay="100">
 
-                            </li>
-                            <li class="active">
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li class="active">
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="mb-0" data-aos="fade-up" data-aos-delay="300">
-                    “Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
-                </p>
 
-    <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="review_image" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{ asset('frontend/assets/images/testimonial/img_10.jpg') }}" alt="image_not_found">
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="review_image" data-aos="fade-up" data-aos-delay="200">
-            <img src="{{ asset('frontend/assets/images/testimonial/img_11.jpg') }}" alt="image_not_found">
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="review_image" data-aos="fade-up" data-aos-delay="300">
-            <img src="{{ asset('frontend/assets/images/testimonial/img_12.jpg') }}" alt="image_not_found">
-        </div>
-    </div>
-</div>
-</div>
-</div>
 
-<div class="links_erap clearfix">
-<div class="row align-items-center justify-content-lg-between">
-    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-        <div class="abtn_wrap clearfix" data-aos="fade-up" data-aos-delay="100">
-            <a class="text_btn text-uppercase" href="#!">
-                <span>View All Reviews</span>
-                <img src="{{ asset('frontend/assets/images/icons/icon_02.png') }}" alt="icon_not_found">
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-        <ul class="primary_social_links ul_li_right clearfix" data-aos="fade-up" data-aos-delay="200">
-            <li>
-                <span class="social_list_title">Follow Us:</span>
-            </li>
-            <li>
-                <a href="#!">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    <i class="fab fa-youtube">
-
-                    </i>
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#!"><i class="fas fa-envelope"></i>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-</div>
 </div>
 </div>
 </div>

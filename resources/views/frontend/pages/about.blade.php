@@ -47,7 +47,7 @@ About-Us
 </section>
 
 <!--Why Used-->
-<section class="service_section sec_ptb_150 pb-0 mb_100 text-white  pb-5" data-bg-gradient="linear-gradient(0deg, #0C0C0F, #292D45)">
+<section class="service_section sec_ptb_150 pb-0 mb-3 text-white  pb-5" data-bg-gradient="linear-gradient(0deg, #0C0C0F, #292D45)">
 	<div class="container">
 		<div class="section_title mb_30 text-center" data-aos="fade-up" data-aos-delay="100">
 			<h2 class="title_text text-white mb-0">
@@ -117,114 +117,8 @@ About-Us
 </section>
 
 <!-- Recent Review-->
-<hr class="m-0" data-aos="fade-up" data-aos-delay="100">
 
-<section class="testimonial_section sec_ptb_150 clearfix">
-	<div class="container">
-		<div class="section_title mb_60 text-center" data-aos="fade-up" data-aos-delay="100">
-			<h2 class="title_text mb-0">
-				<span>What Clients Say about Us</span>
-			</h2>
-		</div>
-		<div class="testimonial_carousel_wrap position-relative">
-			<div class="testimonial_carousel" data-slick='{"dots": false}' data-aos="fade-up" data-aos-delay="300">
-				<div class="item">
-					<div class="testimonial_item2 text-center">
-						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
-						</p>
-						<div class="admin_info">
-							<div class="admin_image">
-								<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
-							</div>
-							<h4 class="admin_name">Marianna Frazoni</h4>
-							<ul class="rating_star ul_li_center clearfix">
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li>
-									<i class="fas fa-star"></i>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="testimonial_item2 text-center">
-						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
-						</p>
-						<div class="admin_info">
-							<div class="admin_image">
-								<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
-							</div>
-							<h4 class="admin_name">Marianna Frazoni</h4>
-							<ul class="rating_star ul_li_center clearfix">
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active"><i class="fas fa-star"></i>
-								</li>
-								<li class="active"><i class="fas fa-star"></i>
-								</li>
-								<li>
-									<i class="fas fa-star"></i>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="testimonial_item2 text-center">
-						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
-						</p>
 
-						<div class="admin_info"><div class="admin_image">
-							<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
-						</div>
-						<h4 class="admin_name">Marianna Frazoni</h4>
-						<ul class="rating_star ul_li_center clearfix">
-							<li class="active"><i class="fas fa-star">
 
-							</i>
-						</li>
-						<li class="active">
-							<i class="fas fa-star"></i>
-						</li>
-						<li class="active">
-							<i class="fas fa-star"></i>
-						</li>
-						<li class="active">
-							<i class="fas fa-star"></i>
-						</li>
-						<li>
-							<i class="fas fa-star"></i>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="carousel_nav position_ycenter">
-		<button type="button" class="ts_left_arrow">
-			<i class="fal fa-angle-left"></i>
-		</button>
-		<button type="button" class="ts_right_arrow">
-			<i class="fal fa-angle-right"></i>
-		</button>
-	</div>
-</div>
-</div>
-</section>
 
 @endsection

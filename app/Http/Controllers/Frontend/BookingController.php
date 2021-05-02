@@ -8,22 +8,30 @@ use Illuminate\Http\Request;
 use App\Models\Backend\Booking;
 use App\Mail\BokkingNotification;
 use App\Http\Controllers\Controller;
+use App\Models\Insurance;
 use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
     public function showBookinfForm ($id){
         $car = Car::find($id);
-        return view('frontend.pages.cars.booking.carBooking',\compact('car'));
+        $insurances = Insurance::all();
+
+        return view('frontend.pages.cars.booking.carBooking',\compact('car','insurances'));
         }
 
         public function booking(Request $request){
-            $request->validate([
+
+
+             $request->validate([
                 'from_date' => 'required|date',
                 'to_date' => 'required|after:from_date|date',
+
             ]);
 
-            $booking_transction = rand(12345678921,12345678912);
+            $insurance = Insurance::find($request->insurance_id) ;
+            $insuranQuery = $insurance->insurance_fee ?? 0;
+
             $car = Car::find($request->car_id);
             //DaysCalulation
             $daysCalculation = strtotime($request->to_date)-strtotime($request->from_date);
@@ -46,18 +54,20 @@ class BookingController extends Controller
              if ($checkBook->count() == 0){
                $booking = Booking::create([
                     'car_id' => $request->car_id,
+                    'insurance_id' => $request->insurance_id,
                     'user_id' => auth()->user()->id,
-                    'booking_transaction_id' =>$booking_transction,
                     'from_date' => $request->from_date,
                     'to_date' => $request->to_date,
                     'details' =>  $request->details,
                     'price_per_day' => $car->price_per_day,
-                    'total_price' => ($car->price_per_day * $daysCalculation) - $car->discount_offer ,
+                    'insurance_fee' => $insuranQuery,
+                    'total_price' => (($car->price_per_day * $daysCalculation) - $car->discount_offer) + $insuranQuery ,
 
                 ]);
                 Mail::to(auth()->user()->email)->send(new BokkingNotification($booking));
+
                 session()->flash('type','success');
-                session()->flash('message','Your Booking is Successful.!!!');
+                session()->flash('message','Your Booking is Successful.You will get message in your E-mail');
                return redirect()->back();
              }else{
                 session()->flash('type','danger');

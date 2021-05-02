@@ -85,15 +85,21 @@ Car-Booking
 		<div data-aos="fade-up" data-aos-delay="100">
 			<a class="terms_condition" href="#!"><i class="fas fa-info-circle mr-1">
 
-			</i> You must be at least 21 years old to rent this car. Collision Damage Waiver (CDW)</a>
+			</i> You can get insurance for 'Medical Expenses'. If want it,Then Select below checkbox </a>
 		</div>
 		<hr data-aos="fade-up" data-aos-delay="200">
 		<div class="row align-items-center justify-content-lg-between">
 			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
-				<a class="bonus_program" href="#!"><i class="far fa-angle-left mr-1"></i> Bonus Program</a>
-				<div class="checkbox_input mb-0">
-					<label for="accept">
-						<input type="checkbox" id="accept"> I accept all information and Payments etc
+				<a class="bonus_program" href="#!"><i class="far fa-angle-left mr-1"></i>Insurance </a>
+				<div class="checkbox_input mb-0 form-group">
+
+					<label for="insurance_id">
+                        @foreach($insurances as $key => $value)
+
+
+						<input type="checkbox" class="form-control @error('insurance_id') is-invalid @enderror" id="insurance_id" name="insurance_id" value="{{ $value->id }}"> {{ $value->name }}
+                        @error('insurance_id') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
+                        @endforeach
 					</label>
 				</div>
 			</div>

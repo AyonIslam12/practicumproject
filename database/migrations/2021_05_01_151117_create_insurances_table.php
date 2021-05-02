@@ -17,9 +17,9 @@ class CreateInsurancesTable extends Migration
             $table->id();
             $table->string('name',100);
             $table->string('company_name',100);
-            $table->text('coverage');
             $table->double('insurance_fee','10','2')->default('0.0');
-            $table->double('amount','10','2')->default('0.0');
+            $table->longtext('coverage');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

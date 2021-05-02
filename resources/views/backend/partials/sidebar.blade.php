@@ -10,7 +10,7 @@
             </li>
 
             <li class="sub-menu">
-                <a href="javascript:;"   class="{{ request()->is('admin/booking/list') ? 'active' : '' }}">
+                <a href="javascript:;"   class="{{ request()->is('admin/user/lists') ? 'active' : '' }}">
                     <i class="fa fa-user"></i>
                     <span>Users</span>
                 </a>
@@ -19,7 +19,7 @@
                 </ul>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;"   class="{{ request()->is('admin/user/lists') ? 'active' : '' }}">
+                <a href="javascript:;"   class="{{ request()->is('admin/booking/list') ? 'active' : '' }}">
                     <i class="fa fa-book"></i>
                     <span>Booking</span>
                 </a>
@@ -34,8 +34,7 @@
                 </a>
                 <ul class="sub">
                     <li  class="{{ request()->is('admin/car/brand') ? 'active' : '' }}"><a  href="{{ route('admin.car.brand.manage') }}">Car Brand</a></li>
-                    <li  class="{{ request()->is('admin/car/lists') ? 'active' : '' }}"><a  href="{{ route('admin.car.manage') }}">Car List</a></li>
-                    <li><a  href="#">Add Car</a></li>
+                    <li  class="{{ request()->is('admin/car/lists') ? 'active' : '' }}"><a  href="{{ route('admin.car.manage') }}">Car Manage</a></li>
                 </ul>
             </li>
 
@@ -46,18 +45,16 @@
                 </a>
                 <ul class="sub">
                     <li class="{{ request()->is('admin/driver/lists') ? 'active' : ''}}"><a  href="{{ route('admin.driver.list') }}">Manage Drivers</a></li>
-
                 </ul>
             </li>
 
             <li class="sub-menu">
-                <a href="javascript:;" >
-                    <i class="fas fa-car-crash"></i>
+                <a href="javascript:;"class="{{ request()->is('admin/insurance/lists') ? 'active' : ''}}" >
+                    <i class="fas fa-car-crash" ></i>
                     <span>Insurance</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Manage Insurance</a></li>
-                    <li><a  href="boxed_page.html">Add Insurance</a></li>
+                    <li class="{{ request()->is('admin/insurance/lists') ? 'active' : ''}}"><a  href="{{ route('admin.insurance.list') }}">Manage Insurance</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
@@ -67,7 +64,24 @@
                 </a>
                 <ul class="sub">
                     <li><a  href="">Manage Payments</a></li>
-                    <li><a  href="">Add Payment</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="{{ request()->is('admin/customerMessage/lists') ? 'active' : ''}}" >
+                    <i class="fas fa-id-card"></i></i>
+                    <span>Customer Message</span>
+                </a>
+                <ul class="sub">
+                    <li class="{{ request()->is('admin/customerMessage/lists') ? 'active' : ''}}"><a  href="{{ route('admin.customerMessage.list') }}">Manage Message</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;"  class="{{ request()->is('admin/testimonials/lists') ? 'active' : ''}}">
+                    <i class="fas fa-cloud"></i></i>
+                    <span>Testimonials</span>
+                </a>
+                <ul class="sub">
+                    <li class="{{ request()->is('admin/testimonials/lists') ? 'active' : ''}}"><a  href="{{ route('admin.testimonials.list') }}">Manage Testimonials</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
@@ -77,7 +91,6 @@
                 </a>
                 <ul class="sub">
                     <li><a  href="">Manage Reports</a></li>
-                    <li><a  href="">Add Report</a></li>
                 </ul>
             </li>
 

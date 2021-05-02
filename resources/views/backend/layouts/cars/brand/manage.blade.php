@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-car-list
+brand-list
 @endsection
 
 

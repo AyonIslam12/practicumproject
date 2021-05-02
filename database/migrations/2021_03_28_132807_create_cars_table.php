@@ -20,7 +20,7 @@ class CreateCarsTable extends Migration
             $table->string('model',50);
             $table->date('model_year')->nullable();
             $table->double('price_per_day','10','2')->default('0.0');
-            $table->double('discount_offer','10','2')->nullable();
+            $table->double('discount_offer','10','2')->default(0.0);
             $table->text('image')->nullable();
             $table->string('color',20)->nullable();
             $table->integer('air_condition')->nullable();

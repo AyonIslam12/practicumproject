@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Booking;
+use App\Models\Testimonial;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,12 +14,16 @@ class UserProfile extends Controller
     public function index(){
         return view('frontend.pages.profile.home');
     }
+
+
     public function profileEdit($id){
-        $userEdit = User::find($id);
+        $userEdit = User::find(\auth()->user()->id);
         return \view('frontend.pages.profile.edit',\compact('userEdit'));
     }
+
+
     public function profileUpdate(Request $request,$id){
-        $user = User::find($id);
+        $user = User::find(\auth()->user()->id);
         if (!$user) return redirect()->back();
 
         $request->validate([
@@ -63,14 +68,56 @@ class UserProfile extends Controller
 
     }
 
-   /*  public function updatePassword($id){
+    public function editPassword($id){
+
+
+      return \view('frontend.pages.profile.editPassword');
+
+    }
+    public function updatePassword($id){
         $updatePassword = User::find($id);
       return \view('frontend.pages.profile.updatePassword',\compact('updatePassword'));
 
-    } */
+    }
 
     public function bookingHistory(){
         $bookingHistory = Booking::with('bookingCar')->where('user_id',auth()->user()->id)->get();
       return view('frontend.pages.profile.bookingHistory',\compact('bookingHistory'));
     }
+
+    //Testimonials
+    public function showTestimonials(){
+        $posts = Testimonial::where('user_id', '=' , \auth()->user()->id)->get();
+
+
+      return \view('frontend.pages.profile.testimonials',\compact('posts'));
+    }
+
+    public function postTestimonials(Request $request){
+
+        $request->validate([
+            'message' => 'required',
+            'postdate' => 'required|date',
+
+        ]);
+
+
+        try{
+            Testimonial::create([
+                'user_id' => \auth()->user()->id,
+                'message' => $request->message,
+                'postdate' => $request->postdate,
+
+            ]);
+            session()->flash('type', 'success');
+            session()->flash('message','You Post Successfully.');
+
+
+        }catch(Exception $e){
+            session()->flash('type', 'danger');
+            session()->flash('message', $e->getMessage());
+            return \redirect()->route('website.user.testimonials.show');
+     }
+      return \redirect()->route('website.user.testimonials.show');
+}
 }

@@ -10,18 +10,13 @@
 
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <h1 class="page_title text-white pt-5">Update Your Password</h1>
+            <h1 class="page_title text-white pt-5">Change Your Password</h1>
         </div>
     </div>
     <div class="breadcrumb_nav clearfix" data-bg-color="#F2F2F2">
 
     </div>
 </section>
-
-
-
-
-
 
 <section class="account_section sec_ptb_100 clearfix">
     <div class="container">
@@ -30,23 +25,29 @@
             <div class="account_tabs_menu clearfix" data-bg-color="#F2F2F2" data-aos="fade-up" data-aos-delay="100">
                 <h3 class="list_title mb_15 text-center">Your Profile</h3>
                 <ul class="ul_li_block nav" role="tablist">
-                    <li>
-                        <a href="{{ route('website.user.profile.home') }}" class="user_thumbnail pb-5">
-                            <img width="150px" class="rounded-circle m-auto" src="{{ asset('uploads/users/'.auth()->user()->image)}}" alt="thumbnail_not_found">
-                        </a>
-                        <a class="active" href="{{ route('website.user.profile.home') }}">
-                            <i class="fas fa-user"></i>
-                           {{ auth()->user()->name }}
-                        </a>
-                    </li>
-                    <li>
+                <li>
+                    <a href="{{ route('website.user.profile.home') }}" class="user_thumbnail pb-5">
+                        <img width="150px" class="rounded-circle m-auto" src="{{ asset('uploads/users/'.auth()->user()->image)}}" alt="thumbnail_not_found">
+                    </a>
+                    <a class="active" href="{{ route('website.user.profile.home') }}">
+                        <i class="fas fa-user"></i>
+                        {{ auth()->user()->name }}
+                    </a>
+                </li>
+                <li>
                         <a  href="{{ route('website.user.booking.history') }}">
                             <i class="fas fa-file-alt"></i>
                         Booking History
                     </a>
                 </li>
-                    <li>
-                        <a class="{{ request()->is('user/update/password/'.$updatePassword->id) ? 'active' : '' }}" href="{{ route('website.user.update.password',$updatePassword->id ) }}">
+                <li>
+                    <a class="{{ request()->is('user/testimonials') ? 'active' : '' }}" href="{{ route('website.user.testimonials.show') }}">
+                        <i class="fas fa-file-alt"></i>
+                    My Testimonials
+                </a>
+             </li>
+                <li>
+                    <a class="{{ request()->is('user/password/edit/'.auth()->user()->id) ? 'active' : '' }}" href="{{ route( 'website.user.edit.password',auth()->user()->id) }}">
                             <i class="fas fa-file-alt"></i>
                        Change Password
                     </a>
@@ -101,7 +102,7 @@
 
 
                     <div class="card-footer bg-info text-right">
-                        <a href="{{ route('website.user.profile.home') }}" class="btn btn-secondary text-light" data-bs-dismiss="modal">Back</a>
+
                         <button type="submit"  class="btn btn-secondary">Change Password</button>
                     </div>
 

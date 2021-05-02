@@ -55,6 +55,8 @@
 <script src="{{ asset('frontend/assets/js/mCustomScrollbar.js')}}"></script>
 <script src="{{ asset('frontend/assets/js/custom.js')}}"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3VBLFRFMN"></script>
+
+@stack('js')
 <script>
 	function gtag()
 

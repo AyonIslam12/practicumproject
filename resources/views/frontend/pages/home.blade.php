@@ -7,17 +7,18 @@ Car-Home
 
 
 @section('content')
-
-
-
 <section class="slider_section text-white text-center position-relative clearfix">
 	<div class="main_slider clearfix">
-		<div class="item has_overlay d-flex align-items-center" data-bg-image="{{asset('frontend/assets/images/backgrounds/bg_02.jpg')}}"><div class="overlay">
+		<div class="item has_overlay d-flex align-items-center" data-bg-image="{{asset('frontend/assets/images/backgrounds/bg_02.jpg')}}">
+        <div class="overlay">
 		</div>
-		<div class="container"><div class="row justify-content-center"><div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+	<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 			<div class="slider_content text-center">
-				<h3 class="text-white text-uppercase" data-animation="fadeInUp" data-delay=".3s">Lamborghini Aventador LP700-4</h3>
-				<p data-animation="fadeInUp" data-delay=".5s">6.6L V8 32V DDI OHV Turbo Diesel, 5-Speed Automatic, Fuel Type: Diesel, Color: Black
+				<h3 class="text-white text-uppercase" data-animation="fadeInUp" data-delay=".3s">Sarkar Car Rental Website</h3>
+				<p data-animation="fadeInUp" data-delay=".5s">
+                   ...Choose Your Favorite Car...
 				</p>
 				<div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">
 					<a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Book Now
@@ -29,65 +30,14 @@ Car-Home
 	</div>
 </div>
 </div>
-<div class="item has_overlay d-flex align-items-center" data-bg-image="{{asset('frontend/assets/images/backgrounds/bg_02.jpg')}}">
-	<div class="overlay">
-
-	</div>
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-				<div class="slider_content text-center">
-					<h3 class="text-white text-uppercase" data-animation="fadeInUp" data-delay=".3s">Lamborghini Aventador LP700-4</h3>
-					<p data-animation="fadeInUp" data-delay=".5s">6.6L V8 32V DDI OHV Turbo Diesel, 5-Speed Automatic, Fuel Type: Diesel, Color: Black
-					</p>
-					<div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">
-						<a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Book Now
-							<img src="{{ asset('frontend/assets/images/icons/icon_01.png')}}" alt="icon_not_found">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
-<div class="item has_overlay d-flex align-items-center" data-bg-image="{{asset('frontend/assets/images/backgrounds/bg_02.jpg')}}">
-	<div class="overlay">
-	</div>
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-				<div class="slider_content text-center">
-					<h3 class="text-white text-uppercase" data-animation="fadeInUp" data-delay=".3s">Lamborghini Aventador LP700-4</h3>
-					<p data-animation="fadeInUp" data-delay=".5s">6.6L V8 32V DDI OHV Turbo Diesel, 5-Speed Automatic, Fuel Type: Diesel, Color: Black
-					</p>
-					<div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">
-						<a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Book Now
-							<img src="{{ asset('frontend/assets/images/icons/icon_01.png')}}" alt="icon_not_found">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-
-<div class="carousel_nav clearfix">
-	<button type="button" class="main_left_arrow">
-		<i class="fal fa-chevron-left">
-		</i>
-	</button>
-	<button type="button" class="main_right_arrow">
-		<i class="fal fa-chevron-right"></i>
-	</button>
-</div>
-
 </section>
 
 
 
 <section class="feature_section sec_ptb_150 clearfix">
-	<div class="container"><div class="row justify-content-center">
+	<div class="container">
+        <div class="row justify-content-center">
 		<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
 			<div class="section_title mb_60 text-center" data-aos="fade-up" data-aos-delay="100">
 				<h2 class="title_text mb_15">
@@ -237,122 +187,6 @@ Car-Home
 </section>
 
 
-<section class="service_section sec_ptb_150 pb-0 mb_100 text-white clearfix" data-bg-gradient="linear-gradient(0deg, #0C0C0F, #292D45)">
-	<div class="container">
-		<div class="section_title mb_30 text-center" data-aos="fade-up" data-aos-delay="100">
-			<h2 class="title_text text-white mb-0">
-				<span>Why Usd</span>
-			</h2>
-		</div>
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-				<div class="service_primary text-center text-white" data-aos="fade-up" data-aos-delay="100">
-					<div class="item_icon"><i class="far fa-shield-alt"></i>
-					</div>
-					<h3 class="item_title text-white">Secured Payment Guarantee</h3>
-					<p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-				<div class="service_primary text-center text-white" data-aos="fade-up" data-aos-delay="300">
-					<div class="item_icon">
-						<i class="fal fa-headset"></i>
-					</div>
-					<h3 class="item_title text-white">Help Center & Support 24/7</h3>
-					<p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-				<div class="service_primary text-center text-white" data-aos="fade-up" data-aos-delay="500">
-					<div class="item_icon">
-						<i class="far fa-shield-alt"></i>
-
-					</div>
-					<h3 class="item_title text-white">Booking any Class Vehicles</h3>
-					<p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-				<div class="service_primary text-center text-white" data-aos="fade-up" data-aos-delay="100">
-					<div class="item_icon">
-						<i class="fas fa-briefcase"></i>
-					</div>
-
-					<h3 class="item_title text-white">Corporate and Business Services</h3>
-					<p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-				<div class="service_primary text-center text-white" data-aos="fade-up" data-aos-delay="300">
-					<div class="item_icon">
-						<i class="fas fa-user-plus"></i>
-					</div>
-					<h3 class="item_title text-white">Car Sharing Options</h3>
-					<p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
-
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-				<div class="service_primary text-center text-white" data-aos="fade-up" data-aos-delay="500">
-					<div class="item_icon">
-						<i class="fas fa-gem"></i>
-					</div>
-					<h3 class="item_title text-white">Limousine and Chauffeur Hire</h3>
-					<p class="mb-0">Vestibulum at ultrices elit. Maecenas faucibus vulputate vestibulum</p>
-				</div>
-			</div>
-		</div>
-		<div class="feature_carousel_wrap position-relative clearfix">
-			<div class="slideshow1_slider" data-aos="fade-up" data-aos-delay="100">
-				<div class="item">
-					<div class="feature_fullimage">
-						<img src="{{asset('frontend/assets/images/feature/img_07.jpg')}}" alt="image_not_found">
-						<div class="item_content text-white">
-							<span class="item_price bg_default_blue">$670/Day</span>
-							<h3 class="item_title text-white">2017 Shevrolet Corvette C7 Stingray</h3>
-							<a class="text_btn text-uppercase" href="#!">
-								<span>Kook A Car</span>
-								<img src="{{ asset('frontend/assets/images/icons/icon_02.png')}}" alt="icon_not_found">
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="feature_fullimage">
-						<img src="{{asset('frontend/assets/images/feature/img_07.jpg')}}" alt="image_not_found">
-						<div class="item_content text-white">
-							<span class="item_price bg_default_blue">$670/Day</span>
-							<h3 class="item_title text-white">2017 Shevrolet Corvette C7 Stingray</h3>
-							<a class="text_btn text-uppercase" href="#!"><span>Kook A Car</span>
-								<img src="{{ asset('frontend/assets/images/icons/icon_02.png')}}" alt="icon_not_found"></a>
-							</div>
-						</div>
-					</div>
-					<div class="item"><div class="feature_fullimage">
-						<img src="{{asset('frontend/assets/images/feature/img_07.jpg')}}" alt="image_not_found">
-						<div class="item_content text-white">
-							<span class="item_price bg_default_blue">$670/Day</span>
-							<h3 class="item_title text-white">2017 Shevrolet Corvette C7 Stingray</h3>
-							<a class="text_btn text-uppercase" href="#!">
-								<span>Kook A Car</span>
-								<img src="{{ asset('frontend/assets/images/icons/icon_02.png')}}" alt="icon_not_found">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel_nav">
-				<button type="button" class="s1_left_arrow">
-					<i class="fal fa-angle-left"></i>
-				</button>
-				<button type="button" class="s1_right_arrow">
-					<i class="fal fa-angle-right"></i>
-				</button>
-
-			</div>
-		</div>
-	</div>
-</section>
 
 
 <hr class="m-0" data-aos="fade-up" data-aos-delay="100">
@@ -366,92 +200,25 @@ Car-Home
 		</div>
 		<div class="testimonial_carousel_wrap position-relative">
 			<div class="testimonial_carousel" data-slick='{"dots": false}' data-aos="fade-up" data-aos-delay="300">
-				<div class="item">
+				@foreach ($results as $result )
+
+
+                <div class="item @if($loop->first)active @endif">
 					<div class="testimonial_item2 text-center">
-						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
-						</p>
+						<p class="mb_30">{{ $result->message }}</p>
 						<div class="admin_info">
 							<div class="admin_image">
-								<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
+								<img src="{{ asset('uploads/users/'.auth()->user()->image)}}" alt="image_not_found">
 							</div>
-							<h4 class="admin_name">Marianna Frazoni</h4>
-							<ul class="rating_star ul_li_center clearfix">
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li>
-									<i class="fas fa-star"></i>
-								</li>
-							</ul>
+							<h4 class="admin_name">{{ auth()->user()->name }}</h4>
+
+
 						</div>
 					</div>
 				</div>
-				<div class="item">
-					<div class="testimonial_item2 text-center">
-						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
-						</p>
-						<div class="admin_info">
-							<div class="admin_image">
-								<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
-							</div>
-							<h4 class="admin_name">Marianna Frazoni</h4>
-							<ul class="rating_star ul_li_center clearfix">
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active">
-									<i class="fas fa-star"></i>
-								</li>
-								<li class="active"><i class="fas fa-star"></i>
-								</li>
-								<li class="active"><i class="fas fa-star"></i>
-								</li>
-								<li>
-									<i class="fas fa-star"></i>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="testimonial_item2 text-center">
-						<p class="mb_30">“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
-						</p>
+                @endforeach
 
-						<div class="admin_info"><div class="admin_image">
-							<img src="{{ asset('frontend/assets/images/meta/img_01.png')}}" alt="image_not_found">
-						</div>
-						<h4 class="admin_name">Marianna Frazoni</h4>
-						<ul class="rating_star ul_li_center clearfix">
-							<li class="active"><i class="fas fa-star">
 
-							</i>
-						</li>
-						<li class="active">
-							<i class="fas fa-star"></i>
-						</li>
-						<li class="active">
-							<i class="fas fa-star"></i>
-						</li>
-						<li class="active">
-							<i class="fas fa-star"></i>
-						</li>
-						<li>
-							<i class="fas fa-star"></i>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
 	</div>
 	<div class="carousel_nav position_ycenter">
 		<button type="button" class="ts_left_arrow">
@@ -464,6 +231,10 @@ Car-Home
 </div>
 </div>
 </section>
+
+
+
+
 </main>
 
 

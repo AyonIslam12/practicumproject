@@ -67,7 +67,7 @@
         <!--main content end-->
 
 
-    @include('backend.partials.footer')
+
 
       <!-- js placed at the end of the document so the pages load faster -->
       <script src="{{ asset('admin_assets/js/jquery.js') }}"></script>

@@ -44,6 +44,18 @@ Your-Profile
                         Booking History
                     </a>
                 </li>
+                <li>
+                        <a class="{{ request()->is('user/testimonials') ? 'active' : '' }}" href="{{ route('website.user.testimonials.show') }}">
+                            <i class="fas fa-file-alt"></i>
+                        My Testimonials
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ request()->is('user/password/edit/'.auth()->user()->id) ? 'active' : '' }}" href="{{ route( 'website.user.edit.password',auth()->user()->id) }}">
+                        <i class="fas fa-file-alt"></i>
+                   Change Password
+                </a>
+            </li>
 
                 <li>
                     <a href="{{ route('website.user.logout') }}">

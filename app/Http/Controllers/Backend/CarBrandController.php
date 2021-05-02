@@ -87,6 +87,7 @@ class CarBrandController extends Controller
        }catch(Exception $e){
         session()->flash('type', 'danger');
         session()->flash('message', $e->getMessage());
+        return \redirect()->route('admin.car.brand.manage');
        }
        return \redirect()->route('admin.car.brand.manage');
 

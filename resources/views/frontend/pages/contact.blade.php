@@ -17,6 +17,47 @@ Contact-Us
 
 </section>
 <!--main office-->
+
+
+<section class="contact_form_section sec_ptb_100 clearfix bg-dark">
+<div class="container">
+    <div class="section_title mb_60 text-center" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="title_text mb-0">
+            <span class="text-light">Send Us a Message</span>
+        </h2>
+    </div>
+    <!--Validation Message-->
+    <div class="row">
+        <div class="col-md-12">
+        @if(session('message'))
+        <div class="text-center alert alert-{{ session('type') }}">
+            <p class="text-center text-bolder">{{ session('message') }}</p>
+        </div>
+    @endif
+        </div>
+    </div>
+    <form  action="{{ route('website.user.message') }}" method="POST">
+        @csrf
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form_item" data-aos="fade-up" data-aos-delay="500">
+                    @error('message') <span class="text-warning font-weight-bold font-italic">{{ $message }}</span> @enderror
+                    <textarea name="message" placeholder="Leave Your Message" class="form-control @error('message') is-invalid @enderror" ></textarea>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="abtn_wrap text-center clearfix" data-aos="fade-up" data-aos-delay="600">
+            <button type="submit" value="submit" class="custom_btn btn_width bg_default_red text-uppercase">
+                Send a Message
+                <img src="{{ asset('frontend/assets/images/icons/icon_01.png') }}" alt="icon_not_found">
+            </button>
+        </div>
+    </form>
+</div>
+</section>
 <section class="main_office_section sec_ptb_100 clearfix">
 	<div class="container">
 		<div class="row align-items-center justify-content-lg-between justify-content-sm-center">
@@ -43,49 +84,6 @@ Contact-Us
     </div>
     </div>
     </div>
-</section>
-
-<section class="contact_form_section sec_ptb_100 clearfix bg-dark">
-<div class="container">
-    <div class="section_title mb_60 text-center" data-aos="fade-up" data-aos-delay="100">
-        <h2 class="title_text mb-0">
-            <span class="text-light">Send Us a Message</span>
-        </h2>
-    </div>
-    <form id="contact_form" action="https://html.merku.love/rotors/mail.php" method="POST">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="form_item" data-aos="fade-up" data-aos-delay="100">
-                    <input type="text" name="firstname" placeholder="First Name">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="form_item" data-aos="fade-up" data-aos-delay="200">
-                    <input type="text" name="lastname" placeholder="Last Name">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="form_item" data-aos="fade-up" data-aos-delay="300">
-                    <input type="email" name="email" placeholder="E-mail">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="form_item" data-aos="fade-up" data-aos-delay="400">
-                    <input type="tel" name="phone" placeholder="Phone Number">
-                </div>
-            </div>
-        </div>
-        <div class="form_item" data-aos="fade-up" data-aos-delay="500">
-            <textarea name="message" placeholder="Leave Your Message"></textarea>
-        </div>
-        <div class="abtn_wrap text-center clearfix" data-aos="fade-up" data-aos-delay="600">
-            <button type="submit" value="submit" class="custom_btn btn_width bg_default_red text-uppercase">
-                Send a Message
-                <img src="{{ asset('frontend/assets/images/icons/icon_01.png') }}" alt="icon_not_found">
-            </button>
-        </div>
-    </form>
-</div>
 </section>
 
 @endsection
