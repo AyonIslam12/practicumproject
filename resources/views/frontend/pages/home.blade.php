@@ -200,7 +200,7 @@ Car-Home
 		</div>
 		<div class="testimonial_carousel_wrap position-relative">
 			<div class="testimonial_carousel" data-slick='{"dots": false}' data-aos="fade-up" data-aos-delay="300">
-				@foreach ($results as $result )
+			{{-- 	@foreach ($results as $result )
 
 
                 <div class="item @if($loop->first)active @endif">
@@ -216,7 +216,7 @@ Car-Home
 						</div>
 					</div>
 				</div>
-                @endforeach
+                @endforeach --}}
 
 
 	</div>

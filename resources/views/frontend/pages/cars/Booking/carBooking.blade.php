@@ -56,25 +56,47 @@ Car-Booking
 	<div class="reservation_form">
 		<form action="{{ route('website.car.booking') }}" method="POST">
             @csrf
-			<div class="row">
-			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-				<div class="form_item" data-aos="fade-up" data-aos-delay="200">
-					<h4 class="input_title">From Date</h4>
-					<input type="hidden" name="car_id" value="{{ $car->id }}">
-					<input type="date" name="from_date"  value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}"  class="form-control @error('from_date') is-invalid @enderror">
-                    @error('from_date') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-				</div>
-			</div>
+	<div class="row">
+		<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="form_item" data-aos="fade-up" data-aos-delay="200">
+            <h4 class="input_title">From Date</h4>
+            <input type="hidden" name="car_id" value="{{ $car->id }}">
+            <input type="date" name="from_date"  value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}"  class="form-control @error('from_date') is-invalid @enderror">
+            @error('from_date') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
+        </div>
+        </div>
 
 
-				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-					<div class="form_item" data-aos="fade-up" data-aos-delay="500">
-						<h4 class="input_title">To Date</h4>
-						<input type="date" name="to_date"  value="{{ old('to_date') }}" class="form-control @error('to_date') is-invalid @enderror">
-                        @error('to_date') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-                    </div>
-					</div>
-				</div>
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div class="form_item" data-aos="fade-up" data-aos-delay="500">
+                <h4 class="input_title">To Date</h4>
+                <input type="date" name="to_date"  value="{{ old('to_date') }}" class="form-control @error('to_date') is-invalid @enderror">
+                @error('to_date') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
+            </div>
+        </div>
+</div>
+	<div class="row">
+		<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="form_item d-block"  data-aos-delay="200">
+            <h4 class="input_title">Payment Method</h4>
+            @error('payment_method') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
+            <select name="payment_method" class="form-control @error('payment_method') is-invalid @enderror">
+                <option value="bkash">Bkash</option>
+                <option value="cash">Cash</option>
+                <option value="ard">Card</option>
+            </select>
+        </div>
+        </div>
+
+
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div class="form_item" data-aos="fade-up" data-aos-delay="500">
+                <h4 class="input_title">Payment Amounts</h4>
+                <input type="number" name="amount"  value="{{ old('amount') }}" class="form-control @error('to_date') is-invalid @enderror">
+                @error('amount') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
+            </div>
+        </div>
+</div>
 
 	<hr class="mt-0" data-aos="fade-up" data-aos-delay="100">
 

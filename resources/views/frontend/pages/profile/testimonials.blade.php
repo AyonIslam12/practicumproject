@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section('title')
-Your-Profile
+Testimonials-Site
 @stop
 
 
@@ -14,7 +14,7 @@ Your-Profile
 
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <h1 class="page_title text-white pt-5">Your Booking History</h1>
+            <h1 class="page_title text-white pt-5">Your Testimonials History</h1>
         </div>
     </div>
     <div class="breadcrumb_nav clearfix" data-bg-color="#F2F2F2">
@@ -51,7 +51,7 @@ Your-Profile
                     </a>
                 </li>
                 <li>
-                    <a class="{{ request()->is('user/password/edit/'.auth()->user()->id) ? 'active' : '' }}" href="{{ route( 'website.user.edit.password',auth()->user()->id) }}">
+                    <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
                         <i class="fas fa-file-alt"></i>
                    Change Password
                 </a>

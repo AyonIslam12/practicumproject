@@ -1,5 +1,9 @@
 @extends('frontend.master')
 
+@section('title')
+Update-Your-Profile
+@stop
+
 
 
 @section('content')
@@ -34,17 +38,30 @@
                         <a href="{{ route('website.user.profile.home') }}" class="user_thumbnail pb-5">
                             <img width="150px" class="rounded-circle m-auto" src="{{ asset('uploads/users/'.auth()->user()->image)}}" alt="thumbnail_not_found">
                         </a>
-                        <a class="active" href="{{ route('website.user.profile.home') }}">
+                        <a class="{{ request()->is('user/profile') ? 'active' : '' }}" href="{{ route('website.user.profile.home') }}">
                             <i class="fas fa-user"></i>
                            {{ auth()->user()->name }}
                         </a>
                     </li>
                     <li>
-                        <a  href="{{ route('website.user.booking.history') }}">
+                        <a class="{{ request()->is('user/booking/history') ? 'active' : '' }}" href="{{ route('website.user.booking.history') }}">
                             <i class="fas fa-file-alt"></i>
                         Booking History
                     </a>
                 </li>
+                <li>
+                        <a class="{{ request()->is('user/testimonials') ? 'active' : '' }}" href="{{ route('website.user.testimonials.show') }}">
+                            <i class="fas fa-file-alt"></i>
+                        My Testimonials
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
+                        <i class="fas fa-file-alt"></i>
+                   Change Password
+                </a>
+            </li>
+
                 <li>
                     <a href="{{ route('website.user.logout') }}">
                         <i class="fas fa-sign-out-alt"></i>

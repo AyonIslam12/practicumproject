@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section('title')
-Your-Profile
+Booking-History
 @stop
 
 
@@ -51,7 +51,7 @@ Your-Profile
                     </a>
                 </li>
                 <li>
-                    <a class="{{ request()->is('user/password/edit/'.auth()->user()->id) ? 'active' : '' }}" href="{{ route( 'website.user.edit.password',auth()->user()->id) }}">
+                    <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
                         <i class="fas fa-file-alt"></i>
                    Change Password
                 </a>

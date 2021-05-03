@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Backend\Booking;
-use App\Models\Testimonial;
-use App\Models\User;
 use Exception;
+use Throwable;
+use App\Models\User;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use App\Rules\UpdatePassword;
+use App\Models\Backend\Booking;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserProfile extends Controller
 {
@@ -68,15 +71,35 @@ class UserProfile extends Controller
 
     }
 
-    public function editPassword($id){
-
+    public function password()
+    {
 
       return \view('frontend.pages.profile.editPassword');
 
     }
-    public function updatePassword($id){
-        $updatePassword = User::find($id);
-      return \view('frontend.pages.profile.updatePassword',\compact('updatePassword'));
+    public function updatePassword(Request $request)
+    {
+       $this->validate($request,[
+           'old_password' => ['required', new UpdatePassword()],
+           'password'=> 'required|min:6|confirmed'
+       ]);
+
+       try{
+
+           auth()->user()->update([
+                'password' => \bcrypt($request->password),
+           ]);
+
+           Auth::logout();
+           session()->flash('type','success');
+           session()->flash('message',' Your Password Updated Successfully,Please Login Again.');
+           return redirect()->route('website.user.login.form');
+
+
+       }catch(Throwable $exception){
+           return redirect()->back();
+       }
+
 
     }
 

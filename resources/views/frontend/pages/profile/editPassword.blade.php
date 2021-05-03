@@ -1,5 +1,8 @@
 @extends('frontend.master')
 
+@section('title')
+Change-Password
+@stop
 
 
 @section('content')
@@ -47,10 +50,10 @@
                 </a>
              </li>
                 <li>
-                    <a class="{{ request()->is('user/password/edit/'.auth()->user()->id) ? 'active' : '' }}" href="{{ route( 'website.user.edit.password',auth()->user()->id) }}">
-                            <i class="fas fa-file-alt"></i>
-                       Change Password
-                    </a>
+                <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
+                        <i class="fas fa-file-alt"></i>
+                   Change Password
+                </a>
                 </li>
                 <li>
                     <a href="{{ route('website.user.logout') }}">
@@ -80,16 +83,17 @@
                   <p class="text-light font-weight-bold text-center">Change Password</p>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post" >
+                    <form action="{{ route('website.user.update.password') }}" method="post" >
+                        @csrf
 
                         <div class="form-group">
                             <label for="name">Current Password</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password"   value="">
-                            @error('password') <span class="text-danger font-italic">{{ $message }}</span> @enderror
+                            <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror"  id="password"    value="">
+                            @error('old_password') <span class="text-danger font-italic">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="name">New Password</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password"   value="">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password_confirmation"   value="">
                             @error('password') <span class="text-danger font-italic">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group">

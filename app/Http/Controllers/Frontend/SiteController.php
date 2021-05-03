@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     public function index(){
-        $results = \json_decode(Testimonial::all());
+       /*  $results = \json_decode(Testimonial::all()); */
 
-        return view('frontend.pages.home',\compact('results'));
+        return view('frontend.pages.home');
     }
 
     public function about(){

@@ -56,8 +56,8 @@ Route::group(['middleware' => 'auth'],function () {
 
     //UserProfile
     Route::get('/user/profile',[UserProfile::class,'index'])->name('user.profile.home');
-    Route::get('/user/password/edit/{id}',[UserProfile::class,'editPassword'])->name('user.edit.password');
-    Route::Post('/user/update/password/{id}',[UserProfile::class,'updatePassword'])->name('user.update.password');
+    Route::get('/user/update-password',[UserProfile::class,'password'])->name('user.edit.password');
+    Route::Post('/user/update-password',[UserProfile::class,'updatePassword'])->name('user.update.password');
     Route::get('/user/profile/edit/{id}',[UserProfile::class,'profileEdit'])->name('user.profile.edit');
     Route::put('/userprofile/update/{id}',[UserProfile::class,'profileUpdate'])->name('user.profile.update');
     Route::get('/user/booking/history',[UserProfile::class,'bookingHistory'])->name('user.booking.history');

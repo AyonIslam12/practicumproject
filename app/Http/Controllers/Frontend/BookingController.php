@@ -9,7 +9,11 @@ use App\Models\Backend\Booking;
 use App\Mail\BokkingNotification;
 use App\Http\Controllers\Controller;
 use App\Models\Insurance;
+use App\Models\Payment;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class BookingController extends Controller
 {
@@ -23,9 +27,11 @@ class BookingController extends Controller
         public function booking(Request $request){
 
 
-             $request->validate([
+              $request->validate([
                 'from_date' => 'required|date',
                 'to_date' => 'required|after:from_date|date',
+                'amount'=>'required',
+                'payment_method'=>'required',
 
             ]);
 
@@ -49,31 +55,49 @@ class BookingController extends Controller
             });
 
              $checkBook = $checkBook->get();
+DB::beginTransaction();
+
+            try{
+                if ($checkBook->count() == 0){
+                    $booking = Booking::create([
+                         'car_id' => $request->car_id,
+                         'insurance_id' => $request->insurance_id,
+                         'user_id' => auth()->user()->id,
+                         'from_date' => $request->from_date,
+                         'to_date' => $request->to_date,
+                         'details' =>  $request->details,
+                         'price_per_day' => $car->price_per_day,
+                         'insurance_fee' => $insuranQuery,
+                         'total_price' => (($car->price_per_day * $daysCalculation) - $car->discount_offer) + $insuranQuery ,
+
+                     ]);
 
 
-             if ($checkBook->count() == 0){
-               $booking = Booking::create([
-                    'car_id' => $request->car_id,
-                    'insurance_id' => $request->insurance_id,
-                    'user_id' => auth()->user()->id,
-                    'from_date' => $request->from_date,
-                    'to_date' => $request->to_date,
-                    'details' =>  $request->details,
-                    'price_per_day' => $car->price_per_day,
-                    'insurance_fee' => $insuranQuery,
-                    'total_price' => (($car->price_per_day * $daysCalculation) - $car->discount_offer) + $insuranQuery ,
+                     $payment =Payment::create([
+                         'booking_id' => $booking->id,
+                         'amount'=>$request->amount,
+                         'payment_method'=>$request->payment_method,
+                         'transaction_id' => \ucfirst(Str::random(9)),
 
-                ]);
-                Mail::to(auth()->user()->email)->send(new BokkingNotification($booking));
+                     ]);
 
-                session()->flash('type','success');
-                session()->flash('message','Your Booking is Successful.You will get message in your E-mail');
-               return redirect()->back();
-             }else{
-                session()->flash('type','danger');
-                session()->flash('message','Sorry,This Car is Already Booked, For Those Specific Days,Try Another Date .');
-               return redirect()->back();
-             }
+
+                     Mail::to(auth()->user()->email)->send(new BokkingNotification($booking));
+
+                     session()->flash('type','success');
+                     session()->flash('message','Your Booking is Successful.You will get message in your E-mail');
+                     Db::commit();
+                    return redirect()->back();
+                  }else{
+                     session()->flash('type','danger');
+                     session()->flash('message','Sorry,This Car is Already Booked, For Those Specific Days,Try Another Date .');
+                    return redirect()->back();
+                  }
+            }catch(Throwable $e){
+
+                DB::rollBack();
+                return \redirect()->back();
+            }
 
 
         }
