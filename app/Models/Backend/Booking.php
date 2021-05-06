@@ -20,6 +20,7 @@ class Booking extends Model
         'price_per_day',
         'insurance_fee',
         'total_price',
+        'due',
         'details',
         'status',
     ];

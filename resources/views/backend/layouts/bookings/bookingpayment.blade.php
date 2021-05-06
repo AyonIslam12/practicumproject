@@ -21,11 +21,11 @@ Payment-History
                 <ul style="font-size: 15px" class="list-group list-group-flush text-left  p-3">
                     <li class="text-info font-weight-bolder fx-2">Customer Name : <span class="text-dark  pl-2">{{ $booking->bookingUser->name }}</span></li>
                     <li class="text-info font-weight-bolder"> Car Name : <span class="text-dark pl-2">{{ $booking->bookingCar->name }}</span></li>
-                    {{-- <li class="text-info font-weight-bolder"> Car Image : <span class="text-dark pl-2"><img width="70px" class="img-thumbnail" src="{{asset('uploads/cars/'. $booking->bookingCar->image) }}" alt=""></span></li> --}}
+               {{-- : <span class="text-dark pl-2"><img width="70px" class="img-thumbnail" src="{{asset('uploads/cars/'. $booking->bookingCar->image) }}" alt=""></span></li> --}}
                    {{--  <li class="text-info font-weight-bolder"> Discount Amount : <span class="text-dark pl-2">{{ $booking->bookingCar->discount_offer }}.00 BDT.</span></li> --}}
                     {{-- <li class="text-info font-weight-bolder"> Insurance Fee : <span class="text-dark pl-2">{{ $booking->bookinInsurance->insurance_fee }}.00 BDT.</span></li> --}}
                     <li class="text-info font-weight-bolder"> Total Amount : <span class="text-dark pl-2">{{ $booking->total_price }}.00 BDT.</span></li>
-                    <li class="text-info font-weight-bolder"> Due Amount : <span class="text-dark pl-2">{{ $booking->total_price }}.00 BDT.</span></li>
+                    <li class="text-info font-weight-bolder"> Due Amount : <span class="text-dark pl-2">{{ $booking->due }}.00 BDT.</span></li>
 
                 </ul>
             </div>
@@ -41,26 +41,27 @@ Payment-History
       <div class="col-md-6 col-sm-12">
 
           <div class="card ">
-            <div class="card-header bg-info">
-             <h6 class="text-light text-center">Payment Form</h6>
-            </div>
-            {{-- Validate Msg --}}
+                 {{-- Validate Msg --}}
             <div class="row">
                 <div class="col-md-12">
                 @if(session('message'))
                     <div class="text-center alert alert-{{ session('type') }}">
-                    <p class="text-center text-bolder">{{ session('message') }}</p>
+                    <p class="text-center text-bolder pt-2">{{ session('message') }}</p>
                     </div>
                 @endif
                 </div>
                 </div>
+            <div class="card-header bg-info">
+             <h6 class="text-light text-center">Payment Form</h6>
+            </div>
+
             <div class="card-body">
               <form action="{{ route('admin.booking.payment.create') }}" method="post">
                     @csrf
                     <div class="form-group">
                       <label for="amount" class="text-dark">Add Payment</label>
                       <input type="hidden" name="booking_id" value="{{ $booking->id }}">
-                     <input type="text" name="amount" id="amount" value="" class="form-control" placeholder="00.00">
+                     <input type="number" name="amount" id="amount" value="" class="form-control" placeholder="00.00">
                      @error('amount') <span class="text-danger font-weight-bolder font-italic d-block">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
@@ -114,7 +115,9 @@ Payment-History
                         </tr>
                         @endforeach
                     </tbody>
+
                 </table>
+
 
             </div>
 

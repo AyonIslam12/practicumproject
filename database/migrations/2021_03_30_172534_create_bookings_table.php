@@ -23,6 +23,7 @@ class CreateBookingsTable extends Migration
             $table->double('price_per_day','10','2')->default(0.0);
             $table->string('insurance_fee','10','2')->default(0.0);
             $table->double('total_price','10','2')->default(0.0);
+            $table->double('due','10','2')->default(0.0);
             $table->text('details')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();

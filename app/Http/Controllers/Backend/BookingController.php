@@ -175,35 +175,48 @@ class BookingController extends Controller
 
         $booking = Booking::find($id);
         $payments = Payment::where('booking_id' , $id)->get();
-
-
         return view('backend.layouts.bookings.bookingpayment',\compact('booking','payments'));
     }
 
 
-     public function paymentCreate(Request $request){
+     public function paymentCreate(Request $request)
+     {
          $request->validate([
              'amount' => 'required',
-             'pay_date' => 'required',
-
-
          ]);
+
          try{
-            $pay = Payment::create([
-                 'booking_id' => $request->booking_id,
-                 'amount' => $request->amount,
-                 'payment_method' => $request->payment_method,
-                 'transaction_id' =>\ucwords(Str::random(9)),
-                 'pay_date' => $request->pay_date,
-             ]);
-            $pay->payBooking->update([
-                'total_price' => $pay->paybooking->total_price - $request->amount,
+            $booking = Booking::where('id', '=', $request->booking_id)->first();
 
-            ]) ;
 
-             session()->flash('type','success');
-             session()->flash('message','Payment Success');
-         }catch(Exception $e){
+            $amount = $request->input('amount');
+
+            $payments = Payment::where('booking_id', $booking->id)->sum('amount');
+
+
+            $totalAmount = $booking->total_price - $payments;
+
+            if( $amount >  $totalAmount || $amount == 0){
+                session()->flash('type','danger');
+                session()->flash('message',"you can not pay more then " . $booking->total_price);
+                return \redirect()->back();
+                }
+
+                $pay = Payment::create([
+                    'booking_id' => $booking->id,
+                    'amount' => $amount,
+                    'payment_method' => $request->payment_method,
+                    'transaction_id' =>\ucwords(Str::random(9)),
+                    'pay_date' => $request->pay_date,
+                ]);
+               $pay->payBooking->update([
+                   'due' => $totalAmount - $amount,
+
+               ]) ;
+
+                session()->flash('type','success');
+                session()->flash('message','Payment Success');
+           }catch(Exception $e){
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());
             return \redirect()->back();
