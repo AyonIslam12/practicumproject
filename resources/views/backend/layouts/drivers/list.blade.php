@@ -47,6 +47,7 @@ driver-list
                                 <th scope="col">Name</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">NID Number</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Address</th>
@@ -60,13 +61,15 @@ driver-list
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $driver->name }}</td>
-                                <td><img width="50px" height="50px" src="{{ asset('uploads/users/'.$driver->image) }}" alt=""></td>
+                                <td><img width="50px" height="50px" src="{{ asset('uploads/driver/'.$driver->image) }}" alt=""></td>
                                 <td>{{ $driver->email }}</td>
-                                <td>{{ $driver->role }}</td>
+                                <td>{{ $driver->nid_number }}</td>
+                                <td>{{ Str::ucfirst($driver->role) }}</td>
                                 <td>{{ '+880-'.$driver->phone }}</td>
                                 <td>{{ $driver->address }}</td>
 
                               <td class="text-center">
+                                <a class="btn btn-info btn-sm " href= "{{ route('admin.driver.show',$driver->id) }}"><i class="far fa-eye text-dark"></i></a>
                                 <a class="btn btn-success btn-sm " href= "{{ route('admin.driver.edit',$driver->id) }}"><i class="far fa-edit text-dark"></i></a>
                                 <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href= "{{ route('admin.driver.delete',$driver->id) }}"><i class="fas fa-trash text-dark"></i></a>
                             </td>
@@ -125,6 +128,11 @@ driver-list
                   <label for="phone">Contact Number</label>
                   <input type="number"class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone"  placeholder="Enter Contact Number" value="{{ old('phone') }}">
                   @error('phone') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+              </div>
+              <div class="form-group">
+                  <label for="nid_number">NID Number</label>
+                  <input type="number"class="form-control @error('nid_number') is-invalid @enderror" id="nid_number" name="nid_number"  placeholder="Enter NID Number(123*)" value="{{ old('nid_number') }}">
+                  @error('nid_number') <span class="text-danger text-italic">{{ $message }}</span>@enderror
               </div>
               <div class="form-group">
                   <label for="address">Address</label>

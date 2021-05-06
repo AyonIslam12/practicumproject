@@ -53,6 +53,12 @@ class UserController extends Controller
         return view('backend.layouts.user.list',\compact('users'));
     }
 
+    public function show($id){
+        $user = User::find($id);
+       return \view('backend.layouts.user.show',\compact('user'));
+
+    }
+
 
     public function delete($id){
         try{

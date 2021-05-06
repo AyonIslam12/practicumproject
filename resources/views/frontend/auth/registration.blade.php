@@ -63,14 +63,11 @@ User-Registration
                     <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="Phone Number*">
                     @error('phone') <span class="text-danger ">{{ $message }}</span> @enderror
                 </div>
-              {{--   <div class="form_item">
-                    <select name="role" class="form-control @error('role') is-invalid @enderror">
-                        <option value="">Select Your Role</option>
-                        <option value="customer">Customer</option>
-                        <option value="employee">Employee</option>
-                    </select>
+                <div class="form_item">
+                    <input type="number" name="nid_number" class="form-control @error('nid_number') is-invalid @enderror" value="{{ old('nid_number') }}" placeholder="NID Number(123-9)*">
+                    @error('nid_number') <span class="text-danger ">{{ $message }}</span> @enderror
+                </div>
 
-                </div> --}}
 
                 <div class="form_item">
                     <input type="password" name="password" placeholder="Password*"

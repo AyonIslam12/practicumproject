@@ -21,10 +21,17 @@
               </a>
               <ul class="dropdown-menu extended logout dropdown-menu-right">
                   <div class="log-arrow-up"></div>
-                  <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                  <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                  <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
-                  <li><a href="{{ route('admin.logout') }}"><i class="fa fa-key"></i> Log Out</a></li>
+
+                 <div class="text-center">
+                    <li >
+                        <a href="{{ route('admin.profile') }}" >
+                            <i class=" fa fa-suitcase fa-2x text-info"></i><span class="text-info" style="font-size: 15px;"> Profile</span>
+                        </a>
+                    </li>
+                 </div>
+                  <li>
+                      <a href="{{ route('admin.logout') }}"><i class="fa fa-key"></i> Log Out</a>
+                </li>
               </ul>
           </li>
 

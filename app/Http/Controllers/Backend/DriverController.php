@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Backend\Driver;
+use App\Models\Driver;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class DriverController extends Controller
      */
     public function index()
     {
-         $drivers = User::where('role', '=' ,'driver')->get();
+         $drivers = Driver::all();
         return \view('backend.layouts.drivers.list',\compact('drivers'));
     }
 
@@ -30,8 +30,9 @@ class DriverController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:4',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:drivers',
             'phone' => 'required|min:11|max:11',
+            'nid_number' => 'required|min:11|max:16|unique:drivers',
             'password' => 'required|min:6|max:16',
             'password' => 'required|min:6|max:16|confirmed',
             'address' => 'required',
@@ -43,14 +44,15 @@ class DriverController extends Controller
             $image = $request->file('image');
             if($image->isValid()){
                 $filename = date('Ymdhms').'.'.$image->getClientOriginalExtension();
-                $image->storeAs('users',$filename);
+                $image->storeAs('driver',$filename);
             }
         }
 
-        User::create([
+        Driver::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'nid_number' => $request->nid_number,
             'role' => 'driver',
             'password' =>bcrypt($request->password),
             'image' =>$filename,
@@ -69,58 +71,34 @@ class DriverController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-   /*  public function store(Request $request)
-    {
-        //
-    } */
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+        $driver = Driver::find($id);
+        return view('backend.layouts.drivers.view', \compact('driver'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        $driver = User::find($id);
+        $driver = Driver::find($id);
         if($driver)
        return view('backend.layouts.drivers.edit', \compact('driver'));
        else
        return \redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-            $driver = User::find($id);
+            $driver = Driver::find($id);
             if (!$driver) return redirect()->back();
         $request->validate([
             'name' => 'required|string|min:4',
             'email' => 'required',
             'phone' => 'required',
+            'nid_number' => 'required',
             'address' => 'required',
         ]);
         try{
@@ -141,6 +119,7 @@ class DriverController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'nid_number' => $request->nid_number,
             'image' =>$filename,
             'address' =>$request->address,
 
@@ -155,16 +134,11 @@ class DriverController extends Controller
         return redirect()->route('admin.driver.list');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         try{
-            $driver = User::find($id);
+            $driver = Driver::find($id);
             if($driver){
 
             if (file_exists(public_path('uploads/users/'.$driver->image))) {

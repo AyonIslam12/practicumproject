@@ -24,8 +24,8 @@ Payment-History
                {{-- : <span class="text-dark pl-2"><img width="70px" class="img-thumbnail" src="{{asset('uploads/cars/'. $booking->bookingCar->image) }}" alt=""></span></li> --}}
                    {{--  <li class="text-info font-weight-bolder"> Discount Amount : <span class="text-dark pl-2">{{ $booking->bookingCar->discount_offer }}.00 BDT.</span></li> --}}
                     {{-- <li class="text-info font-weight-bolder"> Insurance Fee : <span class="text-dark pl-2">{{ $booking->bookinInsurance->insurance_fee }}.00 BDT.</span></li> --}}
-                    <li class="text-info font-weight-bolder"> Total Amount : <span class="text-dark pl-2">{{ $booking->total_price }}.00 BDT.</span></li>
-                    <li class="text-info font-weight-bolder"> Due Amount : <span class="text-dark pl-2">{{ $booking->due }}.00 BDT.</span></li>
+                    <li class="text-info font-weight-bolder"> Total Amount : <span class="text-dark pl-2">{{ $booking->total_price }}.00 TK.</span></li>
+                    <li class="text-info font-weight-bolder"> Due Amount : <span class="text-dark pl-2">{{ $booking->due }}.00 TK.</span></li>
 
                 </ul>
             </div>
@@ -109,8 +109,8 @@ Payment-History
 
                         <tr>
                             <td>{{ $payment->transaction_id }}</td>
-                            <td>{{ $payment->pay_date }}</td>
-                            <td>{{ $payment->amount }}</td>
+                            <td>{{ date("Y-M-D", strtotime($payment->pay_date)) }}</td>
+                            <td>{{ $payment->amount }}.00 TK</td>
                             <td>{{ $payment->payment_method }}</td>
                         </tr>
                         @endforeach

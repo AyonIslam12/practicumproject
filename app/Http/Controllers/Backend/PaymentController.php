@@ -12,4 +12,9 @@ class PaymentController extends Controller
         $payments = Payment::all();
         return \view('backend.layouts.payment.list',\compact('payments'));
     }
+    public function show ($id){
+        $payment = Payment::find($id);
+
+        return \view('backend.layouts.payment.view',\compact('payment'));
+    }
 }

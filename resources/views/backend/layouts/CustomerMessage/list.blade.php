@@ -49,8 +49,8 @@ Customer-Message
                                <td>{{ $key+1 }}</td>
                                <td>{{ $message->userMessage->name }}</td>
                                <td>{{ $message->userMessage->email }}</td>
-                               <td>{{ $message->message }}</td>
-                              <td class="text-center d-flex justify-content-center">
+                               <td style="width: 500px">{{ $message->message }}</td>
+                              <td class="text-center ">
 
                                 <a  class="btn btn-info btn-sm  mx-1 " href="{{ route('admin.customerMessage.show',$message->id) }}"><i class="fas fa-eye text-dark"></i></a>
                                 <a  class="btn btn-danger btn-sm  mx-1 delete" href="  {{ route('admin.customerMessage.delete',$message->id) }} "><i class="fas fa-trash text-dark"></i></a>

@@ -40,6 +40,11 @@ Brand-Edit
                         @error('phone') <span class="text-danger text-italic">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
+                        <label for="nid_number">NID Number</label>
+                        <input type="number"class="form-control @error('nid_number') is-invalid @enderror" id="nid_number" name="nid_number" value="{{ $driver->nid_number }}">
+                        @error('nid_number') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="form-group">
                         <label for="address">Address</label>
                         <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror">{{ $driver->address }}</textarea>
                         @error('address') <span class="text-danger text-italic">{{ $message }}</span>@enderror

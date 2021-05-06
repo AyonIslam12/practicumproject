@@ -23,6 +23,7 @@ class UserController extends Controller
         'name' => 'required|string|min:4',
         'email' => 'required|email|unique:users',
         'phone' => 'required|min:11|max:11',
+        'nid_number' => 'required|min:11|max:16|unique:users',
         'password' => 'required|min:6|max:16',
         'password' => 'required|min:6|max:16|confirmed',
 
@@ -47,6 +48,7 @@ class UserController extends Controller
             'role' => 'customer',
             'password' =>bcrypt($request->password),
             'image' =>$filename,
+            'nid_number' =>$request->nid_number,
             'address' =>$request->address,
             ]);
             //mail Notification

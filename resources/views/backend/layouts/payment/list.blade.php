@@ -43,31 +43,22 @@ payment-manage
                                 <th scope="col">Payment Amount</th>
                                 <th scope="col">Payment Date</th>
                                 <th scope="col">Payment Method</th>
-                                <th scope="col">status</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($payments as $key =>$payment )
-
-
                            <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $payment->payBooking->bookingUser->name}}</td>
                             <td>{{ $payment->transaction_id }}</td>
-                            <td>{{ $payment->amount }}</td>
-                            <td>{{ $payment->pay_date }}</td>
+                            <td>{{ $payment->amount }}.00 TK</td>
+                            <td>{{ date("Y-M-d",strtotime($payment->pay_date ))}}</td>
                             <td>{{ $payment->payment_method }}</td>
-                            <td>{{ $payment->status }} </td>
-
-
                               <td class="text-center d-flex justify-content-center">
-                                <a class="btn btn-info btn-sm " href="">
+                                <a class="btn btn-info btn-sm " href="{{ route('admin.payment.show',$payment) }}">
                                     <i class="far fa-eye text-dark"></i>
                                 </a>
-
-
                             </td>
                             </tr>
                             @endforeach

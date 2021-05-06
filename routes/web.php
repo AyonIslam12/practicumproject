@@ -100,6 +100,11 @@ Route::prefix('admin')->name('admin.')->group(function (){
     Route::group(['middleware' => 'admin-auth'],function () {
 
         Route::get('/',[AdminController::class,'dashboard'])->name('dashboard');
+        //Admin Profile
+        Route::get('/profile',[AdminController::class,'profile'])->name('profile');
+        Route::get('/profile/{id}',[AdminController::class,'editShow'])->name('profile.edit');
+        Route::put('/profile/update/{id}',[AdminController::class,'updateProfile'])->name('profile.update');
+        //Admin Logout
         Route::get('/logout',[BackendUserController::class,'logout'])->name('logout');
 
         Route::prefix('car')->name('car.')->group(function (){
@@ -142,6 +147,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::prefix('driver')->name('driver.')->group(function (){
             Route::get('/lists',[DriverController::class,'index'])->name('list');
             Route::post('/create',[DriverController::class,'create'])->name('create');
+            Route::get('/show/{id}',[DriverController::class,'show'])->name('show');
             Route::get('/edit/{id}',[DriverController::class,'edit'])->name('edit');
             Route::put('/update/{id}',[DriverController::class,'update'])->name('update');
             Route::get('/delete/{id}',[DriverController::class,'destroy'])->name('delete');
@@ -150,6 +156,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
         //User Manage Route Group
         Route::prefix('user')->name('user.')->group(function (){
             Route::get('/lists',[BackendUserController::class,'index'])->name('list');
+            Route::get('/show/{id}',[BackendUserController::class,'show'])->name('show');
             Route::get('/delete/{id}',[BackendUserController::class,'delete'])->name('delete');
 
         });
@@ -173,11 +180,13 @@ Route::prefix('admin')->name('admin.')->group(function (){
         //Testiminials Manage Route Group
         Route::prefix('testimonials')->name('testimonials.')->group(function (){
             Route::get('/lists',[TestimonialController::class,'index'])->name('list');
+            Route::get('/show/{id}',[TestimonialController::class,'show'])->name('show');
             Route::get('/delete/{id}',[TestimonialController::class,'dedele'])->name('delete');
         });
         //Payments Manage Route Group
         Route::prefix('payment')->name('payment.')->group(function (){
             Route::get('/lists',[PaymentController::class,'index'])->name('list');
+            Route::get('/show/{id}',[PaymentController::class,'show'])->name('show');
 
         });
 

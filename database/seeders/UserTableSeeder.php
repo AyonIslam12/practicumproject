@@ -21,6 +21,7 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('123456'),
             'role' => 'admin',
             'image' => 'ayon.jpg',
+            'nid_number' => '12345678914',
             'address' => 'Pingna,Jamalpur,Sarishabari',
 
         ]);

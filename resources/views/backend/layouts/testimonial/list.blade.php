@@ -37,7 +37,6 @@ testimonials-list
                             <tr>
                                 <th scope="col">Sl</th>
                                 <th scope="col">User Name</th>
-                                <th scope="col">User Email</th>
                                 <th scope="col">Message</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
@@ -49,9 +48,9 @@ testimonials-list
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $value->userTestimonials->name }}</td>
-                                <td>{{ $value->userTestimonials->email }}</td>
-                                <td class="text-justify" style="width:330px" >{{ $value->message }}</td>
+                                <td class="text-justify" style="width:650px" >{{ $value->message }}</td>
                               <td class="text-center">
+                                <a type="submit" class="btn btn-info btn-sm  mx-1 " href= "{{ route('admin.testimonials.show',$value->id) }}"><i class="fas fa-eye text-dark"></i></a>
                                 <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href= "{{ route('admin.testimonials.delete',$value->id) }}"><i class="fas fa-trash text-dark"></i></a>
                             </td>
                             </tr>

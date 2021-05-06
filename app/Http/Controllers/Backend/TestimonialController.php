@@ -13,6 +13,10 @@ class TestimonialController extends Controller
         $testmonials = Testimonial::with('userTestimonials')->get();
         return \view('backend.layouts.testimonial.list',\compact('testmonials'));
     }
+    public function show($id){
+        $testmonial = Testimonial::find($id);
+        return \view('backend.layouts.testimonial.view',\compact('testmonial'));
+    }
 
 
     public function dedele($id){

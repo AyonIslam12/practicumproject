@@ -19,7 +19,7 @@ Car-Home
 				<p data-animation="fadeInUp" data-delay=".5s">Choose Your favorate Car Form Here
 				</p>
 				<div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">
-					<a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Book Now
+					<a class="custom_btn bg_default_red btn_width text-uppercase" href="{{ route('website.car.list') }}">Book Now
                         <img src="{{ asset('frontend/assets/images/icons/icon_01.png') }}" alt="icon_not_found">
 					</a>
 				</div>
@@ -40,7 +40,7 @@ Car-Home
 				<p data-animation="fadeInUp" data-delay=".5s">Choose Your favorate Car Form Here
 				</p>
 			<div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">
-				<a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Book Now
+				<a class="custom_btn bg_default_red btn_width text-uppercase" href="{{ route('website.car.list') }}">Book Now
                 <img src="{{ asset('frontend/assets/images/icons/icon_01.png') }}" alt="icon_not_found">
 			</a>
 		</div>
@@ -59,7 +59,7 @@ Car-Home
 				<h3 class="text-white text-uppercase" data-animation="fadeInUp" data-delay=".3s">Sarkar Car Rental Website</h3>
 				<p data-animation="fadeInUp" data-delay=".5s">Choose Your favorate Car Form Here</p>
 					<div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">
-						<a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">
+						<a class="custom_btn bg_default_red btn_width text-uppercase" href="{{ route('website.car.list') }}">
                             Book Now
                             <img src="{{ asset('frontend/assets/images/icons/icon_01.png') }}" alt="icon_not_found">
 						</a>
