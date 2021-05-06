@@ -15,7 +15,7 @@ booking-create
         <h3 class="text-center text-light py-4">Booking Add Form</h3>
 
         <div class="row">
-            <div class="col-md-12">
+        <div class="col-md-12">
         @if(session('message'))
             <div class="text-center alert alert-{{ session('type') }}">
             <p class="text-center text-bolder">{{ session('message') }}</p>

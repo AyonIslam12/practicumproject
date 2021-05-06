@@ -46,7 +46,6 @@ booking-list
                                 <th scope="col">Price/Day</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Status Action</th>
                                 <th class="text-center" scope="col">Action</th>
                             </tr>
                         </thead>
@@ -70,9 +69,8 @@ booking-list
                                 @else
                                     <span class="text-info font-weight-bold">Pending <i class="far fa-pause-circle text-warning"></i></span>
                                 @endif
-                            </td>
-                              <td class="text-center">
-                                <div class="btn-group dropup">
+
+                                <div class="btn-group dropup pl-2">
                                     <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle"
                                             data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
@@ -87,12 +85,9 @@ booking-list
                                     </div>
 
                                 </div>
-
-
                               </td>
-
-
                               <td class="text-center">
+                                  <a  class="btn btn-outline-success btn-sm mx-1" href="{{ route('admin.booking.payment',$booking->id) }}">Payment</i></a>
                                   <a  class="btn btn-info btn-sm mx-1" href="{{ route('admin.booking.show',$booking->id) }}"><i class="fas fa-eye text-dark"></i></a>
                                  <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href="{{ route('admin.booking.delete',$booking->id) }}"><i class="fas fa-trash text-dark"></i></a>
 

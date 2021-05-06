@@ -31,7 +31,12 @@ Car-Booking
 				<a class="image_wrap" href="#!">
 					<img style="max-height: 220px" src="{{ asset('uploads/cars/'.$car->image)}}" alt="image_not_found">
 				</a>
-				<span class="item_price bg_default_blue">{{ $car->price_per_day.' . 00 TK' }}/Day</span>
+				@if($car->discount_offer <= 0)
+                <span class="item_price bg_default_blue">{{ $car->price_per_day.' . 00 TK' }}/Day</span>
+                @else
+                <span class="item_price bg_default_blue"><del style="color: red; font-weight:bolder">{{ $car->price_per_day.' . 00 TK' }}</del> {{ $car->price_per_day -$car->discount_offer.'. 00 TK '  }}/Day </span>
+
+                @endif
 			</div>
 			<ul class="info_list ul_li_center text-light font-weight-bolder bg-secondary clearfix">
                 <li>{{ $car->carBrand->brand }}</li>
@@ -75,28 +80,7 @@ Car-Booking
             </div>
         </div>
 </div>
-	<div class="row">
-		<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <div class="form_item d-block"  data-aos-delay="200">
-            <h4 class="input_title">Payment Method</h4>
-            @error('payment_method') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-            <select name="payment_method" class="form-control @error('payment_method') is-invalid @enderror">
-                <option value="bkash">Bkash</option>
-                <option value="cash">Cash</option>
-                <option value="ard">Card</option>
-            </select>
-        </div>
-        </div>
 
-
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <div class="form_item" data-aos="fade-up" data-aos-delay="500">
-                <h4 class="input_title">Payment Amounts</h4>
-                <input type="number" name="amount"  value="{{ old('amount') }}" class="form-control @error('to_date') is-invalid @enderror">
-                @error('amount') <span class="text-danger font-italic d-block">{{ $message }}</span> @enderror
-            </div>
-        </div>
-</div>
 
 	<hr class="mt-0" data-aos="fade-up" data-aos-delay="100">
 
@@ -117,6 +101,7 @@ Car-Booking
 
 					<label for="insurance_id">
                         @foreach($insurances as $key => $value)
+
 
 
 						<input type="checkbox" class="form-control @error('insurance_id') is-invalid @enderror" id="insurance_id" name="insurance_id" value="{{ $value->id }}"> {{ $value->name }}

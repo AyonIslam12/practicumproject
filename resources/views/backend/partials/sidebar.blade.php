@@ -58,12 +58,12 @@
                 </ul>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="javascript:;"  class="{{ request()->is('admin/payment/lists') ? 'active' : '' }}">
                     <i class="fab fa-cc-amazon-pay"></i>
                     <span>Payments</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="">Manage Payments</a></li>
+                    <li class="{{ request()->is('admin/payment/lists') ? 'active' : '' }}"><a  href="{{ route('admin.payment.list') }}"> Payments History</a></li>
                 </ul>
             </li>
             <li class="sub-menu">

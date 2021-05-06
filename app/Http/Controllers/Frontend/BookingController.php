@@ -30,13 +30,13 @@ class BookingController extends Controller
               $request->validate([
                 'from_date' => 'required|date',
                 'to_date' => 'required|after:from_date|date',
-                'amount'=>'required',
-                'payment_method'=>'required',
+
 
             ]);
 
             $insurance = Insurance::find($request->insurance_id) ;
             $insuranQuery = $insurance->insurance_fee ?? 0;
+
 
             $car = Car::find($request->car_id);
             //DaysCalulation
@@ -55,9 +55,8 @@ class BookingController extends Controller
             });
 
              $checkBook = $checkBook->get();
-DB::beginTransaction();
 
-            try{
+
                 if ($checkBook->count() == 0){
                     $booking = Booking::create([
                          'car_id' => $request->car_id,
@@ -71,17 +70,6 @@ DB::beginTransaction();
                          'total_price' => (($car->price_per_day * $daysCalculation) - $car->discount_offer) + $insuranQuery ,
 
                      ]);
-
-
-                     $payment =Payment::create([
-                         'booking_id' => $booking->id,
-                         'amount'=>$request->amount,
-                         'payment_method'=>$request->payment_method,
-                         'transaction_id' => \ucfirst(Str::random(9)),
-
-                     ]);
-
-
                      Mail::to(auth()->user()->email)->send(new BokkingNotification($booking));
 
                      session()->flash('type','success');
@@ -93,11 +81,7 @@ DB::beginTransaction();
                      session()->flash('message','Sorry,This Car is Already Booked, For Those Specific Days,Try Another Date .');
                     return redirect()->back();
                   }
-            }catch(Throwable $e){
 
-                DB::rollBack();
-                return \redirect()->back();
-            }
 
 
         }

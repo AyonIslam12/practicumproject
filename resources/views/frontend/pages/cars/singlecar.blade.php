@@ -40,7 +40,7 @@ Car-Single-View
 
                 @else
                 <li>
-                    <span class="custom_btn btn_width bg_default_blue"><del>{{ $car->price_per_day.' . 00 BDT.' }}/Day</del>{{ $car->price_per_day -$car->discount_offer.'. 00 BDT '  }}/Day </span>
+                    <span class="custom_btn btn_width bg_default_blue"><del style="color: red; font-weight:bolder"><span class="text-warning">{{ $car->price_per_day.' . 00 TK.' }}/Day</span></del>{{ $car->price_per_day -$car->discount_offer.'. 00 TK '  }}/Day </span>
                 </li>
 
                 @endif
@@ -199,52 +199,39 @@ Car-Single-View
 
     </div>
 
-    <div data-aos="fade-up" data-aos-delay="200">
-        <a class="terms_condition" href="#!">
-            <i class="fas fa-info-circle mr-1"></i>
-            Terms and conditions
-        </a>
-    </div>
 
         <hr data-aos="fade-up" data-aos-delay="300">
 
      <div class="rent_details_info">
-        <h4 class="list_title" data-aos="fade-up" data-aos-delay="100">Rent Details:</h4>
+        <h4 class="list_title text-center" data-aos="fade-up" data-aos-delay="100">Our Insurance Details:</h4>
         <div class="row">
-         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <ul class="info_list ul_li_block mb_15 clearfix" data-aos="fade-up" data-aos-delay="200">
-             <li>
-                 <i class="fas fa-id-card"></i>
-                     Payment Guarantee
-            </li>
-            <li>
-                 <i class="fas fa-business-time"></i>
-                  Protect Your Rental
-            </li>
-            <li>
-              <i class="fas fa-business-time"></i>
-                 Receipt by Email
-         </li>
-    </ul>
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <table class="table table-bordered table-striped text-justify ">
+                @foreach ($insurances as $insurance )
+
+
+                <tr>
+                    <th >Insurance Name:</th>
+                    <td >{{ $insurance->name }}</td>
+                 </tr>
+                <tr>
+                     <th >Company Name:</th>
+                     <td class="">{{ $insurance->company_name }}</td>
+                </tr>
+                <tr>
+                    <th >Insurance Coverage:</th>
+                     <td style="width:700px" class="">{{ $insurance->coverage }}</td>
+                </tr>
+                 <tr>
+                    <th >Insurance Fee: </th>
+                    <td class="">{{ $insurance->insurance_fee }}.00 BDT.</td>
+                 </tr>
+                 @endforeach
+     </table>
 </div>
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <ul class="info_list ul_li_block mb_15 clearfix" data-aos="fade-up" data-aos-delay="300">
-                <li>
-                    <i class="fas fa-user-friends"></i>
-                Car Sharing
-            </li>
-            <li>
-                <i class="fas fa-language"></i>
-                    Multilanguage Support
-                </li>
-                <li>
-                    <i class="fas fa-money-bill"></i>
-                        Payment Options
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
+</div>
+</div>
 
 <hr data-aos="fade-up" data-aos-delay="100">
 

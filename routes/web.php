@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CustomerMessageController;
 use App\Http\Controllers\Backend\DriverController;
 use App\Http\Controllers\Backend\InsuranceController;
 use App\Http\Controllers\Backend\OfferController;
+use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\UserController as BackendUserController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
@@ -42,6 +43,7 @@ Route::prefix('/')->name('website.')->group(function(){
 
 
 
+
     Route::get('user/registration/form',[UserController::class,'registrationForm'])->name('user.registration.form');
     Route::post('user/registration/create',[UserController::class,'register'])->name('user.register');
     Route::get('user/login',[UserController::class,'loginForm'])->name('user.login.form');
@@ -56,13 +58,20 @@ Route::group(['middleware' => 'auth'],function () {
 
     //UserProfile
     Route::get('/user/profile',[UserProfile::class,'index'])->name('user.profile.home');
+
     Route::get('/user/update-password',[UserProfile::class,'password'])->name('user.edit.password');
     Route::Post('/user/update-password',[UserProfile::class,'updatePassword'])->name('user.update.password');
+
     Route::get('/user/profile/edit/{id}',[UserProfile::class,'profileEdit'])->name('user.profile.edit');
     Route::put('/userprofile/update/{id}',[UserProfile::class,'profileUpdate'])->name('user.profile.update');
+
     Route::get('/user/booking/history',[UserProfile::class,'bookingHistory'])->name('user.booking.history');
+
     Route::get('/user/testimonials',[UserProfile::class,'showTestimonials'])->name('user.testimonials.show');
     Route::post('/user/testimonials/post',[UserProfile::class,'postTestimonials'])->name('user.testimonials.post');
+    Route::get('/user/testimonials/delete/{id}',[UserProfile::class,'deletetTestimonials'])->name('user.testimonials.delete');
+    Route::get('/user/testimonials/edit/{id}',[UserProfile::class,'editTestimonials'])->name('user.testimonials.edit');
+    Route::put('/user/testimonials/update/{id}',[UserProfile::class,'updateTestimonials'])->name('user.testimonials.update');
 
     //User Message
     Route::post('/user/message',[CustomerMessage::class,'sendMessage'])->name('user.message');
@@ -115,6 +124,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
         });
         //Booking Route Group
+
         Route::prefix('booking')->name('booking.')->group(function (){
             Route::get('/list',[BookingController::class,'index'])->name('manage');
             Route::get('/create',[BookingController::class,'create'])->name('create');
@@ -122,7 +132,9 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::get('/show/{id}',[BookingController::class,'show'])->name('show');
             Route::get('/delete/{id}',[BookingController::class,'destroy'])->name('delete');
             Route::get('/booking/{id}/{status}',[BookingController::class,'updateStatus'])->name('status');
-
+            //Payment In Per Booking
+            Route::get('payment/{id}',[BookingController::class,'paymentShow'])->name('payment');
+            Route::post('payment/create',[BookingController::class,'paymentCreate'])->name('payment.create');
 
         });
 
@@ -162,6 +174,11 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::prefix('testimonials')->name('testimonials.')->group(function (){
             Route::get('/lists',[TestimonialController::class,'index'])->name('list');
             Route::get('/delete/{id}',[TestimonialController::class,'dedele'])->name('delete');
+        });
+        //Payments Manage Route Group
+        Route::prefix('payment')->name('payment.')->group(function (){
+            Route::get('/lists',[PaymentController::class,'index'])->name('list');
+
         });
 
     });

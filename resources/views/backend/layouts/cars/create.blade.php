@@ -59,7 +59,7 @@ car-create
             </div>
             <div class="form-group">
                 <label for="discount_offer"><span class="text-light">Disscount Amount</span></label>
-                <input type="text" class="form-control" id="discount_offer" name="discount_offer" value="{{ old('discount_offer') }}"  placeholder="Enter Car Discount Amount If Have">
+                <input type="string" class="form-control" id="discount_offer" name="discount_offer" value="{{ old('discount_offer') }}"  placeholder="Enter Car Discount Amount If Have">
 
             </div>
             <div class="form-group">

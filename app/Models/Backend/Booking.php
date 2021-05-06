@@ -2,6 +2,7 @@
 
 namespace App\Models\Backend;
 
+use App\Models\Insurance;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,5 +28,8 @@ class Booking extends Model
     }
     public function bookingUser(){
         return $this->belongsTo(User::class,'user_id','id');
+    }
+    public function bookinInsurance(){
+        return $this->belongsTo(Insurance::class,'insurance_id','id');
     }
 }

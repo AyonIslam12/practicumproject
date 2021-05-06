@@ -14,17 +14,18 @@ use Illuminate\Support\Facades\Auth;
 
 class UserProfile extends Controller
 {
+    //user home method
     public function index(){
         return view('frontend.pages.profile.home');
     }
 
-
+    //user profile editshow method
     public function profileEdit($id){
         $userEdit = User::find(\auth()->user()->id);
         return \view('frontend.pages.profile.edit',\compact('userEdit'));
     }
 
-
+    //user profile update method
     public function profileUpdate(Request $request,$id){
         $user = User::find(\auth()->user()->id);
         if (!$user) return redirect()->back();
@@ -71,12 +72,16 @@ class UserProfile extends Controller
 
     }
 
+    //user passwordshow method
     public function password()
     {
 
       return \view('frontend.pages.profile.editPassword');
 
     }
+
+
+    //user update password method
     public function updatePassword(Request $request)
     {
        $this->validate($request,[
@@ -103,19 +108,21 @@ class UserProfile extends Controller
 
     }
 
+    //user Booking History method
     public function bookingHistory(){
         $bookingHistory = Booking::with('bookingCar')->where('user_id',auth()->user()->id)->get();
       return view('frontend.pages.profile.bookingHistory',\compact('bookingHistory'));
     }
 
-    //Testimonials
+    //Testimonials Show Method
     public function showTestimonials(){
         $posts = Testimonial::where('user_id', '=' , \auth()->user()->id)->get();
 
 
-      return \view('frontend.pages.profile.testimonials',\compact('posts'));
+      return \view('frontend.pages.profile.testimonials.home',\compact('posts'));
     }
 
+    //Testimonial Create Method method
     public function postTestimonials(Request $request){
 
         $request->validate([
@@ -143,4 +150,65 @@ class UserProfile extends Controller
      }
       return \redirect()->route('website.user.testimonials.show');
 }
+    //Testimonial Delete Method
+    public function deletetTestimonials ($id){
+
+
+        try{
+            $deleteTestimonials = Testimonial::find($id);
+            if($deleteTestimonials){
+                $deleteTestimonials->delete();
+
+            session()->flash('type', 'success');
+            session()->flash('message', 'Your Post Deleted!!!');
+            }
+           }catch(Exception $e){
+            session()->flash('type', 'danger');
+            session()->flash('message', $e->getMessage());
+            return \redirect()->back();
+           }
+           return \redirect()->back();
+
+        }
+
+    public function editTestimonials($id){
+        $updateTestimonials = Testimonial::find($id);
+        return \view('frontend.pages.profile.testimonials.editPost' ,\compact('updateTestimonials'));
+    }
+    public function updateTestimonials(Request $request, $id){
+
+        $Testimonials = Testimonial::find($id);
+        if (!$Testimonials) return redirect()->back();
+       $request->validate([
+            'message' => 'required',
+            'postdate' => 'date',
+
+        ]);
+
+        try{
+
+
+
+        $Testimonials->update([
+
+            'message' => $request->message,
+            'postdate' => $request->postdate,
+
+        ]);
+
+        session()->flash('type', 'success');
+        session()->flash('message','You Post Update Successfully.');
+
+
+        }catch(Exception $e){
+            session()->flash('type', 'danger');
+            session()->flash('message', $e->getMessage());
+            return \redirect()->route('website.user.testimonials.show');
+
+        }
+        return \redirect()->route('website.user.testimonials.show');
+
+    }
+
+
 }

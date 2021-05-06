@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Booking;
 use App\Models\Backend\Car;
+use App\Models\Insurance;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -18,8 +19,9 @@ class CarController extends Controller
 
     public function singleCar($id){
         $car = Car::find($id);
+        $insurances = Insurance::all();
 
-        return view('frontend.pages.cars.singlecar',\compact('car'));
+        return view('frontend.pages.cars.singlecar',\compact('car','insurances'));
 
         }
     public function carSearch(Request $request){

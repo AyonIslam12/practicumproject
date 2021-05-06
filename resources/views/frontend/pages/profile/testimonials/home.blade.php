@@ -88,7 +88,7 @@ Testimonials-Site
            </div>
             <div class="col-md-4 pb-3">
                 <!-- Button trigger modal -->
-                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+                 <button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#exampleModal">
                     Add Post
                  </button>
                 </div>
@@ -110,6 +110,11 @@ Testimonials-Site
                      <span class="font-weight-bold text-dark">Post Date:</span>
                      <span>{{ date("Y-M-d",strtotime($post->postdate)) }}</span>
                 </li>
+                <div class="action-button">
+                    <a class="btn btn-outline-success" href="{{ route('website.user.testimonials.edit',$post->id) }}"><i class="fas fa-user-edit"></i></a>
+                    <a class="btn btn-outline-danger delete" href="{{ route('website.user.testimonials.delete',$post->id ) }}"><i class="far fa-trash-alt "></i></a>
+
+                </div>
              </ul>
 
 

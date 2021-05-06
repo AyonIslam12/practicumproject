@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use Exception;
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\Backend\Car;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Backend\Booking;
 use App\Http\Controllers\Controller;
-
 
 class BookingController extends Controller
 {
@@ -19,7 +20,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::with('bookingCar','bookingUser')->get();
+        $bookings = Booking::with('bookingCar','bookingUser','bookinInsurance')->get();
        return view('backend.layouts.bookings.list', compact('bookings'));
     }
 
@@ -168,4 +169,48 @@ class BookingController extends Controller
 
         return redirect()->back();
     }
+
+
+    public function paymentShow($id){
+
+        $booking = Booking::find($id);
+        $payments = Payment::where('booking_id' , $id)->get();
+
+
+        return view('backend.layouts.bookings.bookingpayment',\compact('booking','payments'));
+    }
+
+
+     public function paymentCreate(Request $request){
+         $request->validate([
+             'amount' => 'required',
+             'pay_date' => 'required',
+
+
+         ]);
+         try{
+            $pay = Payment::create([
+                 'booking_id' => $request->booking_id,
+                 'amount' => $request->amount,
+                 'payment_method' => $request->payment_method,
+                 'transaction_id' =>\ucwords(Str::random(9)),
+                 'pay_date' => $request->pay_date,
+             ]);
+            $pay->payBooking->update([
+                'total_price' => $pay->paybooking->total_price - $request->amount,
+
+            ]) ;
+
+             session()->flash('type','success');
+             session()->flash('message','Payment Success');
+         }catch(Exception $e){
+            session()->flash('type','danger');
+            session()->flash('message',$e->getMessage());
+            return \redirect()->back();
+
+         }
+         return \redirect()->back();
+     }
+
+
 }
