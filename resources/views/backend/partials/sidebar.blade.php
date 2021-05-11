@@ -85,12 +85,12 @@
                 </ul>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="javascript:;"   class="{{ request()->is('admin/report/lists') ? 'active' : ''}}">
                     <i class="fas fa-atlas"></i>
                     <span>Reports</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="">Manage Reports</a></li>
+                    <li  class="{{ request()->is('admin/report/lists') ? 'active' : ''}}"><a  href="{{ route('admin.report.list') }}">Manage Reports</a></li>
                 </ul>
             </li>
 

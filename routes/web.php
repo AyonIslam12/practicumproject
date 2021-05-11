@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\DriverController;
 use App\Http\Controllers\Backend\InsuranceController;
 use App\Http\Controllers\Backend\OfferController;
 use App\Http\Controllers\Backend\PaymentController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\UserController as BackendUserController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
@@ -187,6 +188,12 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::prefix('payment')->name('payment.')->group(function (){
             Route::get('/lists',[PaymentController::class,'index'])->name('list');
             Route::get('/show/{id}',[PaymentController::class,'show'])->name('show');
+
+        });
+        //Reports Manage Route Group
+        Route::prefix('report')->name('report.')->group(function (){
+            Route::get('/lists',[ReportController::class,'index'])->name('list');
+
 
         });
 
