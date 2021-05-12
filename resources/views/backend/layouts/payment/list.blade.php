@@ -41,6 +41,7 @@ payment-manage
                                 <th scope="col">Booking User Name</th>
                                 <th scope="col">Transaction Number</th>
                                 <th scope="col">Payment Amount</th>
+                                <th scope="col">Payment Time</th>
                                 <th scope="col">Payment Date</th>
                                 <th scope="col">Payment Method</th>
                                 <th scope="col" class="text-center">Action</th>
@@ -53,6 +54,7 @@ payment-manage
                             <td>{{ $payment->payBooking->bookingUser->name}}</td>
                             <td>{{ $payment->transaction_id }}</td>
                             <td>{{ $payment->amount }}.00 TK</td>
+                            <td>{{ date("h:i:s a", strtotime($payment->pay_time)) }}</td>
                             <td>{{ date("Y-M-d",strtotime($payment->pay_date ))}}</td>
                             <td>{{ $payment->payment_method }}</td>
                               <td class="text-center d-flex justify-content-center">

@@ -12,6 +12,7 @@ class Car extends Model
         'name',
         'brand_id',
         'model',
+        'car_engine',
         'model_year',
         'price_per_day',
         'discount_offer',

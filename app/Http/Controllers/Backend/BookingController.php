@@ -103,6 +103,7 @@ class BookingController extends Controller
                     'amount' => $amount,
                     'payment_method' => $request->payment_method,
                     'transaction_id' =>\ucwords(Str::random(9)),
+                    'pay_time' => $request->pay_time,
                     'pay_date' => $request->pay_date,
                 ]);
                $pay->payBooking->update([

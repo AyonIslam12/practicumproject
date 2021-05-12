@@ -35,7 +35,7 @@ Payment-History
   </div>
 
   <div class="row my-3">
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-5 col-sm-12">
 
           <div class="card ">
                  {{-- Validate Msg --}}
@@ -69,10 +69,15 @@ Payment-History
                         </select>
                     </div>
                     <div class="form-group" >
+                        <label for="pay-time" class="text-dark">Payment Time</label>
+                       <input type="time" name="pay_time" id="pay-time" value="{{ date("H:i:s") }}" class="form-control">
+                       @error('pay_time') <span class="text-danger font-weight-bolder font-italic ">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group" >
                         <label for="pay-date" class="text-dark">Payment Date</label>
                        <input type="date" name="pay_date" id="pay-date" value="{{ date('Y-m-d') }}" class="form-control">
                        @error('pay_date') <span class="text-danger font-weight-bolder font-italic ">{{ $message }}</span> @enderror
-                      </div>
+                    </div>
 
 
 
@@ -85,7 +90,7 @@ Payment-History
           </div>
 
       </div>
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-7 col-sm-12">
 
 
             <div class="card ">
@@ -97,7 +102,7 @@ Payment-History
                         <h5 class="text-center font-weight-bold">Your Payments</h5>
 
                         <div class="text-center">
-                            <ul style="font-size: 15px" class="list-group list-group-flush   p-3">
+                            <ul style="font-size: 15px" class="list-group list-group-flush  p-3">
                                 <li class="text-info font-weight-bolder">Customer Name : <span class="text-dark  pl-2">{{ $booking->bookingUser->name }}</span></li>
                                 <li class="text-info font-weight-bolder"> Car Name : <span class="text-dark pl-2">{{ $booking->bookingCar->name }}</span></li>
                                 <li class="text-info font-weight-bolder"> Total Amount : <span class="text-dark pl-2">{{ $booking->total_price }}.00 TK.</span></li>
@@ -108,6 +113,7 @@ Payment-History
                             <thead>
                                 <tr>
                                     <th>Tranaction Id</th>
+                                    <th>Time</th>
                                     <th>Date</th>
                                     <th>Amount</th>
                                     <th>Pyament Method</th>
@@ -119,9 +125,10 @@ Payment-History
 
                                 <tr>
                                     <td>{{ $payment->transaction_id }}</td>
-                                    <td>{{ date("Y-M-D", strtotime($payment->pay_date)) }}</td>
+                                    <td>{{ date("h:i:s a", strtotime($payment->pay_time)) }}</td>
+                                    <td>{{ date("Y-m-D", strtotime($payment->pay_date)) }}</td>
                                     <td>{{ $payment->amount }}.00 TK</td>
-                                    <td>{{ $payment->payment_method }}</td>
+                                    <td class="text-center">{{ $payment->payment_method }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

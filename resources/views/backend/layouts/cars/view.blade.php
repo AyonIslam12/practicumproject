@@ -29,6 +29,10 @@ Car-single-view
                         <td class="text-center" >{{ $car->model}}</td>
                     </tr>
                     <tr>
+                        <th>Car Engine Number</th>
+                        <td class="text-center" >{{ $car->car_engine}}</td>
+                    </tr>
+                    <tr>
                         <th>Car Image</th>
                       <td class="text-center" >  <img width="100px" class="img-thumbnail" src="{{ url('/uploads/cars/'.$car->image) }}" alt=""></td>
                     </tr>

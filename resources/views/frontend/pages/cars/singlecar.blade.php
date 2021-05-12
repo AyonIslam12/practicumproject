@@ -63,8 +63,13 @@ Car-Single-View
 
                     <tr>
                         <tr>
-                            <th>Car Model Name:</th>
+                            <th>Car Model :</th>
                             <td class="text-center text-muted text-info">{{ $car->model }}</td>
+
+                        </tr>
+                        <tr>
+                            <th>Car Engine Number :</th>
+                            <td class="text-center text-muted text-info">{{ $car->car_engine }}</td>
 
                         </tr>
                         <tr>

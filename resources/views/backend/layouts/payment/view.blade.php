@@ -34,6 +34,10 @@ payment-single-view
                         <td>{{ $payment->payBooking->bookingCar->name}}</td>
                     </tr>
                     <tr>
+                        <th>Car Engine Name</th>
+                        <td>{{ $payment->payBooking->bookingCar->car_engine}}</td>
+                    </tr>
+                    <tr>
                         <th>Booking Amount</th>
                         <td>{{ $payment->payBooking->total_price}}.00 TK</td>
                     </tr>
@@ -48,6 +52,10 @@ payment-single-view
                     <tr>
                         <th>Tranction  Id</th>
                         <td>{{ $payment->transaction_id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Payment Time</th>
+                        <td>{{ date("h:i:s a", strtotime($payment->pay_time)) }}</td>
                     </tr>
                     <tr>
                         <th>Payment Date</th>

@@ -69,6 +69,7 @@ Payment Report
                                     <th scope="col">Car Name</th>
                                     <th scope="col">Transaction Number</th>
                                     <th scope="col">Payment Amount</th>
+                                    <th scope="col">Payment Time</th>
                                     <th scope="col">Payment Date</th>
                                     <th scope="col">Payment Method</th>
 
@@ -86,8 +87,9 @@ Payment Report
                             <td>{{ $payment->payBooking->bookingCar->name}}</td>
                             <td>{{ $payment->transaction_id }}</td>
                             <td>{{ $payment->amount }}.00 TK</td>
+                            <td>{{ date("h:i:s a", strtotime($payment->pay_time)) }}</td>
                             <td>{{ date("Y-M-d",strtotime($payment->pay_date ))}}</td>
-                            <td>{{ $payment->payment_method }}</td>
+                            <td class="text-center">{{ $payment->payment_method }}</td>
 
                             </tr>
                             @endforeach

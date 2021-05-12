@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Backend\Brand;
-use App\Models\Backend\Car;
 use Exception;
+use App\Models\Backend\Car;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Backend\Brand;
+use App\Http\Controllers\Controller;
 
 class CarController extends Controller
 {
@@ -68,6 +69,7 @@ class CarController extends Controller
             'name' => $request->name,
             'brand_id' => $request->brand_id,
             'model' => $request->model,
+            'car_engine' =>\ucwords(Str::random(10)),
             'model_year' => $request->model_year,
             'color' => $request->color,
             'price_per_day' => $request->price_per_day,

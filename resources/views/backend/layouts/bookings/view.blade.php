@@ -20,6 +20,10 @@ booking-single-view
                         <td>{{ $booking->bookingCar->name}}</td>
                     </tr>
                     <tr>
+                        <th scope="col">Car Engine Number</th>
+                        <td>{{ $booking->bookingCar->car_engine}}</td>
+                    </tr>
+                    <tr>
                         <th>Car  Image</th>
                         <td>
                             <img width="100px" class="img-thumbnail" src="{{ url('/uploads/cars/'.$booking->bookingCar->image) }}" alt="">
