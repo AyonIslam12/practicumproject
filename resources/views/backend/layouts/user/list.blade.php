@@ -31,6 +31,12 @@ customer-list
             </header>
             <div class="card-body">
                 <div class="adv-table">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#customer">
+                        Add New
+
+                       </button>
+
+
                     <table  class="display table table-bordered table-striped" id="dynamic-table">
                         <thead>
                             <tr>
@@ -60,6 +66,7 @@ customer-list
                                 <td>{{ $user->address }}</td>
 
                               <td class="text-center">
+                                <a class="btn btn-success btn-sm " href="{{ route('admin.user.edit',$user->id) }}"><i class="far fa-edit text-dark"></i></a>
                                 <a class="btn btn-info btn-sm " href="{{ route('admin.user.show',$user->id) }}"><i class="far fa-eye text-dark"></i></a>
                                 <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href= "{{ route('admin.user.delete',$user->id) }}"><i class="fas fa-trash text-dark"></i></a>
                             </td>
@@ -76,6 +83,86 @@ customer-list
     </div>
 </div>
 
+<!-- Modal For Add Customers -->
+<div class="modal fade" id="customer" tabindex="-1" aria-labelledby="customerLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="customerLabel">Customer Add Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{{ route('admin.user.create') }}" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+              @csrf
+              <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control @error('name') is-invalid @enderror"  id="name" name="name"  placeholder="Enter Name" value="{{ old('name') }}">
+                  @error('name') <span class="text-danger font-italic">{{ $message }}</span> @enderror
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control @error('name')is-invalid @enderror" id="email" name="email"  placeholder="Enter email" value="{{ old('email') }}">
+                @error('email') <span class="text-danger font-italic">{{ $message }}</span> @enderror
+
+
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password">
+                @error('password') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+              </div>
+              <div class="form-group">
+                <label for="password_confirmation">Password</label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="Confirmation Password">
+                @error('password') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+              </div>
+
+
+              <div class="form-group">
+                  <label for="image">Upload Photo</label>
+                 <input type="file" name="image" id="image" class=" form-control">
+              </div>
+              <div class="form-group">
+                  <label for="phone">Contact Number</label>
+                  <input type="number"class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone"  placeholder="Enter Contact Number" value="{{ old('phone') }}">
+                  @error('phone') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+              </div>
+              <div class="form-group">
+                  <label for="nid_number">NID Number</label>
+                  <input type="number"class="form-control @error('nid_number') is-invalid @enderror" id="nid_number" name="nid_number"  placeholder="Enter NID Number(123*)" value="{{ old('nid_number') }}">
+                  @error('nid_number') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+              </div>
+              <div class="form-group">
+                  <label for="address">Address</label>
+                  <textarea name="address" id="address" placeholder="Address*" class="form-control @error('address') is-invalid @enderror"></textarea>
+                  @error('address') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+              </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Customer</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal Customer Add -->
 <!-- page end-->
+
+
+@push('js')
+
+<script>
+
+@if($errors->any())
+$('#customer').modal('show')
+@elseif ($errors->any())
+$('#customer').modal('hide')
+@endif
+</script>
+
+@endpush
 
 @endsection

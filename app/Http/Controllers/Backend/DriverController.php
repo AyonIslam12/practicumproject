@@ -106,10 +106,10 @@ class DriverController extends Controller
                 $file = $request->file('image');
                 if($file->isValid()){
                     $filename = date('Ymdhms').'.'.$file->getClientOriginalExtension();
-                    $file->storeAs('users',$filename);
+                    $file->storeAs('driver',$filename);
                 }
-                if (file_exists(public_path('uploads/users/'.$driver->image)))
-                unlink(public_path('uploads/users/'.$driver->image));
+                if (file_exists(public_path('uploads/driver/'.$driver->image)))
+                unlink(public_path('uploads/driver/'.$driver->image));
             }else{
                 $filename = $driver->image;
             }

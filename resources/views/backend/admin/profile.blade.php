@@ -20,7 +20,7 @@ admin-profile
                 </div>
                 <div class="text-center">
 
-                    <img width="120px" class="img-thumbnail rounded-circle" src="{{ asset('uploads/users/'.auth()->user()->image) }}" alt="">
+                    <img width="120px" class="img-thumbnail rounded-circle" src="{{ asset('uploads/users/ayon.jpg') }}" alt="">
 
                 </div>
                 <hr data-aos="fade-up" data-aos-delay="100">

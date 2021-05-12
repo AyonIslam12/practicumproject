@@ -20,6 +20,7 @@ class CreatePaymentsTable extends Migration
             $table->string('payment_method');
             $table->string('transaction_id');
             $table->date('pay_date');
+            $table->time('pay_time');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

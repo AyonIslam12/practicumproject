@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Booking;
+use App\Models\Backend\Car;
+use App\Models\Driver;
+use App\Models\Insurance;
+use App\Models\Payment;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -10,7 +15,13 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function dashboard(){
-        return view('backend.layouts.dashboard');
+        $user= User::where('role','=','customer')->get();
+        $driver = Driver::all();
+        $car = Car::where('status' , '=' , 'active')->get();
+        $insurance = Insurance::where('status' , '=' , 'active')->get();
+        $booking = Booking::all();
+        $payment = Payment::all();
+        return view('backend.layouts.dashboard', \compact('user','driver','car','insurance','booking','payment'));
     }
 
     public function profile(){

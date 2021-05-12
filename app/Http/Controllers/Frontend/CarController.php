@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Booking;
+use App\Models\Backend\Brand;
 use App\Models\Backend\Car;
 use App\Models\Insurance;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -34,5 +36,7 @@ class CarController extends Controller
         }
        return view('frontend.pages.cars.cars',\compact('cars','search'));
     }
+
+
 
 }

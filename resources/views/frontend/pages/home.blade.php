@@ -94,137 +94,36 @@ Car-Home
 			</div>
 		</div>
 	</div>
-	<ul class="button-group filters-button-group ul_li_center mb_30 clearfix" data-aos="fade-up" data-aos-delay="300">
-		<li>
-			<button class="button active" data-filter="*">All</button>
-		</li>
-		<li>
-			<button class="button" data-filter=".sedan">Sedan</button>
-		</li>
-		<li>
-			<button class="button" data-filter=".sports">Sports</button>
-		</li>
-		<li>
-			<button class="button" data-filter=".luxury">Luxury</button>
-		</li>
-	</ul>
+
 	<div class="feature_vehicle_filter element-grid clearfix">
-		<div class="element-item sedan" data-category="sedan">
+        @foreach ($cars as $car)
+		<div class="element-item sedan" data-category="">
+
+
 			<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">
-				<h3 class="item_title mb-0"><a href="#!">2015 Shevrolet Corvette Stingray Z51</a>
+				<h3 class="item_title mb-0"><a href="#!">{{ $car->name }}</a>
 				</h3>
 				<div class="item_image position-relative">
 					<a class="image_wrap" href="#!">
-						<img src="{{ asset('frontend/assets/images/feature/img_01.jpg')}}" alt="image_not_found">
+						<img src="{{ asset('uploads/cars/'.$car->image)}}" alt="image_not_found">
 					</a>
-					<span class="item_price bg_default_blue">$230/Day</span>
+					<span class="item_price bg_default_blue">{{ $car->price_per_day }}  Tk/Day</span>
 				</div>
 				<ul class="info_list ul_li_center clearfix">
-					<li>Sports</li>
-					<li>Auto</li>
-					<li>2 Passengers</li>
-					<li>Gasoline</li>
+					<li>{{ $car->carBrand->brand }}</li>
+					<li>{{ $car->model }}</li>
+					<li>Seets: {{ $car->seats }}</li>
+
 				</ul>
 			</div>
+
+
 		</div>
-		<div class="element-item sports" data-category="sports">
-			<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="300">
-				<h3 class="item_title mb-0">
-					<a href="#!">2019 Shevrolet Corvette Stingray Red</a>
-				</h3>
-				<div class="item_image position-relative">
-					<a class="image_wrap" href="#!">
-						<img src="{{ asset('frontend/assets/images/feature/img_02.jpg')}}" alt="image_not_found">
-					</a>
-					<span class="item_price bg_default_blue">$230/Day</span>
-				</div>
-				<ul class="info_list ul_li_center clearfix">
-					<li>Sports</li>
-					<li>Auto</li>
-					<li>2 Passengers</li>
-					<li>Hybrid</li>
-				</ul>
-			</div>
-		</div>
-		<div class="element-item luxury" data-category="luxury">
-			<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="500">
-				<h3 class="item_title mb-0">
-					<a href="#!">2015 Shevrolet Corvette Stingray Z51</a>
-				</h3>
-				<div class="item_image position-relative">
-					<a class="image_wrap" href="#!">
-						<img src="{{ asset('frontend/assets/images/feature/img_03.jpg')}}" alt="image_not_found">
-					</a>
-					<span class="item_price bg_default_blue">$120/Day</span>
-				</div>
-				<ul class="info_list ul_li_center clearfix">
-					<li>Sports</li>
-					<li>Auto</li>
-					<li>2 Passengers</li>
-					<li>Gasoline</li>
-				</ul>
-			</div>
-		</div>
-		<div class="element-item sedan" data-category="sedan">
-			<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">
-				<h3 class="item_title mb-0">
-					<a href="#!">2020 Audi New Generation P00234</a>
-				</h3>
-				<div class="item_image position-relative">
-					<a class="image_wrap" href="#!">
-						<img src="{{ asset('frontend/assets/images/feature/img_04.jpg')}}" alt="image_not_found">
-					</a>
-					<span class="item_price bg_default_blue">$230/Day</span>
-				</div>
-				<ul class="info_list ul_li_center clearfix">
-					<li>Sports</li>
-					<li>Auto</li>
-					<li>2 Passengers</li>
-					<li>Electro</li>
-				</ul>
-			</div>
-		</div>
-		<div class="element-item sports" data-category="sports">
-			<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="300">
-				<h3 class="item_title mb-0">
-					<a href="#!">2015 Shevrolet Corvette Stingray Z51</a>
-				</h3>
-				<div class="item_image position-relative">
-					<a class="image_wrap" href="#!">
-						<img src="{{ asset('frontend/assets/images/feature/img_05.jpg')}}" alt="image_not_found">
-					</a>
-					<span class="item_price bg_default_blue">$160/Day</span>
-				</div>
-				<ul class="info_list ul_li_center clearfix">
-					<li>Sports</li>
-					<li>Auto</li>
-					<li>2 Passengers</li>
-					<li>Gasoline</li>
-				</ul>
-			</div>
-		</div>
-		<div class="element-item luxury" data-category="luxury">
-			<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="500">
-				<h3 class="item_title mb-0">
-					<a href="#!">2015 Shevrolet Corvette Stingray Z51</a>
-				</h3>
-				<div class="item_image position-relative">
-					<a class="image_wrap" href="#!">
-						<img src="{{ asset('frontend/assets/images/feature/img_06.jpg')}}" alt="image_not_found">
-					</a>
-					<span class="item_price bg_default_blue">$230/Day</span>
-				</div>
-				<ul class="info_list ul_li_center clearfix">
-					<li>Sports</li>
-					<li>Auto</li>
-					<li>2 Passengers</li>
-					<li>Hybrid</li>
-				</ul>
-			</div>
-		</div>
+        @endforeach
+
 	</div>
 	<div class="abtn_wrap text-center clearfix" data-aos="fade-up" data-aos-delay="100">
-		<a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Book A Car
+		<a class="custom_btn bg_default_red btn_width text-uppercase" href="{{ route('website.car.list') }}">Book A Car
 			<img src="{{ asset('frontend/assets/images/icons/icon_01.png')}}" alt="icon_not_found">
 		</a>
 	</div>

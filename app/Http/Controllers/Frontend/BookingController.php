@@ -68,6 +68,7 @@ class BookingController extends Controller
                          'price_per_day' => $car->price_per_day,
                          'insurance_fee' => $insuranQuery,
                          'total_price' => (($car->price_per_day * $daysCalculation) - $car->discount_offer) + $insuranQuery ,
+                         'due' => (($car->price_per_day * $daysCalculation) - $car->discount_offer) + $insuranQuery ,
 
                      ]);
                      Mail::to(auth()->user()->email)->send(new BokkingNotification($booking));

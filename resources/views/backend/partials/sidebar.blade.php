@@ -85,12 +85,13 @@
                 </ul>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;"   class="{{ request()->is('admin/report/lists') ? 'active' : ''}}">
+                <a href="javascript:;"   class="{{ request()->is('admin/report/booking', 'admin/report/payment') ? 'active' : ''}}">
                     <i class="fas fa-atlas"></i>
                     <span>Reports</span>
                 </a>
                 <ul class="sub">
-                    <li  class="{{ request()->is('admin/report/lists') ? 'active' : ''}}"><a  href="{{ route('admin.report.list') }}">Manage Reports</a></li>
+                    <li  class="{{ request()->is('admin/report/booking') ? 'active' : ''}}"><a  href="{{ route('admin.report.booking') }}">Booking Reports</a></li>
+                    <li  class="{{ request()->is('admin/report/payment') ? 'active' : ''}}"><a  href="{{ route('admin.report.payment') }}">Payment Reports</a></li>
                 </ul>
             </li>
 

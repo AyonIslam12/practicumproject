@@ -32,9 +32,7 @@ booking-list
             </header>
             <div class="card-body">
                 <div class="adv-table">
-                    <a href="{{ route('admin.booking.create') }}" type="button" class="btn btn-secondary mb-1">
-                        <span class="light">Add New</span>
-                    </a>
+
                     <table  class="display table table-bordered table-striped" id="dynamic-table">
                         <thead>
                             <tr>

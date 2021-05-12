@@ -83,6 +83,7 @@ Route::prefix('/car')->name('car.')->group(function(){
     Route::get('/view/{id}',[ FrontendCarController::class,'singleCar'])->name('singlecar');
     Route::post('/search',[ FrontendCarController::class,'carSearch'])->name('search');
 
+
     });
 
 });
@@ -133,8 +134,8 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
         Route::prefix('booking')->name('booking.')->group(function (){
             Route::get('/list',[BookingController::class,'index'])->name('manage');
-            Route::get('/create',[BookingController::class,'create'])->name('create');
-            Route::post('/store',[BookingController::class,'store'])->name('store');
+
+
             Route::get('/show/{id}',[BookingController::class,'show'])->name('show');
             Route::get('/delete/{id}',[BookingController::class,'destroy'])->name('delete');
             Route::get('/booking/{id}/{status}',[BookingController::class,'updateStatus'])->name('status');
@@ -154,10 +155,13 @@ Route::prefix('admin')->name('admin.')->group(function (){
             Route::get('/delete/{id}',[DriverController::class,'destroy'])->name('delete');
         });
 
-        //User Manage Route Group
+        //Customer Manage Route Group
         Route::prefix('user')->name('user.')->group(function (){
             Route::get('/lists',[BackendUserController::class,'index'])->name('list');
+            Route::post('/create',[BackendUserController::class,'createCustomer'])->name('create');
             Route::get('/show/{id}',[BackendUserController::class,'show'])->name('show');
+            Route::get('/edit/{id}',[BackendUserController::class,'editCustomer'])->name('edit');
+            Route::put('/update/{id}',[BackendUserController::class,'updateCustomer'])->name('update');
             Route::get('/delete/{id}',[BackendUserController::class,'delete'])->name('delete');
 
         });
@@ -192,7 +196,8 @@ Route::prefix('admin')->name('admin.')->group(function (){
         });
         //Reports Manage Route Group
         Route::prefix('report')->name('report.')->group(function (){
-            Route::get('/lists',[ReportController::class,'index'])->name('list');
+            Route::get('/booking',[ReportController::class,'bookingReport'])->name('booking');
+            Route::get('/payment',[ReportController::class,'paymentReport'])->name('payment');
 
 
         });
