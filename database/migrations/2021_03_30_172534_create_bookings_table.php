@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->integer('car_id');
             $table->integer('user_id');
             $table->integer('insurance_id')->nullable();
+            //$table->string('insurance_fee')->default('0');
             $table->date('from_date');
             $table->date('to_date');
             $table->double('price_per_day','10','2')->default(0.0);

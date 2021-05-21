@@ -59,6 +59,8 @@ class BookingController extends Controller
         $booking = Booking::find($id);
         if($status === 'confirmed'){
             $booking->update(['status' => $status]);
+        }elseif($status === 'completed'){
+            $booking->update(['status' => $status]);
         }else{
             $booking->update(['status' => $status]);
         }
@@ -92,10 +94,15 @@ class BookingController extends Controller
 
             $totalAmount = $booking->total_price - $payments;
 
-            if( $amount >  $totalAmount || $amount == 0){
+            if( $amount >  $totalAmount   ){
                 session()->flash('type','danger');
-                session()->flash('message',"You can not pay more then " . $booking->total_price.' TK. or only zero amount');
+                session()->flash('message',"You can not pay more then " . $booking->total_price.' TK.');
                 return \redirect()->back();
+                }elseif( $amount == 0){
+                    session()->flash('type','danger');
+                    session()->flash('message',' You can not pay only zero amount');
+                    return \redirect()->back();
+
                 }
 
                 $pay = Payment::create([

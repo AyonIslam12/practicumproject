@@ -110,7 +110,7 @@ class UserProfile extends Controller
 
     //user Booking History method
     public function bookingHistory(){
-        $bookingHistory = Booking::with('bookingCar')->where('user_id',auth()->user()->id)->get();
+        $bookingHistory = Booking::with('bookingCar')->where('user_id',auth()->user()->id)->orderBy('id','desc')->get();
       return view('frontend.pages.profile.bookingHistory',\compact('bookingHistory'));
     }
 

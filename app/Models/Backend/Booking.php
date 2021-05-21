@@ -15,6 +15,7 @@ class Booking extends Model
         'car_id',
         'user_id',
         'insurance_id',
+        'insurance_fee',
         'from_date',
         'to_date',
         'price_per_day',

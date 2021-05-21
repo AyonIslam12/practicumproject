@@ -59,7 +59,6 @@ Route::group(['middleware' => 'auth'],function () {
 
     //UserProfile
     Route::get('/user/profile',[UserProfile::class,'index'])->name('user.profile.home');
-
     Route::get('/user/update-password',[UserProfile::class,'password'])->name('user.edit.password');
     Route::Post('/user/update-password',[UserProfile::class,'updatePassword'])->name('user.update.password');
 
@@ -134,8 +133,6 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
         Route::prefix('booking')->name('booking.')->group(function (){
             Route::get('/list',[BookingController::class,'index'])->name('manage');
-
-
             Route::get('/show/{id}',[BookingController::class,'show'])->name('show');
             Route::get('/delete/{id}',[BookingController::class,'destroy'])->name('delete');
             Route::get('/booking/{id}/{status}',[BookingController::class,'updateStatus'])->name('status');

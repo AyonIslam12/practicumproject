@@ -29,7 +29,7 @@ class BookingController extends Controller
 
               $request->validate([
                 'from_date' => 'required|date',
-                'to_date' => 'required|after:from_date|date',
+                'to_date' => 'required|after_or_equal:from_date|date',
 
 
             ]);
@@ -40,7 +40,7 @@ class BookingController extends Controller
 
             $car = Car::find($request->car_id);
             //DaysCalulation
-            $daysCalculation = strtotime($request->to_date)-strtotime($request->from_date);
+            $daysCalculation = (strtotime($request->to_date)-strtotime($request->from_date));
             $daysCalculation = round($daysCalculation / (60 * 60 * 24));
 
             //Make Date Fomate
@@ -67,8 +67,8 @@ class BookingController extends Controller
                          'details' =>  $request->details,
                          'price_per_day' => $car->price_per_day,
                          'insurance_fee' => $insuranQuery,
-                         'total_price' => (($car->price_per_day * $daysCalculation) - $car->discount_offer) + $insuranQuery ,
-                         'due' => (($car->price_per_day * $daysCalculation) - $car->discount_offer) + $insuranQuery ,
+                         'total_price' => ((($car->price_per_day * $daysCalculation)+$car->price_per_day ) - $car->discount_offer) + $insuranQuery ,
+                         'due' => ((($car->price_per_day * $daysCalculation)+$car->price_per_day ) - $car->discount_offer) + $insuranQuery ,
 
                      ]);
                      Mail::to(auth()->user()->email)->send(new BokkingNotification($booking));

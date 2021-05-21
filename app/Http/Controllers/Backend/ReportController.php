@@ -43,6 +43,6 @@ class ReportController extends Controller
     //For range date
     $payments = Payment::whereBetween('pay_date',[$fromDate,$toDate])->get();
      }
-      return \view('backend.layouts.report.paymentReport',\compact('payments','fromDate','toDate'));
+      return view('backend.layouts.report.paymentReport',\compact('payments','fromDate','toDate'));
    }
 }

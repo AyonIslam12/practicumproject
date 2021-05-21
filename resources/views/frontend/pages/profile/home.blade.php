@@ -77,6 +77,7 @@ Your-Profile
                 <li><span>E-mail:</span> {{ auth()->user()->email }}</li>
 
                 <li><span>Phone Number:</span> +880-{{ auth()->user()->phone }}</li>
+                <li><span>NID Number:</span>{{ auth()->user()->nid_number }}</li>
                 <li><span>Role:</span>  {{ ucfirst(auth()->user()->role) }}</li>
                 <li><span>Address:</span> {{ ucfirst(auth()->user()->address) }}</li>
             </ul>

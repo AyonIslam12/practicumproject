@@ -15,7 +15,7 @@
           <!-- user login dropdown start-->
           <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                  <img width="40px" alt="" src="{{ asset('uploads/users/ayon.jpg') }}" class=" image img-fluid rounded-circle">
+                  <img width="40px" alt="" src="{{ asset('uploads/users/ayon.jpg') }}"  >
                   <span class="username text-success font-weight-bolder">{{ Str::ucfirst(auth()->user()->name) }}</span>
                   <b class="caret"></b>
               </a>

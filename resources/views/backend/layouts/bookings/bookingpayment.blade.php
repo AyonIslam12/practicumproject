@@ -7,32 +7,6 @@ Payment-History
 @stop
 @section('content')
 
-  <div class="row">
-      <div class="col-md-12 col-sm-12 text-center ">
-
-
-      <div class="card">
-        <div class="card-header">
-           <h4 class="text-dark"> Booking Information</h4>
-        </div>
-       <div class="row">
-           <div class="col-md-8 col-sm-12 offset-md-4 ">
-            <div class="card-body">
-                <ul style="font-size: 15px" class="list-group list-group-flush text-left  p-3">
-                    <li class="text-info font-weight-bolder fx-2">Customer Name : <span class="text-dark  pl-2">{{ $booking->bookingUser->name }}</span></li>
-                    <li class="text-info font-weight-bolder"> Car Name : <span class="text-dark pl-2">{{ $booking->bookingCar->name }}</span></li>
-                    <li class="text-info font-weight-bolder"> Total Amount : <span class="text-dark pl-2">{{ $booking->total_price }}.00 TK.</span></li>
-                    <li class="text-info font-weight-bolder"> Due Amount : <span class="text-dark pl-2">{{ $booking->due }}.00 TK.</span></li>
-
-                </ul>
-            </div>
-
-           </div>
-
-       </div>
-      </div>
-   </div>
-  </div>
 
   <div class="row my-3">
       <div class="col-md-5 col-sm-12">
@@ -99,14 +73,66 @@ Payment-History
                 </div>
                 <div id="printArea">
                     <div class="card-body">
-                        <h5 class="text-center font-weight-bold">Your Payments</h5>
+                       <div class="d-flex  justify-content-between">
+                        <h5 class="text-center text-dark font-weight-bold">Your Invoice</h5>
+                        <img src="{{ asset('uploads/logo/logo.png') }}" alt="">
 
+                       </div>
                         <div class="text-center">
-                            <ul style="font-size: 15px" class="list-group list-group-flush  p-3">
-                                <li class="text-info font-weight-bolder">Customer Name : <span class="text-dark  pl-2">{{ $booking->bookingUser->name }}</span></li>
-                                <li class="text-info font-weight-bolder"> Car Name : <span class="text-dark pl-2">{{ $booking->bookingCar->name }}</span></li>
-                                <li class="text-info font-weight-bolder"> Total Amount : <span class="text-dark pl-2">{{ $booking->total_price }}.00 TK.</span></li>
-                                <li class="text-info font-weight-bolder"> Due Amount : <span class="text-dark pl-2">{{ $booking->due }}.00 TK.</span></li>
+                            {{-- <h4><span class="text-danger font-weight-bold">Sarker</span> <span class="text-dark font-weight-bold">Cars</span></h4> --}}
+                            <div class="logo">
+
+
+                            </div>
+                            <ul style="font-size: 15px" class="list-group list-group-flush text-left  p-3">
+                                <li class=" d-flex justify-between font-weight-bolder fx-2">Customer Name :
+                                    <span class="text-dark  pl-2">{{ucfirst( $booking->bookingUser->name )}}</span>
+                                </li>
+                                <li class="  font-weight-bolder fx-2">Customer Email :
+                                    <span class="text-dark  pl-2">{{ $booking->bookingUser->email }}</span>
+                                </li>
+                                <li class="  font-weight-bolder fx-2">Customer Phone :
+                                    <span class="text-dark  pl-2">{{ $booking->bookingUser->phone }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Car Name :
+                                    <span class="text-dark pl-2">{{ $booking->bookingCar->name }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Car Barnd :
+                                    <span class="text-dark pl-2">{{ $booking->bookingCar->carBrand->brand }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Car Engine :
+                                    <span class="text-dark pl-2">{{ $booking->bookingCar->car_engine }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Rent/Day :
+                                    <span class="text-dark pl-2">{{ $booking->bookingCar->price_per_day }}.00 TK.</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Car Discount Offer :
+                                    <span class="text-dark pl-2">{{ $booking->bookingCar->discount_offer.'.00 TK' }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Booking Insurance Fee :
+                                    <span class="text-dark pl-2">{{ $booking->bookingCar->insurance_fee.'.00 TK' }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Booking Date :
+                                    <span class="text-dark pl-2">{{ date('Y-m-d', strtotime($booking->from_date)) }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Return Date :
+                                    <span class="text-dark pl-2">{{ date('Y-m-d', strtotime($booking->to_date)) }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Total Amount :
+                                    <span class=" pl-2" >{{ $booking->total_price }}.00 TK.</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Due Amount :
+                                    <span class="text-dark pl-2">{{ $booking->due }}.00 TK.</span>
+                                </li>
+                                <li class=" font-weight-bolder"> Payment Status :
+                                    <span class="text-dark pl-2">@if($booking->due > 0)
+                                        <span class="text-dark">unpaid (<span class="text-danger font-weight-bold">{{ $booking->due }}.TK</span>) <span>
+                                        @else
+                                        <span>Paid <i class="far fa-check-circle text-success"></i><span>
+                                        @endif
+                                    </span>
+                                </li>
+
                             </ul>
                         </div>
                         <table class="table table-borderd table-striped">

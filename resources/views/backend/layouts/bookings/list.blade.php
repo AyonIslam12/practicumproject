@@ -64,6 +64,8 @@ booking-list
                                     <span class=" text-success font-weight-bold">Confirmed  <i class="fas fa-check-circle text-success fa-1x"></i></span>
                                 @elseif($booking->status=='rejected')
                                     <span class="text-danger font-weight-bold">Rejected  <i class="fas fa-times text-danger"></i></span>
+                                @elseif($booking->status=='completed')
+                                    <span class="text-primary font-weight-bold">Completed <i class="fas fa-check-circle text-success fa-1x"></i></i></span>
                                 @else
                                     <span class="text-info font-weight-bold">Pending <i class="far fa-pause-circle text-warning"></i></span>
                                 @endif
@@ -79,7 +81,12 @@ booking-list
                                         <a class="dropdown-item"
                                            href="{{route('admin.booking.status',['id'=>$booking->id,'status'=>'confirmed'])}}">Confirmed</a>
                                         <a class="dropdown-item"
-                                           href="{{route('admin.booking.status',['id'=>$booking->id,'status'=>'rejected'])}}">Reject</a>
+                                           href="{{route('admin.booking.status',['id'=>$booking->id,'status'=>'rejected'])}}">Reject
+                                        </a>
+                                        <a class="dropdown-item"
+                                        href="{{route('admin.booking.status',['id'=>$booking->id,'status'=>'completed'])}}">Completed</a>
+                                        </a>
+
                                     </div>
 
                                 </div>

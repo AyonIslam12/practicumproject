@@ -29,7 +29,7 @@ Payment Report
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="from">From Date</label>
-                                                <input type="date" value="{{ $fromDate }}" name="from_date" id="from" class="form-control">
+                                                <input type="date" value="{{ $fromDate }}" name=" " id="from" class="form-control">
 
                                             </div>
 
