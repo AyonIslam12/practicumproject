@@ -40,7 +40,7 @@ Booking-History
                     </li>
                     <li>
                         <a class="{{ request()->is('user/booking/history') ? 'active' : '' }}" href="{{ route('website.user.booking.history') }}">
-                            <i class="fas fa-file-alt"></i>
+                            <i class="fas fa-history"></i>
                         Booking History
                     </a>
                 </li>
@@ -52,7 +52,7 @@ Booking-History
                 </li>
                 <li>
                     <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
-                        <i class="fas fa-file-alt"></i>
+                        <i class="fas fa-key"></i>
                    Change Password
                 </a>
             </li>
@@ -134,8 +134,8 @@ Booking-History
             <hr class="mt-5 " data-aos="fade-up" data-aos-delay="100">
             @endforeach
             @else
-            <div class="bg-warning rounded">
-                <span class="text-dark p-2 ">your  haven't any booking yet right now.</span>
+            <div class="bg-dark rounded">
+                <span class="text-light p-2 ">your  haven't any booking yet right now.</span>
 
             </div>
             @endif

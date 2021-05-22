@@ -33,6 +33,7 @@
     <link href="{{ asset('admin_assets/assets/advanced-datatable/media/css/demo_page.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin_assets/assets/advanced-datatable/media/css/demo_table.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('admin_assets/assets/data-tables/DT_bootstrap.css') }}" />
+    @toastr_css
     <style>
 
     </style>
@@ -100,4 +101,5 @@
 
 
     </body>
+
   </html>

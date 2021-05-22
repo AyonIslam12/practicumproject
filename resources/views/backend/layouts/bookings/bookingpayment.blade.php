@@ -89,10 +89,10 @@ Payment-History
                                     <span class="text-dark  pl-2">{{ucfirst( $booking->bookingUser->name )}}</span>
                                 </li>
                                 <li class="  font-weight-bolder fx-2">Customer Email :
-                                    <span class="text-dark  pl-2">{{ $booking->bookingUser->email }}</span>
+                                    <span class="text-dark  pl-2">{{ Str::ucfirst($booking->bookingUser->email) }}</span>
                                 </li>
                                 <li class="  font-weight-bolder fx-2">Customer Phone :
-                                    <span class="text-dark  pl-2">{{ $booking->bookingUser->phone }}</span>
+                                    <span class="text-dark  pl-2">{{ '+880-'.$booking->bookingUser->phone }}</span>
                                 </li>
                                 <li class="  font-weight-bolder"> Car Name :
                                     <span class="text-dark pl-2">{{ $booking->bookingCar->name }}</span>
@@ -117,6 +117,13 @@ Payment-History
                                 </li>
                                 <li class="  font-weight-bolder"> Return Date :
                                     <span class="text-dark pl-2">{{ date('Y-m-d', strtotime($booking->to_date)) }}</span>
+                                </li>
+                                <li class="  font-weight-bolder"> Total Days:
+                                    <span class="text-dark pl-2">@php
+                                        $daysCalculation = (strtotime($booking->to_date)-strtotime($booking->from_date));
+                                               $daysCalculation = round(($daysCalculation / (60 * 60 * 24))+1);
+                                              echo $daysCalculation." Days";
+                                           @endphp</span>
                                 </li>
                                 <li class="  font-weight-bolder"> Total Amount :
                                     <span class=" pl-2" >{{ $booking->total_price }}.00 TK.</span>
@@ -168,7 +175,7 @@ Payment-History
                 <div class="card-footer  bg-info">
                     <a class="btn btn-secondary" href="{{ route('admin.booking.manage') }}"> Back</a>
                     <button type="button" onclick="printDiv()" class="btn btn-secondary text-white" >
-                        Print History
+                        Print/Download
                     </button>
                 </div>
 

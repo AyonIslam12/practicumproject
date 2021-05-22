@@ -3,6 +3,7 @@
 	<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>@yield('title')</title>
+
 	<link rel="shortcut icon" href="{{ asset('frontend/assets/images/logo/favourite_icon.png')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/fontawesome.css')}}">
@@ -14,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/nice-select.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/jquery-ui.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/style.css')}}">
+    @toastr_css
 </head>
 <body>
 
@@ -65,8 +67,11 @@
 
 	{dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-M3VBLFRFMN")
 </script>
-
+@jquery
+@toastr_js
+@toastr_render
 
 </body>
+
 
 </html>

@@ -40,7 +40,7 @@ Testimonials-Site
                     </li>
                     <li>
                         <a class="{{ request()->is('user/booking/history') ? 'active' : '' }}" href="{{ route('website.user.booking.history') }}">
-                            <i class="fas fa-file-alt"></i>
+                            <i class="fas fa-history"></i>
                         Booking History
                     </a>
                 </li>
@@ -52,7 +52,7 @@ Testimonials-Site
                 </li>
                 <li>
                     <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
-                        <i class="fas fa-file-alt"></i>
+                        <i class="fas fa-key"></i>
                    Change Password
                 </a>
             </li>
@@ -96,6 +96,9 @@ Testimonials-Site
            </div>
 
         <div class="row">
+            @if(count($posts) > 0)
+
+
             @foreach ($posts  as $post )
             <div class="col-8">
 
@@ -121,6 +124,13 @@ Testimonials-Site
             </div>
             <hr class="mt-5 " data-aos="fade-up" data-aos-delay="100">
             @endforeach
+            @else
+            <div class="bg-dark rounded">
+                <span class="text-light p-2 ">You didn't post yet.</span>
+
+            </div>
+
+            @endif
 
            </div>
      </div>

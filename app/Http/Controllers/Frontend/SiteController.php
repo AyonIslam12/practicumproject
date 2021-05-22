@@ -14,6 +14,7 @@ class SiteController extends Controller
          $results =Testimonial::with('userTestimonials')->get();
          $brands = Brand::all();
          $cars = Car::all();
+         toastr()->success('Welcome To Sarkar Car Website');
 
         return view('frontend.pages.home',\compact('results','brands','cars'));
     }

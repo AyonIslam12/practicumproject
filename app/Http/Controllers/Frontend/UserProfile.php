@@ -16,6 +16,7 @@ class UserProfile extends Controller
 {
     //user home method
     public function index(){
+        toastr()->success('Welcome To Your Profile');
         return view('frontend.pages.profile.home');
     }
 
@@ -60,8 +61,8 @@ class UserProfile extends Controller
             'address' =>$request->address,
 
             ]);
-            session()->flash('type','success');
-            session()->flash('message','Your Profile Updated Successfully');
+
+            toastr()->success('Your Profile Updated Successfully');
         }catch(Exception $e){
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());
@@ -96,8 +97,9 @@ class UserProfile extends Controller
            ]);
 
            Auth::logout();
+           toastr()->success('Your Password Reset Successfully');
            session()->flash('type','success');
-           session()->flash('message',' Your Password Updated Successfully,Please Login Again.');
+           session()->flash('message',' Please Login Again.');
            return redirect()->route('website.user.login.form');
 
 
@@ -111,11 +113,13 @@ class UserProfile extends Controller
     //user Booking History method
     public function bookingHistory(){
         $bookingHistory = Booking::with('bookingCar')->where('user_id',auth()->user()->id)->orderBy('id','desc')->get();
-      return view('frontend.pages.profile.bookingHistory',\compact('bookingHistory'));
+        toastr()->success('Check Your Booking Info.');
+        return view('frontend.pages.profile.bookingHistory',\compact('bookingHistory'));
     }
 
     //Testimonials Show Method
     public function showTestimonials(){
+        toastr()->success('Manage Your Testimonials.');
         $posts = Testimonial::where('user_id', '=' , \auth()->user()->id)->get();
 
 

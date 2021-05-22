@@ -83,8 +83,7 @@ class UserController extends Controller
           if(Auth::attempt($loginData)){
 
 
-            session()->flash('type','success');
-            session()->flash('message','User Login Success.');
+            //toastr()->success('Your Login Success To Sarkar Car Website');
             return redirect()->intended(route('website.home'));
           }else{
             session()->flash('type','danger');

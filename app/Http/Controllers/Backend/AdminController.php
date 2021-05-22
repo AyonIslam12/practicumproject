@@ -21,6 +21,7 @@ class AdminController extends Controller
         $insurance = Insurance::where('status' , '=' , 'active')->get();
         $booking = Booking::all();
         $payment = Payment::all();
+
         return view('backend.layouts.dashboard', \compact('user','driver','car','insurance','booking','payment'));
     }
 

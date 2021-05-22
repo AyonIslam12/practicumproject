@@ -39,7 +39,7 @@ Update-Post
                 </li>
                 <li>
                         <a  href="{{ route('website.user.booking.history') }}">
-                            <i class="fas fa-file-alt"></i>
+                            <i class="fas fa-history"></i>
                         Booking History
                     </a>
                 </li>
@@ -51,7 +51,7 @@ Update-Post
              </li>
                 <li>
                 <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
-                        <i class="fas fa-file-alt"></i>
+                    <i class="fas fa-key"></i>
                    Change Password
                 </a>
                 </li>

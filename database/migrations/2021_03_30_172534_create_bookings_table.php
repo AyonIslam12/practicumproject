@@ -15,10 +15,9 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->integer('car_id');
-            $table->integer('user_id');
+            //$table->integer('car_id');
+            //$table->integer('user_id');
             $table->integer('insurance_id')->nullable();
-            //$table->string('insurance_fee')->default('0');
             $table->date('from_date');
             $table->date('to_date');
             $table->double('price_per_day','10','2')->default(0.0);
@@ -28,7 +27,24 @@ class CreateBookingsTable extends Migration
             $table->text('details')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();
+
+            $table->foreignId('car_id')
+            ->constrained('cars')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->foreignId('user_id')
+            ->constrained('users')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->foreignId('insurance_id')
+            ->constrained('insurances')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
+
+
     }
 
     /**

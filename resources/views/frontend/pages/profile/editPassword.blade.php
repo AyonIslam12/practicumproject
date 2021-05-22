@@ -32,14 +32,14 @@ Change-Password
                     <a href="{{ route('website.user.profile.home') }}" class="user_thumbnail pb-5">
                         <img width="150px" class="rounded-circle m-auto" src="{{ asset('uploads/users/'.auth()->user()->image)}}" alt="thumbnail_not_found">
                     </a>
-                    <a class="active" href="{{ route('website.user.profile.home') }}">
+                    <a class="{{ request()->is('user/profile') ? 'active' : '' }}" href="{{ route('website.user.profile.home') }}">
                         <i class="fas fa-user"></i>
                         {{ auth()->user()->name }}
                     </a>
                 </li>
                 <li>
                         <a  href="{{ route('website.user.booking.history') }}">
-                            <i class="fas fa-file-alt"></i>
+                            <i class="fas fa-history"></i>
                         Booking History
                     </a>
                 </li>
@@ -51,7 +51,7 @@ Change-Password
              </li>
                 <li>
                 <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
-                        <i class="fas fa-file-alt"></i>
+                    <i class="fas fa-key"></i>
                    Change Password
                 </a>
                 </li>
