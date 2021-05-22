@@ -233,8 +233,9 @@ class CarController extends Controller
             session()->flash('message', 'Car Data Deleteed successfully');
 
         }catch(Exception $e){
-            session()->flash('type', 'danger');
-            session()->flash('message', $e->getMessage());
+
+            toastr()->warning("You Can't Delete Car, If The Car Is Booked.");
+            return \redirect()->back();
         }
         return \redirect()->back();
     }

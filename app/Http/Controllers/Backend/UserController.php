@@ -28,6 +28,7 @@ class UserController extends Controller
         $loginData=$request->only('email','password');
         if(Auth::attempt($loginData)){
             $request->session()->regenerate();
+            toastr()->success("Welcome To Admin Panel.");
           return redirect()->route('admin.dashboard');
         }else{
           session()->flash('type','danger');

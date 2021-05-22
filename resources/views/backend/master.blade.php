@@ -71,6 +71,9 @@
 
 
       <!-- js placed at the end of the document so the pages load faster -->
+      @jquery
+      @toastr_js
+      @toastr_render
       <script src="{{ asset('admin_assets/js/jquery.js') }}"></script>
       <script src="{{ asset('admin_assets/js/bootstrap.bundle.min.js') }}"></script>
       <script class="include" type="text/javascript" src="{{ asset('admin_assets/js/jquery.dcjqaccordion.2.7.js') }}"></script>

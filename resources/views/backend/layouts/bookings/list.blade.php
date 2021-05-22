@@ -20,7 +20,7 @@ booking-list
                 <div class="col-md-12">
             @if(session('message'))
                 <div class="text-center alert alert-{{ session('type') }}">
-                <p class="text-center text-bolder">{{ session('message') }}</p>
+                <p class="text-center text-dark text-bolder">{{ session('message') }}</p>
                 </div>
             @endif
             </div>

@@ -15,7 +15,12 @@ class CreateCarsTable extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            //$table->integer('brand_id');
+
+            $table->foreignId('brand_id')
+            ->constrained('brands')
+            ->onUpdate('restrict')
+            ->onDelete('restrict');
+
             $table->string('name',100);
             $table->string('model',50);
             $table->string('car_engine')->default('dsu78998f');
@@ -41,10 +46,7 @@ class CreateCarsTable extends Migration
             $table->enum('status',['active','inactive']);
             $table->timestamps();
 
-            $table->foreignId('brand_id')
-        ->constrained()
-        ->onUpdate('cascade')
-        ->onDelete('cascade');
+
 
 
 

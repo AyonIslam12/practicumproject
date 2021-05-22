@@ -105,10 +105,9 @@ class InsuranceController extends Controller
                 session()->flash('message', 'Insurance Delete Successfully');
             }
         } catch (Exception $e) {
-            session()->flash('type', 'danger');
-            session()->flash('message', $e->getMessage());
-            return \redirect()->route('admin.insurance.list');
+            toastr()->warning("Insurance Info Can't Delete, If Any Booking Take It");
+            return \redirect()->back();
         }
-        return \redirect()->route('admin.insurance.list');
+        return \redirect()->back();
     }
 }

@@ -85,8 +85,8 @@ class CarBrandController extends Controller
         session()->flash('message', 'Brand Delete Successfully');
         }
        }catch(Exception $e){
-        session()->flash('type', 'danger');
-        session()->flash('message', $e->getMessage());
+
+        toastr()->warning("You can't delete,If Brands have at least one Car.");
         return \redirect()->route('admin.car.brand.manage');
        }
        return \redirect()->route('admin.car.brand.manage');

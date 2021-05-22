@@ -46,8 +46,9 @@ class BookingController extends Controller
             session()->flash('message','Booking Data Delete Successfully.');
          }
        }catch(Exception $e){
-        session()->flash('type','danger');
-        session()->flash('message',$e->getMessage());
+
+        toastr()->warning("You Can't Delete Booking Info, If Any Payment Occurs.");
+        return \redirect()->back();
 
        }
        return \redirect()->back();

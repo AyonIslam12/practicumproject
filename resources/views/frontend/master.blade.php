@@ -67,11 +67,11 @@
 
 	{dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-M3VBLFRFMN")
 </script>
+
+
+</body>
 @jquery
 @toastr_js
 @toastr_render
-
-</body>
-
 
 </html>
