@@ -26,6 +26,11 @@ class CreateBookingsTable extends Migration
             ->onUpdate('restrict')
             ->onDelete('restrict');
 
+            $table->foreignId('driver_id')->nullable()
+            ->constrained('users')
+            ->onUpdate('restrict')
+            ->onDelete('restrict');
+
             $table->foreignId('insurance_id')->nullable()
             ->constrained('insurances')
             ->onUpdate('restrict')
@@ -39,6 +44,7 @@ class CreateBookingsTable extends Migration
             $table->double('due','10','2')->default(0.0);
             $table->text('details')->nullable();
             $table->string('status')->default('pending');
+            $table->string('response')->default('rejected');
             $table->timestamps();
 
         });

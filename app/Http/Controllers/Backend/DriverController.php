@@ -17,7 +17,7 @@ class DriverController extends Controller
      */
     public function index()
     {
-         $drivers = Driver::all();
+         $drivers = User::where('role', '=', 'driver')->get();
         return \view('backend.layouts.drivers.list',\compact('drivers'));
     }
 
@@ -48,7 +48,7 @@ class DriverController extends Controller
             }
         }
 
-        Driver::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -75,14 +75,14 @@ class DriverController extends Controller
 
     public function show($id)
     {
-        $driver = Driver::find($id);
+        $driver = User::find($id);
         return view('backend.layouts.drivers.view', \compact('driver'));
     }
 
 
     public function edit($id)
     {
-        $driver = Driver::find($id);
+        $driver = User::find($id);
         if($driver)
        return view('backend.layouts.drivers.edit', \compact('driver'));
        else
@@ -92,7 +92,7 @@ class DriverController extends Controller
 
     public function update(Request $request, $id)
     {
-            $driver = Driver::find($id);
+            $driver = User::find($id);
             if (!$driver) return redirect()->back();
         $request->validate([
             'name' => 'required|string|min:4',
@@ -138,7 +138,7 @@ class DriverController extends Controller
     public function destroy($id)
     {
         try{
-            $driver = Driver::find($id);
+            $driver = User::find($id);
             if($driver){
 
             if (file_exists(public_path('uploads/users/'.$driver->image))) {

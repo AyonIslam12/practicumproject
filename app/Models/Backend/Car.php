@@ -2,6 +2,7 @@
 
 namespace App\Models\Backend;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,8 +12,10 @@ class Car extends Model
     protected $fillable = [
         'name',
         'brand_id',
+        'user_id',
         'model',
         'car_engine',
+        'nPlate',
         'model_year',
         'price_per_day',
         'discount_offer',
@@ -40,5 +43,8 @@ class Car extends Model
 
     public function carBrand(){
         return $this->belongsTo(Brand::class,'brand_id','id');
+    }
+    public function carDriver(){
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

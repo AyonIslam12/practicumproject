@@ -29,6 +29,11 @@ Car-single-view
                         <td class="text-center" >{{ $car->model}}</td>
                     </tr>
                     <tr>
+                        <th>Car Number Plate</th>
+                        <td class="text-center" >{{ $car->nPlate}}</td>
+                    </tr>
+                    <tr>
+                    <tr>
                         <th>Car Engine Number</th>
                         <td class="text-center" >{{ $car->car_engine}}</td>
                     </tr>

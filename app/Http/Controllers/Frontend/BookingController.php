@@ -75,7 +75,7 @@ class BookingController extends Controller
 
                      session()->flash('type','success');
                      session()->flash('message','Your Booking is Successful.You will get message in your E-mail');
-                     Db::commit();
+                     /* Db::commit(); */
                     return redirect()->back();
                   }else{
                      session()->flash('type','danger');

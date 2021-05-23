@@ -14,6 +14,7 @@ class Booking extends Model
 
         'car_id',
         'user_id',
+        'driver_id',
         'insurance_id',
         'insurance_fee',
         'from_date',
@@ -23,6 +24,7 @@ class Booking extends Model
         'total_price',
         'due',
         'details',
+        'response',
         'status',
     ];
     public function bookingCar(){
@@ -30,6 +32,9 @@ class Booking extends Model
     }
     public function bookingUser(){
         return $this->belongsTo(User::class,'user_id','id');
+    }
+    public function bookingDriver(){
+        return $this->belongsTo(User::class,'driver_id','id');
     }
     public function bookinInsurance(){
         return $this->belongsTo(Insurance::class,'insurance_id','id');

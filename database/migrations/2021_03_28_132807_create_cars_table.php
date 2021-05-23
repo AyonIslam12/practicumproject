@@ -24,6 +24,7 @@ class CreateCarsTable extends Migration
             $table->string('name',100);
             $table->string('model',50);
             $table->string('car_engine')->default('dsu78998f');
+            $table->string('nPlate',100)->default('Dhaka-1234');
             $table->date('model_year')->nullable();
             $table->double('price_per_day','10','2')->default('0.0');
             $table->double('discount_offer','10','2')->nullable();

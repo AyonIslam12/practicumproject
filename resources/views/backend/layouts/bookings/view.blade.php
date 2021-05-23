@@ -20,6 +20,10 @@ booking-single-view
                         <td>{{ $booking->bookingCar->name}}</td>
                     </tr>
                     <tr>
+                        <th scope="col">Car Number Plate</th>
+                        <td>{{ $booking->bookingCar->nPlate}}</td>
+                    </tr>
+                    <tr>
                         <th scope="col">Car Engine Number</th>
                         <td>{{ $booking->bookingCar->car_engine}}</td>
                     </tr>
@@ -30,12 +34,22 @@ booking-single-view
                         </td>
                     </tr>
                     <tr>
-                        <th scope="col">From Date</th>
+                        <th scope="col">Booking Date</th>
                         <td>{{ date("Y-M-d",strtotime($booking->from_date)) }}</td>
                     </tr>
                     <tr>
-                        <th scope="col">To Date</th>
+                        <th scope="col">Return Date</th>
                         <td>{{  date("Y-M-d",strtotime($booking->to_date))  }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Total Days</th>
+                        <td>
+                            @php
+                             $daysCalculation = (strtotime($booking->to_date)-strtotime($booking->from_date));
+                             $daysCalculation = round(($daysCalculation / (60 * 60 * 24))+1);
+                            echo $daysCalculation." Days";
+                         @endphp
+                        </td>
                     </tr>
                     <tr>
                         <th scope="col">Price/Day</th>
@@ -69,13 +83,42 @@ booking-single-view
                         <th scope="col">Customer Address</th>
                         <td>{{ $booking->bookingUser->address}} </td>
                     </tr>
+
                     <tr>
                         <th scope="col">Customer Message</th>
                         <td>{{ $booking->details}} </td>
                     </tr>
                     <tr>
-                        <th scope="col">Status</th>
+                        <th scope="col">Booking Status</th>
                         <td>{{ucfirst($booking->status)}} </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="col">Driver Name</th>
+                        <td>@if ($booking->driver_id != NULL )
+                        <span>{{ ucfirst($booking->bookingDriver->name)}}</span>
+                        @else
+                        <span>Not Added Yet.</span>
+                        @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Driver Email</th>
+                        <td>@if ($booking->driver_id != NULL )
+                        <span>{{ ucfirst($booking->bookingDriver->email)}}</span>
+                        @else
+                        <span>Not Added Yet.</span>
+                        @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Driver Contact Number</th>
+                        <td>@if ($booking->driver_id != NULL )
+                        <span>+880-{{ $booking->bookingDriver->phone}}</span>
+                        @else
+                        <span>Not Added Yet.</span>
+                        @endif
+                        </td>
                     </tr>
 
 

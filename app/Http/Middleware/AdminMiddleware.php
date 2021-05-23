@@ -21,15 +21,12 @@ class AdminMiddleware
             if(Auth::user()->role == 'admin'){
                 return $next($request);
             }else{
-
                 Auth::logout();
 
                 session()->flash('type','danger');
                 session()->flash('message','Sorry You are not Admin.');
                 return redirect()->route('admin.login-form');
-
             }
-
         }else{
             return \redirect()->route('admin.login-form');
         }

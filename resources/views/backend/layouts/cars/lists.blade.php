@@ -48,6 +48,7 @@ car-list
                                     <th scope="col">Car Image</th>
                                     <th scope="col"> Car Price/Day</th>
                                     <th scope="col"> Car Status</th>
+                                    <th scope="col"> Add Driver</th>
                                     <th scope="col" class="text-center">Action</th>
                                   </tr>
                             </tr>
@@ -64,6 +65,11 @@ car-list
                                 <td><img width="80px" src="{{ url('/uploads/cars/'.$car->image )}}" alt=""></td>
                                 <td>{{ $car->price_per_day.'.00'}}</td>
                                 <td>{{ Str::ucfirst($car->status) }}</td>
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" href="#" data-toggle="modal" data-target="#exampleModal">
+                                    Add Driver
+                                    </a>
+                                </td>
 
                               <td class="text-center ">
                                 <a class="btn btn-info btn-sm mx-1" href="{{ route('admin.car.show',$car->id) }}"><i class="fas fa-eye text-dark"></i></a>
@@ -83,5 +89,35 @@ car-list
 </div>
 
 <!-- page end-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Driver For This Car</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+            <form action="">
+            <div class="form-group text-dark">
+                <label for="brand_id"><span>Select Driver</span></label>
+                <select class="form-control">
+                    <option value="driver" class="form-control">Default select</option>
+                  </select>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
 
 @endsection

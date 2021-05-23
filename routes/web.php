@@ -13,6 +13,8 @@ use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\UserController as BackendUserController;
+use App\Http\Controllers\Driver\AddToBookingDriver;
+use App\Http\Controllers\Driver\DriverController as DriverDriverController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\CarController as FrontendCarController;
 use App\Http\Controllers\Frontend\CustomerMessage;
@@ -139,6 +141,10 @@ Route::prefix('admin')->name('admin.')->group(function (){
             //Payment In Per Booking
             Route::get('payment/{id}',[BookingController::class,'paymentShow'])->name('payment');
             Route::post('payment/create',[BookingController::class,'paymentCreate'])->name('payment.create');
+            //add driver
+            Route::get('/add-driver/{id}',[AddToBookingDriver::class,'addToBooking'])->name('add.driver.form');
+            Route::put('/add/{id}',[AddToBookingDriver::class,'AddDriver'])->name('add.driver');
+
 
         });
 
@@ -204,3 +210,14 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
 
 });
+//Driver Site Routes
+    Route::get('employee/login',[DriverDriverController::class,'showLoginForm'])->name('employee.login.form');
+    Route::post('employee/do-login', [DriverDriverController::class,'Dologin'])->name('employee.do.login');
+    Route::group(['middleware' => 'driver-auth'],function () {
+        Route::get('employee/',[DriverDriverController::class,'dashboard'])->name('employee.dashboard');
+        Route::get('employee/logout',[DriverDriverController::class,'logout'])->name('employee.logout');
+        //booking info for driver
+        Route::get('/booking-information',[DriverDriverController::class,'bookingList'])->name('booking.information') ;
+        Route::get('/booking/{id}/{response}',[DriverDriverController::class,'updateResponse'])->name('employee.response');
+    });
+

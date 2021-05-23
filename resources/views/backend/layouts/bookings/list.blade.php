@@ -41,8 +41,9 @@ booking-list
                                 <th scope="col">User</th>
                                 <th scope="col">From Date</th>
                                 <th scope="col">To Date</th>
-                                <th scope="col">Price/Day</th>
                                 <th scope="col">Total</th>
+                                <th>Add Driver</th>
+                                <th style="width: 40px;" >Driver Response</th>
                                 <th scope="col">Status</th>
                                 <th class="text-center" scope="col">Action</th>
                             </tr>
@@ -57,8 +58,15 @@ booking-list
                               <td>{{ $booking->bookingUser->name}}</td>
                               <td>{{ date("Y-M-d",strtotime($booking->from_date)) }}</td>
                               <td>{{  date("Y-M-d",strtotime($booking->to_date))  }}</td>
-                              <td>{{ $booking->price_per_day }} BDT.</td>
+
+
                               <td>{{ $booking->total_price}} BDT.</td>
+                              <td class="text-center">
+                                  <a class="btn btn-success btn-sm " href="{{ route('admin.booking.add.driver.form',$booking->id) }}">
+                                      <i class="fas fa-plus-circle"></i>
+                                    </a>
+                              </td>
+                              <td>{{ ucfirst( $booking->response) }}</td>
                               <td>
                                 @if($booking->status=='confirmed')
                                     <span class=" text-success font-weight-bold">Confirmed  <i class="fas fa-check-circle text-success fa-1x"></i></span>
@@ -92,7 +100,7 @@ booking-list
                                 </div>
                               </td>
                               <td class="text-center">
-                                  <a  class="btn btn-outline-success btn-sm mx-1" href="{{ route('admin.booking.payment',$booking->id) }}">Payment</i></a>
+                                  <a  class="btn btn-outline-success btn-sm mx-1" href="{{ route('admin.booking.payment',$booking->id) }}"><i class="fab fa-amazon-pay"></i></a>
                                   <a  class="btn btn-info btn-sm mx-1" href="{{ route('admin.booking.show',$booking->id) }}"><i class="fas fa-eye text-dark"></i></a>
                                  <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href="{{ route('admin.booking.delete',$booking->id) }}"><i class="fas fa-trash text-dark"></i></a>
 
