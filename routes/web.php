@@ -218,6 +218,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('employee/logout',[DriverDriverController::class,'logout'])->name('employee.logout');
         //booking info for driver
         Route::get('/booking-information',[DriverDriverController::class,'bookingList'])->name('booking.information') ;
+        Route::get('employee-schedule/show/{id}',[DriverDriverController::class,'show'])->name('show.booking');
         Route::get('/booking/{id}/{response}',[DriverDriverController::class,'updateResponse'])->name('employee.response');
     });
 

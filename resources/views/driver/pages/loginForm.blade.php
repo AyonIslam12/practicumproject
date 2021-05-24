@@ -107,7 +107,7 @@
 
                 </div>
 
-                    <div class="col-md-6 col-sm-12 login100-more" style="background-image: url('{{ asset('driver/auth/images/bg_01.jpg') }}');">
+                    <div class="col-md-6 col-sm-12 login100-more" style="background-image: url('{{ asset('driver/auth/images/img_02.jpg') }}');">
                     </div>
 
 

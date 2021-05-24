@@ -42,8 +42,8 @@ booking-list
                                 <th scope="col">From Date</th>
                                 <th scope="col">To Date</th>
                                 <th scope="col">Total</th>
-                                <th>Add Driver</th>
-                                <th style="width: 40px;" >Driver Response</th>
+
+                                <th style="width: 50pxpx;" >Add Driver</th>
                                 <th scope="col">Status</th>
                                 <th class="text-center" scope="col">Action</th>
                             </tr>
@@ -62,11 +62,12 @@ booking-list
 
                               <td>{{ $booking->total_price}} BDT.</td>
                               <td class="text-center">
-                                  <a class="btn btn-success btn-sm " href="{{ route('admin.booking.add.driver.form',$booking->id) }}">
+                                  <a class="btn btn-outline-success btn-sm " href="{{ route('admin.booking.add.driver.form',$booking->id) }}">
                                       <i class="fas fa-plus-circle"></i>
                                     </a>
+                                   <span class=""> {{ ucfirst( $booking->response) }}</span>
                               </td>
-                              <td>{{ ucfirst( $booking->response) }}</td>
+
                               <td>
                                 @if($booking->status=='confirmed')
                                     <span class=" text-success font-weight-bold">Confirmed  <i class="fas fa-check-circle text-success fa-1x"></i></span>
@@ -101,8 +102,8 @@ booking-list
                               </td>
                               <td class="text-center">
                                   <a  class="btn btn-outline-success btn-sm mx-1" href="{{ route('admin.booking.payment',$booking->id) }}"><i class="fab fa-amazon-pay"></i></a>
-                                  <a  class="btn btn-info btn-sm mx-1" href="{{ route('admin.booking.show',$booking->id) }}"><i class="fas fa-eye text-dark"></i></a>
-                                 <a type="submit" class="btn btn-danger btn-sm  mx-1 delete" href="{{ route('admin.booking.delete',$booking->id) }}"><i class="fas fa-trash text-dark"></i></a>
+                                  <a  class="btn btn-outline-info btn-sm mx-1" href="{{ route('admin.booking.show',$booking->id) }}"><i class="fas fa-eye text-dark"></i></a>
+                                 <a type="submit" class="btn btn-outline-danger btn-sm  mx-1 delete" href="{{ route('admin.booking.delete',$booking->id) }}"><i class="fas fa-trash text-dark"></i></a>
 
 
                               </td>

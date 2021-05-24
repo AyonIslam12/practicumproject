@@ -14,7 +14,7 @@ class CarController extends Controller
 {
     public function cars(){
 
-        $cars = Car::with('carBrand')->paginate(6);
+        $cars = Car::with('carBrand')->orderBy('id','desc')->paginate(6);
 
         return view('frontend.pages.cars.cars',\compact('cars'));
     }

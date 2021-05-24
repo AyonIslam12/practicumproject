@@ -29,7 +29,7 @@
             <div class="user-options dropdown-box">
                 <div class="drop-content basic">
                     <ul>
-                        <li> <a href="pages_user-profile.html"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                        <li> <a href="{{ route('employee.dashboard') }}"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
                         <li> <a href="{{ route('employee.logout') }}"><i class="fa fa-sign-out " aria-hidden="true"></i>Logout</a></li>
                     </ul>
                 </div>

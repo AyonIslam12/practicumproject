@@ -22,7 +22,7 @@
                     <li class="{{ request()->is('booking-information')? 'active-item' : '' }}">
                         <a href="{{ route('booking.information') }}">
                             <i class="fas fa-book" aria-hidden="true"></i>
-                            <span>Booking Info</span>
+                            <span>Booking Schedule</span>
                         </a>
                     </li>
 

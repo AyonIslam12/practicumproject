@@ -16,7 +16,7 @@ class AdminController extends Controller
 {
     public function dashboard(){
         $user= User::where('role','=','customer')->get();
-        $driver = Driver::all();
+        $driver = User::where('role', '=', 'driver')->get();
         $car = Car::where('status' , '=' , 'active')->get();
         $insurance = Insurance::where('status' , '=' , 'active')->get();
         $booking = Booking::all();

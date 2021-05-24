@@ -67,7 +67,7 @@ Booking-Sheduale
                                   </div>
                               </td>
                                     <td>
-                                        <a class="btn btn-info " href="#"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-info " href="{{ route('show.booking',$item->id) }}"><i class="fa fa-eye text-dark"></i></a>
                                     </td>
                                 </tr>
 

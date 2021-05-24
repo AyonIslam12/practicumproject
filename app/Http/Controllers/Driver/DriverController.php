@@ -60,4 +60,11 @@ class DriverController extends Controller
         return redirect()->back();
 
     }
+    public function show($id){
+        $booking = Booking::find($id);
+
+
+       return view('driver.pages.view', \compact('booking'));
+
+    }
 }

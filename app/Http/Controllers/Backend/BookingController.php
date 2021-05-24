@@ -96,12 +96,11 @@ class BookingController extends Controller
             $totalAmount = $booking->total_price - $payments;
 
             if( $amount >  $totalAmount   ){
-                session()->flash('type','danger');
-                session()->flash('message',"You can not pay more then " . $booking->total_price.' TK.');
+                toastr()->warning("You can not pay more then " . $booking->total_price.' TK.');
                 return \redirect()->back();
+
                 }elseif( $amount == 0){
-                    session()->flash('type','danger');
-                    session()->flash('message',' You can not pay only zero amount');
+                    toastr()->warning("Sorry, You can't pay only zero amount.");
                     return \redirect()->back();
 
                 }
@@ -118,9 +117,8 @@ class BookingController extends Controller
                    'due' => $totalAmount - $amount,
 
                ]) ;
+               toastr()->success("Your Payment Success.");
 
-                session()->flash('type','success');
-                session()->flash('message','Payment Success');
            }catch(Exception $e){
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());
@@ -129,6 +127,8 @@ class BookingController extends Controller
          }
          return \redirect()->back();
      }
+
+
 
 
 }

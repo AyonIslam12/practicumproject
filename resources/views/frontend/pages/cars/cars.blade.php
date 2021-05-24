@@ -80,19 +80,21 @@ All-Cars
         @endforeach
 
 	</div>
-</div>
-<hr data-aos="fade-up" data-aos-delay="100">
-  <div class="row">
-     <div class="col-10 offset-1">
-        <div class="d-felx justify-content-left">
 
-            {{ $cars->links() }}
+    <div class="row">
+        <div class="col-12 ">
+           <div class="d-felx justify-content-left">
+
+               {{ $cars->links() }}
+
+           </div>
 
         </div>
 
-     </div>
+    </div>
+</div>
+<hr data-aos="fade-up" data-aos-delay="100">
 
- </div>
 </section>
 
 
