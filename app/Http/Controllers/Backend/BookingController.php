@@ -95,14 +95,13 @@ class BookingController extends Controller
 
             $totalAmount = $booking->total_price - $payments;
 
-            if( $amount >  $totalAmount   ){
+            if( $amount >  $totalAmount){
                 toastr()->warning("You can not pay more then " . $booking->total_price.' TK.');
                 return \redirect()->back();
 
                 }elseif( $amount == 0){
-                    toastr()->warning("Sorry, You can't pay only zero amount.");
+                    toastr()->info("Your payment already done");
                     return \redirect()->back();
-
                 }
 
                 $pay = Payment::create([

@@ -30,9 +30,9 @@ class DriverController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:4',
-            'email' => 'required|email|unique:drivers',
-            'phone' => 'required|min:11|max:11',
-            'nid_number' => 'required|min:11|max:16|unique:drivers',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|min:11|max:11|unique:users',
+            'nid_number' => 'required|min:11|max:16|unique:users',
             'password' => 'required|min:6|max:16',
             'password' => 'required|min:6|max:16|confirmed',
             'address' => 'required',

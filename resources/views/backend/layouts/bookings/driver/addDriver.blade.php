@@ -9,14 +9,14 @@ Add-Driver
     <div class="row">
         <div class="col-md-8 col-sm-12 offset-md-2">
             <div class="card">
-                <div class="card-header text-center text-dark">
+                <div class="card-header text-center font-weight-bold text-dark">
                   Add Driver For Booking
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.booking.add.driver',$bookingAdd->id ) }}" method="post">
                         @csrf
                         @method("PUT")
-                        <div class="form-group">
+                      {{--   <div class="form-group">
                             <label for="driver_id"> <span class="text-dark">Add Driver For Driving</span></label>
                             <select name="driver_id" id="driver_id" class="form-control">
                             <option value="">select</option>
@@ -25,9 +25,70 @@ Add-Driver
                             @endforeach
 
                            </select>
+                        </div> --}}
+                        @foreach ($driver  as $item )
+                        <div class="row mb-3">
+                            <div class="col-12  ">
+                            <div class="d-flex">
+                                <div class="">
+                                    <img width="100px;" class="img-fluid"src="{{ asset('uploads/driver/'.$item->image) }}" alt="">
+
+                                </div>
+                                <div class="pl-5">
+                                    <h4 class="font-weight-bold"><span class="text-dark">{{ $item->name }}</span></h4>
+                                    <h6 class="font-weight-bold">Position: <span class="text-dark">{{ $item->role }}</span></h6>
+                                    <h6 class="font-weight-bold">Contact Number:  <span class="text-dark">+880-{{ $item->phone }}</span></h6>
+                                    <h6  class="font-weight-bold">Email Address:  <span class="text-dark">{{ $item->email }}</span></h6>
+                                    <h6  class="font-weight-bold">NID Number:  <span class="text-dark">{{ $item->nid_number }}</span></h6>
+                                    <h6  class="font-weight-bold">Address:  <span class="text-dark">{{ $item->address }}</span></h6>
+
+                                </div>
+                                <div class="ml-5">
+                                    @php
+ $fromDate = date("Y-m-d", strtotime($bookingAdd->from_date));
+      $toDate = date("Y-m-d", strtotime($bookingAdd->to_date));
+
+      $checkBook = $bookingAdd::query()->where('driver_id', $item->id);
+
+      $checkBook->where(function ($query) use ($fromDate, $toDate) {
+          $query->whereBetween('from_date', [$fromDate, $toDate])
+              ->orWhereBetween('to_date', [$fromDate, $toDate]);
+      });
+
+$checkBook = $checkBook->get();
+                                    @endphp
+
+                                    <span>@if($checkBook->count() == 0)
+                                       <p class="text-center text-dark font-weight-bold">
+                                       Drive Status
+                                         <span class="btn btn-outline-success btn-sm text-dark">Free For Drive</span>
+                                      </p>
+
+                                        @else
+                                         <p class="text-center text-dark font-weight-bold">
+                                       Drive Status
+                                         <span class="btn btn-outline-warning btn-sm text-dark">Already On Drive</span>
+                                         <p class="text-dark font-weight-bold">From: <span class="text-info">{{ date("Y-m-d", strtotime($bookingAdd->from_date)) }} <span class="text-dark font-weight-bold">To:</span> {{ date("Y-m-d", strtotime($bookingAdd->to_date)) }}</span></p>
+                                      </p>
+                                        @endif
+
+                                    </span>
+                                </div>
+
+                            </div>
+
+                                <div class="form-group form-check mt-3 text-dark font-weight-bolder">
+                                    <input type="checkbox" value="{{ $item->id }}" name="driver_id" class="form-check-input" id="driver_id">
+                                    <label class="form-check-label text-danger" for="driver_id">Select This One</label>
+                                </div>
+                            </div>
+
                         </div>
+
+                        @endforeach
+
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Add Driver</button>
+                            <button type="submit" class="btn btn-outline-primary">Add Driver</button>
 
                         </div>
                     </form>

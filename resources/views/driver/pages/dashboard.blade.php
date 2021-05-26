@@ -8,6 +8,11 @@ Driver-Dashboard
 @section('content')
  <div class="row">
     <div class="col-md-8 col-md-offset-2">
+        <div >
+            <a class="btn btn-success" href="{{ route('employee.profile.edit',auth()->user()->id) }}">Edit Profile</a>
+            <a class="btn btn-primary" href="{{ route('employee.edit.password') }}">Change Password</a>
+
+        </div>
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <!--PROFILE-->
         <div>
@@ -33,6 +38,7 @@ Driver-Dashboard
                 </ul>
             </div>
         </div>
+
 
     </div>
 

@@ -52,22 +52,7 @@ booking-single-view
                          @endphp
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="col">Price/Day</th>
-                        <td>{{ $booking->price_per_day }} BDT</td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Car Disscount Amount</th>
-                        <td>{{ $booking->bookingCar->discount_offer.'.00' }} BDT</td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Insurance Fee</th>
-                        <td>{{ $booking->insurance_fee.'.00' }} BDT</td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Total</th>
-                        <td>{{ $booking->total_price}} BDT</td>
-                    </tr>
+
                     <tr>
                         <th scope="col">Customer/User Name</th>
                         <td>{{ $booking->bookingUser->name}} </td>
@@ -84,15 +69,10 @@ booking-single-view
                         <th scope="col">Customer Address</th>
                         <td>{{ $booking->bookingUser->address}} </td>
                     </tr>
-
-                    <tr>
-                        <th scope="col">Customer Message</th>
-                        <td>{{ $booking->details}} </td>
-                    </tr>
-                    <tr>
+                   {{--  <tr>
                         <th scope="col">Booking Status</th>
                         <td>{{ucfirst($booking->status)}} </td>
-                    </tr>
+                    </tr> --}}
 
                 </table>
 

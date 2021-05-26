@@ -53,13 +53,13 @@ User-Login
         Login
     <img src="{{ asset('frontend/assets/images/icons/icon_01.png') }}" alt="icon_not_found">
     </button>
-    <span class="reset_pass mb_15">
+   {{--  <span class="reset_pass mb_15">
     <a href="#!">Reset Your Password by e-mail?</a>
     </span>
     <div class="checkbox_input mb-0">
     <label for="input_save">
         <input id="input_save" type="checkbox"> Save my name, email, and website in this browser for the next time I comment</label>
-    </div>
+    </div> --}}
     </form>
     </div>
     </div>

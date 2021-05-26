@@ -24,7 +24,7 @@ class Booking extends Model
         'total_price',
         'due',
         'details',
-        'response`',
+        'response',
         'status',
     ];
     public function bookingCar(){

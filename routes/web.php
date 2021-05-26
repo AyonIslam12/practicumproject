@@ -220,5 +220,15 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('/booking-information',[DriverDriverController::class,'bookingList'])->name('booking.information') ;
         Route::get('employee-schedule/show/{id}',[DriverDriverController::class,'show'])->name('show.booking');
         Route::get('/booking/{id}/{response}',[DriverDriverController::class,'updateResponse'])->name('employee.response');
+        //Driver Profile Edit Routes
+        Route::get('employee-profile/edit/{id}',[DriverDriverController::class,'edit'])->name('employee.profile.edit');
+        Route::put('employee-profile/update/{id}',[DriverDriverController::class,'update'])->name('employee.profile.update');
+        //Driver Password Setting
+
+        Route::get('/user/update-password',[UserProfile::class,'password'])->name('user.edit.password');
+        Route::Post('/user/update-password',[UserProfile::class,'updatePassword'])->name('user.update.password');
+
+        Route::get('/employee/update-password',[DriverDriverController::class,'editpassword'])->name('employee.edit.password');
+        Route::Post('/employee/update-password',[DriverDriverController::class,'updatePassword'])->name('employee.update.password');
     });
 
