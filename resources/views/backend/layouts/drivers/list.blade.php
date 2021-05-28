@@ -50,7 +50,8 @@ driver-list
                                 <th scope="col">NID Number</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Contact</th>
-                                <th scope="col">Address</th>
+                                <th scope="col">Experiance</th>
+
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -66,7 +67,8 @@ driver-list
                                 <td>{{ $driver->nid_number }}</td>
                                 <td>{{ Str::ucfirst($driver->role) }}</td>
                                 <td>{{ '+880-'.$driver->phone }}</td>
-                                <td>{{ $driver->address }}</td>
+                                <td>{{ $driver->driver_experiance }}</td>
+
 
                               <td class="text-center">
                                 <a class="btn btn-info btn-sm " href= "{{ route('admin.driver.show',$driver->id) }}"><i class="far fa-eye text-dark"></i></a>
@@ -93,7 +95,7 @@ driver-list
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form action="{{ route('admin.driver.create') }}" method="post" enctype="multipart/form-data">
-        <div class="modal-body">
+        <div class="modal-body text-dark">
               @csrf
               <div class="form-group">
                   <label for="name">Name</label>
@@ -135,10 +137,16 @@ driver-list
                   @error('nid_number') <span class="text-danger text-italic">{{ $message }}</span>@enderror
               </div>
               <div class="form-group">
+                <label for="driver_experiance">Driving Experience</label>
+                <input type="text"class="form-control @error('driver_experiance') is-invalid @enderror" id="driver_experiance" name="driver_experiance"  placeholder="Enter Driver Experiances" value="{{ old('driver_experiance') }}">
+                @error('driver_experiance') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+            </div>
+              <div class="form-group">
                   <label for="address">Address</label>
                   <textarea name="address" id="address" placeholder="Address*" class="form-control @error('address') is-invalid @enderror"></textarea>
                   @error('address') <span class="text-danger text-italic">{{ $message }}</span>@enderror
               </div>
+
 
         </div>
         <div class="modal-footer">

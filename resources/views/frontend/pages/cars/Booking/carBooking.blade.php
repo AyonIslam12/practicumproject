@@ -91,7 +91,7 @@ Car-Booking
 		<div data-aos="fade-up" data-aos-delay="100">
 			<a class="terms_condition" href="#!"><i class="fas fa-info-circle mr-1">
 
-			</i> You can get insurance for 'Medical Expenses'. If want it,Then Select below checkbox </a>
+			</i> You can get insurance for 'Medical Expenses'. If want it,Then Select below checkbox for taking. </a>
 		</div>
 		<hr data-aos="fade-up" data-aos-delay="200">
 		<div class="row align-items-center justify-content-lg-between">

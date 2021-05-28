@@ -46,6 +46,7 @@ class CarController extends Controller
             'name' => 'required|min:4',
             'model' => 'required',
             'model_year' => 'required',
+            'nPlate' => 'required|min:4|unique:cars',
             'color' => 'required',
             'price_per_day' => 'required',
             'mileage' => 'required',
@@ -69,6 +70,7 @@ class CarController extends Controller
             'name' => $request->name,
             'brand_id' => $request->brand_id,
             'model' => $request->model,
+            'nPlate' => $request->nPlate,
             'car_engine' =>\ucwords(Str::random(10)),
             'model_year' => $request->model_year,
             'color' => $request->color,
@@ -150,6 +152,7 @@ class CarController extends Controller
             'name' => 'required|string|min:4',
             'model' => 'required',
             'model_year' => 'required',
+            'nPlate' => 'required',
             'color' => 'required',
             'price_per_day' => 'required',
             'mileage' => 'required',
@@ -177,6 +180,7 @@ class CarController extends Controller
             'name' => $request->name,
             'brand_id' => $request->brand_id,
             'model' => $request->model,
+            'nPlate' => $request->nPlate,
             'model_year' => $request->model_year,
             'color' => $request->color,
             'price_per_day' => $request->price_per_day,
@@ -220,8 +224,9 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
+        $car = Car::find($id);
         try{
-            $car = Car::find($id);
+
 
             if ($car) {
                 if (file_exists(public_path('uploads/cars/'.$car->image))) {

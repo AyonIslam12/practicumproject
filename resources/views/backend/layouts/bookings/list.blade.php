@@ -60,7 +60,7 @@ booking-list
                               <td>{{  date("Y-M-d",strtotime($booking->to_date))  }}</td>
 
 
-                              <td>{{ $booking->total_price}} BDT.</td>
+                              <td>{{ $booking->total_price}} Tk.</td>
                               <td class="text-center">
                                   <a class="btn btn-outline-success btn-sm " href="{{ route('admin.booking.add.driver.form',$booking->id) }}">
                                       <i class="fas fa-plus-circle"></i>

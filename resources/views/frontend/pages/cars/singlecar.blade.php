@@ -63,29 +63,34 @@ Car-Single-View
 
                     <tr>
                         <tr>
-                            <th>Car Model :</th>
+                            <th> Model :</th>
                             <td class="text-center text-muted text-info">{{ $car->model }}</td>
 
                         </tr>
                         <tr>
-                            <th>Car Engine Number :</th>
+                            <th> Engine Number :</th>
                             <td class="text-center text-muted text-info">{{ $car->car_engine }}</td>
 
                         </tr>
                         <tr>
-                            <th>Car Color:</th>
+                            <th> Number Plate :</th>
+                            <td class="text-center text-muted text-info">{{ $car->nPlate }}</td>
+
+                        </tr>
+                        <tr>
+                            <th> Color:</th>
                             <td class="text-center text-muted text-info">{{ $car->color }}</td>
 
 
                         </tr>
                         <tr>
-                            <th>Car Capacity:</th>
+                            <th> Capacity:</th>
                             <td class="text-center text-muted text-info">{{ $car->seats.' Seats' }}</td>
 
 
                         </tr>
                         <tr>
-                            <th>Car Luggage: </th>
+                            <th> Luggage: </th>
                             <td class="text-center text-muted text-info">{{ $car->luggage.' Luggage' }}</td>
 
 

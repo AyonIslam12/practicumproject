@@ -74,7 +74,7 @@ admin-profile
 
             </div>
             <div class="card-footer bg-secondary">
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-md">Back</a>
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-light btn-md">Back</a>
             </div>
           </div>
 

@@ -51,7 +51,7 @@ Your-Profile
                     </a>
                 </li>
                 <li>
-                <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href="{{ route( 'website.user.edit.password') }}">
+                <a class="{{ request()->is('user/update-password') ? 'active' : '' }}" href=" {{ route( 'website.user.edit.password') }} ">
                     <i class="fas fa-key"></i>
                    Change Password
                 </a>

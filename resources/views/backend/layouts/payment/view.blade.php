@@ -34,8 +34,12 @@ payment-single-view
                         <td>{{ $payment->payBooking->bookingCar->name}}</td>
                     </tr>
                     <tr>
-                        <th>Car Engine Name</th>
+                        <th>Car Engine Number</th>
                         <td>{{ $payment->payBooking->bookingCar->car_engine}}</td>
+                    </tr>
+                    <tr>
+                        <th>Car Number Plate</th>
+                        <td>{{ $payment->payBooking->bookingCar->nPlate}}</td>
                     </tr>
                     <tr>
                         <th>Booking Amount</th>

@@ -18,8 +18,8 @@ class CreateBookingsTable extends Migration
 
             $table->foreignId('car_id')
             ->constrained('cars')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
 
             $table->foreignId('user_id')
             ->constrained('users')

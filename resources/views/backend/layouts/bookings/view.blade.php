@@ -53,19 +53,19 @@ booking-single-view
                     </tr>
                     <tr>
                         <th scope="col">Price/Day</th>
-                        <td>{{ $booking->price_per_day }} BDT</td>
+                        <td>{{ $booking->price_per_day }}.00 Tk. </td>
                     </tr>
                     <tr>
                         <th scope="col">Car Disscount Amount</th>
-                        <td>{{ $booking->bookingCar->discount_offer.'.00' }} BDT</td>
+                        <td>{{ $booking->bookingCar->discount_offer.'.00' }} Tk.</td>
                     </tr>
                     <tr>
                         <th scope="col">Insurance Fee</th>
-                        <td>{{ $booking->insurance_fee.'.00' }} BDT</td>
+                        <td>{{ $booking->insurance_fee.'.00' }} Tk.</td>
                     </tr>
                     <tr>
                         <th scope="col">Total</th>
-                        <td>{{ $booking->total_price}} BDT</td>
+                        <td>{{ $booking->total_price}} Tk.</td>
                     </tr>
                     <tr>
                         <th scope="col">Customer/User Name</th>

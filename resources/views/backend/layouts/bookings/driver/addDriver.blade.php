@@ -26,6 +26,9 @@ Add-Driver
 
                            </select>
                         </div> --}}
+                        @if(count($driver) > 0)
+
+
                         @foreach ($driver  as $item )
                         <div class="row mb-3">
                             <div class="col-12  ">
@@ -36,11 +39,13 @@ Add-Driver
                                 </div>
                                 <div class="pl-5">
                                     <h4 class="font-weight-bold"><span class="text-dark">{{ $item->name }}</span></h4>
-                                    <h6 class="font-weight-bold">Position: <span class="text-dark">{{ $item->role }}</span></h6>
+                                    <h6 class="font-weight-bold">Position: <span class="text-dark">{{ Str::ucfirst($item->role) }}</span></h6>
+                                    <h6  class="font-weight-bold">Experiances:  <span class="text-dark">{{ $item->driver_experiance }}</span></h6>
                                     <h6 class="font-weight-bold">Contact Number:  <span class="text-dark">+880-{{ $item->phone }}</span></h6>
                                     <h6  class="font-weight-bold">Email Address:  <span class="text-dark">{{ $item->email }}</span></h6>
                                     <h6  class="font-weight-bold">NID Number:  <span class="text-dark">{{ $item->nid_number }}</span></h6>
                                     <h6  class="font-weight-bold">Address:  <span class="text-dark">{{ $item->address }}</span></h6>
+
 
                                 </div>
                                 <div class="ml-5">
@@ -84,13 +89,25 @@ $checkBook = $checkBook->get();
                             </div>
 
                         </div>
+                        <div class="d-felx justify-content-left">
+
+                            {{ $driver->links() }}
+
+                        </div>
 
                         @endforeach
 
+                        @else
+                       <h5 class="bg-secondary text-light p-2 rounded">You don't have driver yet...</h5>
+                        @endif
+
+                        @if(count($driver) > 0)
                         <div class="form-group">
                             <button type="submit" class="btn btn-outline-primary">Add Driver</button>
 
                         </div>
+
+                        @endif
                     </form>
 
                 </div>

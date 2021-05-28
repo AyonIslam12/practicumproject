@@ -53,6 +53,11 @@ car-edit
                      @error('model') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
+                    <label for="nPlate"><span class="text-light">Car Number Plate</span></label>
+                    <input type="text" class="form-control  @error('nPlate') is-invalid @enderror" id="nPlate" name="nPlate" value="{{ $car->nPlate }}">
+                     @error('nPlate') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror
+                </div>
+                <div class="form-group">
                     <label for="model_year"><span class="text-light">Car Model Year</span></label>
                     <input type="date" class="form-control  @error('model_year') is-invalid @enderror" id="model_year" name="model_year" value="{{ $car->model_year }}">
                      @error('model_year') <span class="text-warning font-italic font-weight-bolder">{{ $message }}</span> @enderror

@@ -65,12 +65,13 @@ Booking Report
                             <thead>
                                 <tr>
                                     <th scope="col">Sl </th>
-                                    <th scope="col">Car Name</th>
-                                    <th scope="col">User</th>
+                                    <th scope="col">Car Number Plate</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">User Email</th>
                                     <th scope="col">From Date</th>
                                     <th scope="col">To Date</th>
-                                    <th scope="col">Price/Day</th>
-                                    <th scope="col">Total</th>
+                                    <th scope="col">Total Days</th>
+                                    <th scope="col">Booking Price</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,12 +84,17 @@ Booking Report
 
                                 <tr>
                                   <th scope="row">{{ $key+1 }}</th>
-                                  <td>{{ $booking->bookingCar->name}}</td>
+                                  <td>{{ $booking->bookingCar->nPlate}}</td>
                                   <td>{{ $booking->bookingUser->name}}</td>
+                                  <td>{{ $booking->bookingUser->email}}</td>
                                   <td>{{ date("Y-M-d",strtotime($booking->from_date)) }}</td>
                                   <td>{{  date("Y-M-d",strtotime($booking->to_date))  }}</td>
-                                  <td>{{ $booking->price_per_day }} BDT.</td>
-                                  <td>{{ $booking->total_price}} BDT.</td>
+                                  <td>@php
+                                    $daysCalculation = (strtotime($booking->to_date)-strtotime($booking->from_date));
+                                           $daysCalculation = round(($daysCalculation / (60 * 60 * 24))+1);
+                                          echo $daysCalculation." Days";
+                                       @endphp</td>
+                                  <td>{{ $booking->total_price}} Tk.</td>
                                 </tr>
                                 @endforeach
                                 @else

@@ -225,8 +225,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::put('employee-profile/update/{id}',[DriverDriverController::class,'update'])->name('employee.profile.update');
         //Driver Password Setting
 
-        Route::get('/user/update-password',[UserProfile::class,'password'])->name('user.edit.password');
-        Route::Post('/user/update-password',[UserProfile::class,'updatePassword'])->name('user.update.password');
+
 
         Route::get('/employee/update-password',[DriverDriverController::class,'editpassword'])->name('employee.edit.password');
         Route::Post('/employee/update-password',[DriverDriverController::class,'updatePassword'])->name('employee.update.password');

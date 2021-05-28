@@ -99,8 +99,12 @@ class BookingController extends Controller
                 toastr()->warning("You can not pay more then " . $booking->total_price.' TK.');
                 return \redirect()->back();
 
-                }elseif( $amount == 0){
-                    toastr()->info("Your payment already done");
+                }elseif( $amount <  $totalAmount){
+                    toastr()->info("You should pay right amount");
+                    return \redirect()->back();
+                }
+                elseif( $amount == 0){
+                    toastr()->info("Your given payment should not be zero");
                     return \redirect()->back();
                 }
 

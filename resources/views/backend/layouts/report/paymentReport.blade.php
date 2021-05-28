@@ -29,7 +29,7 @@ Payment Report
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="from">From Date</label>
-                                                <input type="date" value="{{ $fromDate }}" name=" " id="from" class="form-control">
+                                                <input type="date" value="{{ $fromDate }}" name="from_date" id="from" class="form-control">
 
                                             </div>
 
@@ -65,8 +65,9 @@ Payment Report
                             <thead>
                                 <tr>
                                     <th scope="col">Sl</th>
-                                    <th scope="col"> Customer Name</th>
-                                    <th scope="col">Car Name</th>
+                                    <th scope="col"> User Name</th>
+                                    <th scope="col"> User Email</th>
+                                    <th scope="col">Car Engine</th>
                                     <th scope="col">Transaction Number</th>
                                     <th scope="col">Payment Amount</th>
                                     <th scope="col">Payment Time</th>
@@ -84,7 +85,8 @@ Payment Report
                            <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $payment->payBooking->bookingUser->name}}</td>
-                            <td>{{ $payment->payBooking->bookingCar->name}}</td>
+                            <td>{{ $payment->payBooking->bookingUser->email}}</td>
+                            <td>{{ $payment->payBooking->bookingCar->car_engine}}</td>
                             <td>{{ $payment->transaction_id }}</td>
                             <td>{{ $payment->amount }}.00 TK</td>
                             <td>{{ date("h:i:s a", strtotime($payment->pay_time)) }}</td>

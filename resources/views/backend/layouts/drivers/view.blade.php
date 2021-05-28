@@ -18,7 +18,7 @@ driver-single-view
 
                     <tr>
                         <th> Name</th>
-                        <td>{{ $driver->name }}</td>
+                        <td>{{ Str::ucfirst($driver->name) }}</td>
                     </tr>
                     <tr>
                         <th> Image</th>
@@ -26,7 +26,7 @@ driver-single-view
                     </tr>
                     <tr>
                         <th> Email</th>
-                        <td>{{ $driver->email }}</td>
+                        <td>{{ Str::ucfirst($driver->email) }}</td>
                     </tr>
                     <tr>
                         <th> NID Number</th>
@@ -35,15 +35,19 @@ driver-single-view
                     </tr>
                     <tr>
                         <th>Role</th>
-                        <td>{{ $driver->driver }}</td>
+                        <td>{{ Str::ucfirst($driver->role) }}</td>
                     </tr>
                     <tr>
                         <th> Contact Number</th>
-                        <td>{{ $driver->phone }}</td>
+                        <td>+880-{{ $driver->phone }}</td>
                     </tr>
                     <tr>
                         <th> Address</th>
                         <td>{{ $driver->address }}</td>
+                    </tr>
+                    <tr>
+                        <th> Driver Experiance</th>
+                        <td>{{ $driver->driver_experiance }}</td>
                     </tr>
 
                 </table>

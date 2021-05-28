@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class AddToBookingDriver extends Controller
 {
    public function addToBooking($id){
-    $driver = User::where('role', '=', 'driver')->get();
+    $driver = User::where('role', '=', 'driver')->orderBy('id','desc')->paginate(2);
     $bookingAdd = Booking::find($id);
 
     return view('backend.layouts.bookings.driver.addDriver',\compact('driver','bookingAdd'));

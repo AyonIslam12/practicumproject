@@ -43,7 +43,7 @@ class AdminController extends Controller
         ]);
 
         try{
-            if($request->hasFile('image')){
+           /*  if($request->hasFile('image')){
                 $file = $request->file('image');
                 if($file->isValid()){
                     $filename = date('Ymdhms').'.'.$file->getClientOriginalExtension();
@@ -53,18 +53,18 @@ class AdminController extends Controller
                 unlink(public_path('uploads/users/'.$adminUpdate->image));
             }else{
                 $filename = $adminUpdate->image;
-            }
+            } */
 
 
             $adminUpdate->update([
             'name' => $request->name,
             'phone' => $request->phone,
-            'image' =>$filename,
+         /*    'image' =>$filename, */
             'address' =>$request->address,
 
             ]);
-            session()->flash('type','success');
-            session()->flash('message','Your Profile Updated Successfully');
+            toastr()->success("Your Profile Updated Successfully.");
+
         }catch(Exception $e){
             session()->flash('type','danger');
             session()->flash('message',$e->getMessage());

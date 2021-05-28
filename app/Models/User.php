@@ -25,6 +25,7 @@ class User extends Authenticatable
         'image',
         'nid_number',
         'address',
+        'driver_experiance',
     ];
 
     /**

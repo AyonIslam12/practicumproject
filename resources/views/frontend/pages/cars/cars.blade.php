@@ -70,7 +70,7 @@ All-Cars
 				</div>
 				<ul class="info_list ul_li_center text-light font-weight-bolder bg-secondary clearfix">
 					<li>{{ $car->carBrand->brand }}</li>
-					<li><span class="text-warning">{{ $car->price_per_day.' . 00 '}}</span> BDT/Day</li>
+					<li><span class="text-warning">{{ $car->price_per_day.' . 00 '}}</span> Tk/Day</li>
 					{{-- <li>{{ $car->model }}</li> --}}
 					<li>{{'Seats: '. $car->seats }}</li>
 

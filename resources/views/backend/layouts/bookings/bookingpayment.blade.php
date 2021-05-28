@@ -39,7 +39,7 @@ Payment-History
                         <label for="payment_method" class="text-dark">Payment Method</label>
                         <select name="payment_method" id="payment_method" class="form-control">
                             <option value="cash">Cash</option>
-                            <option value="bkash">Bkash</option>
+
                         </select>
                     </div>
                     <div class="form-group" >
@@ -159,7 +159,7 @@ Payment-History
                                 <tr>
                                     <td>{{ $payment->transaction_id }}</td>
                                     <td>{{ date("h:i:s a", strtotime($payment->pay_time)) }}</td>
-                                    <td>{{ date("Y-m-D", strtotime($payment->pay_date)) }}</td>
+                                    <td>{{ date("Y-M-d", strtotime($payment->pay_date)) }}</td>
                                     <td>{{ $payment->amount }}.00 TK</td>
                                     <td class="text-center">{{ $payment->payment_method }}</td>
                                 </tr>

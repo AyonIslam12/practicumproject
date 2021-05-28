@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('nid_number')->nullable();
             $table->string('address')->nullable();
+            $table->string('driver_experiance')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -22,6 +22,7 @@ Driver-Dashboard
             <div class="user-header-info">
                 <h2 class="user-name">{{ auth()->user()->name }}</h2>
                 <h5 class="user-position">{{ ucfirst(auth()->user()->role) }}</h5>
+                <span class="bg-info" style="color:#000000; padding:4px;">{{ ucfirst(auth()->user()->driver_experiance) }} Experiances</span>
 
             </div>
         </div>

@@ -91,6 +91,7 @@ class DriverController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
+            'driver_experiance' => 'required',
         ]);
         try{
             if($request->hasFile('image')){
@@ -112,6 +113,7 @@ class DriverController extends Controller
             'phone' => $request->phone,
             'image' =>$filename,
             'address' =>$request->address,
+            'driver_experiance' =>$request->driver_experiance,
 
             ]);
 

@@ -36,6 +36,7 @@ class DriverController extends Controller
             'password' => 'required|min:6|max:16',
             'password' => 'required|min:6|max:16|confirmed',
             'address' => 'required',
+            'driver_experiance' => 'required|min:3',
         ]);
         try{
 
@@ -57,6 +58,7 @@ class DriverController extends Controller
             'password' =>bcrypt($request->password),
             'image' =>$filename,
             'address' =>$request->address,
+            'driver_experiance' =>$request->driver_experiance,
             ]);
 
             session()->flash('type','success');
@@ -100,6 +102,7 @@ class DriverController extends Controller
             'phone' => 'required',
             'nid_number' => 'required',
             'address' => 'required',
+            'driver_experiance' => 'required',
         ]);
         try{
             if($request->hasFile('image')){
@@ -122,6 +125,7 @@ class DriverController extends Controller
             'nid_number' => $request->nid_number,
             'image' =>$filename,
             'address' =>$request->address,
+            'driver_experiance' =>$request->driver_experiance,
 
             ]);
             session()->flash('type','success');

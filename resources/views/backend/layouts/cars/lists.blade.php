@@ -44,11 +44,11 @@ car-list
                                     <th scope="col">Sl</th>
                                     <th scope="col">Car Name</th>
                                     <th scope="col">Car Brand</th>
-                                    <th scope="col">Car Model</th>
+                                    <th scope="col">Car Number Plate</th>
                                     <th scope="col">Car Image</th>
                                     <th scope="col"> Car Price/Day</th>
                                     <th scope="col"> Car Status</th>
-                                    <th scope="col"> Add Driver</th>
+
                                     <th scope="col" class="text-center">Action</th>
                                   </tr>
                             </tr>
@@ -61,15 +61,11 @@ car-list
                                 <th scope="row">{{ $key+1 }}</th>
                                 <td>{{ $car->name }}</td>
                                 <td>{{ $car->carBrand->brand }}</td>
-                                <td>{{ $car->model }}</td>
+                                <td>{{ $car->nPlate }}</td>
                                 <td><img width="80px" src="{{ url('/uploads/cars/'.$car->image )}}" alt=""></td>
-                                <td>{{ $car->price_per_day.'.00'}}</td>
+                                <td>{{ $car->price_per_day.'.00'}} Tk.</td>
                                 <td>{{ Str::ucfirst($car->status) }}</td>
-                                <td>
-                                    <a class="btn btn-outline-primary btn-sm" href="#" data-toggle="modal" data-target="#exampleModal">
-                                    Add Driver
-                                    </a>
-                                </td>
+
 
                               <td class="text-center ">
                                 <a class="btn btn-info btn-sm mx-1" href="{{ route('admin.car.show',$car->id) }}"><i class="fas fa-eye text-dark"></i></a>

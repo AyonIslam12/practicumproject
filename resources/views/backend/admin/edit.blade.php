@@ -33,10 +33,10 @@ admin-profile
                      <textarea name="address" id="address" rows="3" class="form-control"  >{{ $adminEdit->address }}</textarea>
                      @error('address') <span class="text-danger font-italic">{{ $message }}</span> @enderror
                     </div>
-                  <div class="form-group">
+                 {{--  <div class="form-group">
                     <label for="image">Upload Photo</label>
                    <input type="file" name="image" id="image" class="form-control">
-                </div>
+                </div> --}}
 
 
 

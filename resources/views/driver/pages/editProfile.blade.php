@@ -49,6 +49,11 @@ Driver-profile-edit
                                 @error('phone') <span class="text-danger text-italic">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
+                                <label for="driver_experiance">Driver Experiances</label>
+                                <input type="text"class="form-control @error('driver_experiance') is-invalid @enderror" id="driver_experiance" name="driver_experiance" value="{{ $driver->driver_experiance }}">
+                                @error('driver_experiance') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="address">Address</label>
                                 <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror">{{ $driver->address }} </textarea>
                                 @error('address') <span class="text-danger text-italic">{{ $message }}</span>@enderror

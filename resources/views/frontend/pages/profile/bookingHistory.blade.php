@@ -90,16 +90,17 @@ Booking-History
              <ul class="ul_li_block clearfix"><li>
                  <span>Booking Date:</span> {{  date("Y-M-d",strtotime($history->from_date)) }}</li>
                  <li><span>Return Date:</span>{{  date("Y-M-d",strtotime($history->to_date)) }}</li>
+                 <li><span>Total Days :</span>@php
+                    $daysCalculation = (strtotime($history->to_date)-strtotime($history->from_date));
+                           $daysCalculation = round(($daysCalculation / (60 * 60 * 24))+1);
+                          echo $daysCalculation." Days";
+                       @endphp
+                  </li>
                  <li><span> Rent/Day :</span>{{  $history->price_per_day}}.0 TK</li>
                  <li><span> Car Discount :</span>{{  $history->bookingCar->discount_offer}}.0 TK</li>
                  <li><span> Booking Insurance :</span>{{  $history->insurance_fee}}.0 TK</li>
                  <li><span>Total Price :</span>{{  $history->total_price}}.0 TK</li>
-                 <li><span>Total Days :</span>@php
-                  $daysCalculation = (strtotime($history->to_date)-strtotime($history->from_date));
-                         $daysCalculation = round(($daysCalculation / (60 * 60 * 24))+1);
-                        echo $daysCalculation." Days";
-                     @endphp
-                </li>
+
                  <li><span>Payment Status:</span> @if($history->due <= 0 )
                      <span class="text-dark">paid <i class="far fa-check-circle text-success"></i></span>
                      @else

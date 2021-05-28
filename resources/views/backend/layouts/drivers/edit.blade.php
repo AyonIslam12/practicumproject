@@ -14,7 +14,7 @@ Driver-Edit
             <div class="card-header bg-info">
               <p class="text-light font-weight-bold text-center">  Driver Update Form.</p>
             </div>
-            <div class="card-body">
+            <div class="card-body text-dark font-weight-bold">
                 <form action="{{ route('admin.driver.update',$driver->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -43,6 +43,11 @@ Driver-Edit
                         <label for="nid_number">NID Number</label>
                         <input type="number"class="form-control @error('nid_number') is-invalid @enderror" id="nid_number" name="nid_number" value="{{ $driver->nid_number }}">
                         @error('nid_number') <span class="text-danger text-italic">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="driver_experiance">Driver Experiance</label>
+                        <input type="text"class="form-control @error('driver_experiance') is-invalid @enderror" id="driver_experiance" name="driver_experiance" value="{{ $driver->driver_experiance }}">
+                        @error('driver_experiance') <span class="text-danger text-italic">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
