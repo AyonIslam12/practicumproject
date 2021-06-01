@@ -36,6 +36,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
+//Forget Password sent in email
+Route::get('forget-password-link-click/{token}/{email}',[UserController::class,'passwordReset'])->name('password.reset');
+
 //Fontend  Routes
 Route::prefix('/')->name('website.')->group(function(){
     Route::get('/',[SiteController::class,'index'])->name('home');
@@ -52,6 +56,13 @@ Route::prefix('/')->name('website.')->group(function(){
     Route::get('user/login',[UserController::class,'loginForm'])->name('user.login.form');
     Route::post('user/dologin',[UserController::class,'doLogin'])->name('user.login');
     Route::get('user/logout',[UserController::class,'logout'])->name('user.logout');
+
+    //Forget Password Route
+    Route::get('forget-password',[UserController::class,'forgetPassword'])->name('forget.password');
+    Route::post('forget-password-link',[UserController::class,'forgetPasswordLink'])->name('forget.password.link');
+    Route::post('reset-password',[UserController::class,'resetPassword'])->name('password.reset.post');
+
+
 
         //Route Group for Auth Middleware
 Route::group(['middleware' => 'auth'],function () {
