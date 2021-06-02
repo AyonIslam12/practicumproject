@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\UserController as BackendUserController;
 use App\Http\Controllers\Driver\AddToBookingDriver;
 use App\Http\Controllers\Driver\DriverController as DriverDriverController;
+use App\Http\Controllers\ForgetPassword;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\CarController as FrontendCarController;
 use App\Http\Controllers\Frontend\CustomerMessage;
@@ -38,7 +39,11 @@ use Illuminate\Support\Facades\Route;
 
 
 //Forget Password sent in email
-Route::get('forget-password-link-click/{token}/{email}',[UserController::class,'passwordReset'])->name('password.reset');
+Route::get('forget-password-customer',[ForgetPassword::class,'forgetPassword'])->name('forget.password');
+Route::get('forget-password-employee',[ForgetPassword::class,'forgetPasswordForDriver'])->name('employye.forget.password');
+Route::post('forget-password-link',[ForgetPassword::class,'forgetPasswordLink'])->name('forget.password.link');
+Route::get('forget-password-link-click/{token}/{email}',[ForgetPassword::class,'passwordReset'])->name('password.reset');
+Route::post('reset-password',[ForgetPassword::class,'resetPassword'])->name('password.reset.post');
 
 //Fontend  Routes
 Route::prefix('/')->name('website.')->group(function(){
@@ -47,22 +52,12 @@ Route::prefix('/')->name('website.')->group(function(){
     Route::get('/our-services',[SiteController::class,'services'])->name('services');
     Route::get('/faq',[SiteController::class,'faqPage'])->name('faq');
     Route::get('/contact-us',[SiteController::class,'contact'])->name('contact');
-
-
-
-
+    //Login Resgiter
     Route::get('user/registration/form',[UserController::class,'registrationForm'])->name('user.registration.form');
     Route::post('user/registration/create',[UserController::class,'register'])->name('user.register');
     Route::get('user/login',[UserController::class,'loginForm'])->name('user.login.form');
     Route::post('user/dologin',[UserController::class,'doLogin'])->name('user.login');
     Route::get('user/logout',[UserController::class,'logout'])->name('user.logout');
-
-    //Forget Password Route
-    Route::get('forget-password',[UserController::class,'forgetPassword'])->name('forget.password');
-    Route::post('forget-password-link',[UserController::class,'forgetPasswordLink'])->name('forget.password.link');
-    Route::post('reset-password',[UserController::class,'resetPassword'])->name('password.reset.post');
-
-
 
         //Route Group for Auth Middleware
 Route::group(['middleware' => 'auth'],function () {
@@ -99,10 +94,6 @@ Route::prefix('/car')->name('car.')->group(function(){
     });
 
 });
-
-
-
-
 
 
 //Backend Routes
@@ -221,9 +212,12 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
 
 });
+
+
 //Driver Site Routes
     Route::get('employee/login',[DriverDriverController::class,'showLoginForm'])->name('employee.login.form');
     Route::post('employee/do-login', [DriverDriverController::class,'Dologin'])->name('employee.do.login');
+
     Route::group(['middleware' => 'driver-auth'],function () {
         Route::get('employee/',[DriverDriverController::class,'dashboard'])->name('employee.dashboard');
         Route::get('employee/logout',[DriverDriverController::class,'logout'])->name('employee.logout');
@@ -235,9 +229,6 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('employee-profile/edit/{id}',[DriverDriverController::class,'edit'])->name('employee.profile.edit');
         Route::put('employee-profile/update/{id}',[DriverDriverController::class,'update'])->name('employee.profile.update');
         //Driver Password Setting
-
-
-
         Route::get('/employee/update-password',[DriverDriverController::class,'editpassword'])->name('employee.edit.password');
         Route::Post('/employee/update-password',[DriverDriverController::class,'updatePassword'])->name('employee.update.password');
     });

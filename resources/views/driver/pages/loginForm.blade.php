@@ -65,21 +65,16 @@
                             <span class="focus-input100"></span>
                             <span class="label-input100">Password</span>
                         </div>
-                    {{-- 	<div class="flex-sb-m w-full p-t-3 p-b-32">
-                            <div class="contact100-form-checkbox">
-                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                                <label class="label-checkbox100" for="ckb1">
-                                    Remember me
-                                </label>
-                            </div>
+                 	<div class="flex-sb-m w-full p-t-3 p-b-32">
+
 
                             <div>
-                                <a href="#" class="txt1">
+                                <a href="{{ route('employye.forget.password') }}" class="txt1">
                                     Forgot Password?
                                 </a>
                             </div>
                         </div>
-     --}}
+
 
                         <div class="container-login100-form-btn">
                             <button type="submit" class="login100-form-btn">

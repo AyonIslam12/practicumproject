@@ -108,7 +108,7 @@ Booking-History
                  @endif
              </li>
              </ul>
-             <a class="text_btn text-uppercase" href="#!">
+             <a class="text_btn text-uppercase" href="{{ route('website.car.list') }}">
                  <span>Book A Car</span>
                  <img src="{{ asset('frontend/assets/images/icons/icon_02.png') }}" alt="icon_not_found">
              </a>

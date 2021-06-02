@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class AddToBookingDriver extends Controller
 {
    public function addToBooking($id){
-    $driver = User::where('role', '=', 'driver')->orderBy('id','desc')->paginate(2);
+    $driver = User::where('role', '=', 'driver')->orderBy('id','desc')->paginate(5);
     $bookingAdd = Booking::find($id);
 
     return view('backend.layouts.bookings.driver.addDriver',\compact('driver','bookingAdd'));
@@ -40,7 +40,8 @@ class AddToBookingDriver extends Controller
 
      toastr()->success("Driver Booked Successfully.");
      return \redirect()->back();
-      }else{
+      }
+      else{
         toastr()->warning("This Driver Already Booked For Drived.");
         return \redirect()->back();
       }

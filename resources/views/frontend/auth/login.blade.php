@@ -56,7 +56,7 @@ User-Login
 
 
     <span class="reset_pass mb_15">
-    <a href="{{ route('website.forget.password') }}">Reset Your Password by e-mail?</a>
+    <a href="{{ route('forget.password') }}">Reset Your Password by e-mail?</a>
     </span>
 
     </form>
