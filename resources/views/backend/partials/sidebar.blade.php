@@ -13,10 +13,10 @@
         <li class="sub-menu">
             <a href="javascript:;"   class="{{ request()->is('admin/user/lists') ? 'active' : '' }}">
                 <i class="fa fa-user"></i>
-                <span>Users</span>
+                <span>Customer</span>
             </a>
             <ul class="sub">
-                <li  class="{{ request()->is('admin/user/lists') ? 'active' : '' }}"><a  href="{{ route('admin.user.list') }}">Manage Users</a></li>
+                <li  class="{{ request()->is('admin/user/lists') ? 'active' : '' }}"><a  href="{{ route('admin.user.list') }}">Manage Customer</a></li>
             </ul>
         </li>
         <li class="sub-menu">
@@ -35,7 +35,7 @@
             </a>
             <ul class="sub">
                 <li  class="{{ request()->is('admin/car/brand') ? 'active' : '' }}"><a  href="{{ route('admin.car.brand.manage') }}">Car Brand</a></li>
-                <li  class="{{ request()->is('admin/car/lists') ? 'active' : '' }}"><a  href="{{ route('admin.car.manage') }}">Car Manage</a></li>
+                <li  class="{{ request()->is('admin/car/lists') ? 'active' : '' }}"><a  href="{{ route('admin.car.manage') }}">Manage Car</a></li>
             </ul>
         </li>
 

@@ -102,8 +102,8 @@
 	<div class="container">
 		<div class="row align-items-center justify-content-lg-between">
 			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				<p class="copyright_text mb-0">Copyright © 2021. Sarkar by
-					<a class="author_links text-white" href="#!">Car</a>
+				<p class="copyright_text mb-0">Copy right © 2021 by Sarkar
+					<a class="author_links text-white" href="{{ route('website.home') }}">Car Rental House</a>
 				</p>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
