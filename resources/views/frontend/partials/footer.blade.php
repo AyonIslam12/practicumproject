@@ -53,48 +53,45 @@
 				<div class="footer_useful_links" data-aos="fade-up" data-aos-delay="300">
 					<h3 class="footer_widget_title">Information:</h3>
 					<ul class="ul_li_block clearfix">
+
 						<li>
-							<a href="#!">
+							<a href="{{ route('website.home') }}">
 								<i class="fal fa-angle-right"></i>
-								Find a Car for Rent in the Nearest Location
+								Sarkar Home
 							</a>
 						</li>
 						<li>
-							<a href="#!">
+							<a href="{{ route('website.car.list') }}">
 								<i class="fal fa-angle-right"></i>
-								Cars Catalog
+								All Cars
 							</a>
 						</li>
 						<li>
-							<a href="#!">
+							<a href="{{ route('website.services') }}">
+								<i class="fal fa-angle-right"></i>
+								Our Services
+							</a>
+						</li>
+						<li>
+							<a href="{{ route('website.faq') }}">
 								<i class="fal fa-angle-right"></i>
 								F.A.Q.
 							</a>
 						</li>
 						<li>
-							<a href="#!">
+							<a href="{{ route('website.about') }}">
 								<i class="fal fa-angle-right"></i>
 								About Us
 							</a>
 						</li>
 						<li>
-							<a href="#!">
+							<a href="{{ route('website.contact') }}">
 								<i class="fal fa-angle-right"></i>
 								Contact Us
 							</a>
 						</li>
-						<li>
-							<a href="#!">
-								<i class="fal fa-angle-right"></i>
-								Help Center
-							</a>
-						</li>
-						<li>
-							<a href="#!"><i class="fal fa-angle-right">
 
-							</i>
-						Privacy Police</a>
-					</li>
+
 				</ul>
 			</div>
 		</div>

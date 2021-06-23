@@ -17,4 +17,15 @@ class PaymentController extends Controller
 
         return \view('backend.layouts.payment.view',\compact('payment'));
     }
+
+    public function delete($id){
+        $payment = Payment::find($id);
+        if($payment){
+            $payment->delete();
+        }
+        \session()->flash('type','success');
+        \session()->flash('message','Payment Delete Successfully');
+        return \redirect()->back();
+    }
+
 }

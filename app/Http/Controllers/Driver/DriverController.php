@@ -23,6 +23,13 @@ class DriverController extends Controller
     }
 
     public function Dologin(Request $request){
+        $request->validate([
+
+            'email' => 'required|email',
+            'password' => 'required',
+
+        ]);
+
         $loginData=$request->only('email','password');
         if(Auth::attempt($loginData)){
             $request->session()->regenerate();

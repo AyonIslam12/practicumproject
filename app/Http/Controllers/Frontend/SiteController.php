@@ -34,7 +34,7 @@ class SiteController extends Controller
 
     public function contact(){
 
-        toastr()->info('Free feel to contact with us');
+        toastr()->info('Feel free to contact with us');
         return view('frontend.pages.contact');
     }
 

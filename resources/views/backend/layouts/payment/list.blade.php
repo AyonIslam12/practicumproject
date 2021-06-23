@@ -58,8 +58,11 @@ payment-manage
                             <td>{{ date("Y-M-d",strtotime($payment->pay_date ))}}</td>
                             <td>{{ $payment->payment_method }}</td>
                               <td class="text-center d-flex justify-content-center">
-                                <a class="btn btn-info btn-sm " href="{{ route('admin.payment.show',$payment) }}">
+                                <a class="btn btn-info btn-sm " href="{{ route('admin.payment.show',$payment->id) }}">
                                     <i class="far fa-eye text-dark"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm  mx-1 delete " href="{{ route('admin.payment.delete',$payment->id) }}">
+                                    <i class="fas fa-trash text-dark"></i>
                                 </a>
                             </td>
                             </tr>

@@ -197,6 +197,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::prefix('payment')->name('payment.')->group(function (){
             Route::get('/lists',[PaymentController::class,'index'])->name('list');
             Route::get('/show/{id}',[PaymentController::class,'show'])->name('show');
+            Route::get('/delete/{id}',[PaymentController::class,'delete'])->name('delete');
 
         });
         //Reports Manage Route Group
